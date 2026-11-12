@@ -7,7 +7,8 @@
     <title>
       Логистика | MayBrands
     </title>
-  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><style id="apexcharts-css">@keyframes opaque {
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet"><style id="apexcharts-css">@keyframes opaque {
   0% {
     opacity: 0
   }
@@ -1788,21 +1789,14 @@ rect.legend-mouseover-inactive,
   }
 }
 </style></head>
-  <body x-data="{ page: 'logistics', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
-         $watch('darkMode', value =&gt; localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark bg-gray-900': darkMode === true}">
-    <!-- ===== Preloader Start ===== -->
-    <div x-show="loaded" x-init="window.addEventListener('DOMContentLoaded', () =&gt; {setTimeout(() =&gt; loaded = false, 500)})" class="fixed top-0 left-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black" style="display: none;">
-  <div class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-brand-500 border-t-transparent"></div>
-</div>
-
-    <!-- ===== Preloader End ===== -->
+  <body x-data="{ page: 'logistics', section: 'dashboard', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
 
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
-<a class="sr-only" href="https://demo.tailadmin.com/logistics#main-content">Перейти к основному содержимому</a>
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
 <!-- Sidebar Backdrop (Mobile) -->
 <div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
 
@@ -1813,63 +1807,112 @@ rect.legend-mouseover-inactive,
   <a href="./ecommerce.html">
     <span class="sr-only">Главная страница</span>
     <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
-      <img class="h-10 w-auto object-contain" src="./assets/logo.svg" width="110" height="40" alt="MayBrands">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
     </span>
 
-    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/logo.svg" alt="MayBrands">
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
   </a>
 </div>
 <!-- SIDEBAR HEADER -->
 <div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
     <!-- Sidebar Menu -->
-    <nav x-data="{selected: $persist('Dashboard')}" aria-label="Боковая навигация">
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
       <!-- Main Nav Group -->
       <!-- Menu Group -->
 <div>
   <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
     <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
 
-    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M5.99915 10.2451C6.96564 10.2451 7.74915 11.0286 7.74915 11.9951V12.0051C7.74915 12.9716 6.96564 13.7551 5.99915 13.7551C5.03265 13.7551 4.24915 12.9716 4.24915 12.0051V11.9951C4.24915 11.0286 5.03265 10.2451 5.99915 10.2451ZM17.9991 10.2451C18.9656 10.2451 19.7491 11.0286 19.7491 11.9951V12.0051C19.7491 12.9716 18.9656 13.7551 17.9991 13.7551C17.0326 13.7551 16.2491 12.9716 16.2491 12.0051V11.9951C16.2491 11.0286 17.0326 10.2451 17.9991 10.2451ZM13.7491 11.9951C13.7491 11.0286 12.9656 10.2451 11.9991 10.2451C11.0326 10.2451 10.2491 11.0286 10.2491 11.9951V12.0051C10.2491 12.9716 11.0326 13.7551 11.9991 13.7551C12.9656 13.7551 13.7491 12.9716 13.7491 12.0051V11.9951Z" fill="currentColor"></path>
-    </svg>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
   </h3>
 
   <ul class="mb-6 flex flex-col gap-1">
     <!-- Menu Item Dashboard -->
     <li>
-      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-active" :class=" (selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'marketing' || page === 'crm' || page === 'saas' || page === 'logistics') ? 'menu-item-active' : 'menu-item-inactive'" aria-expanded="true">
-        <svg :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'marketing' || page === 'crm') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item-icon-active">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 3.25C4.25736 3.25 3.25 4.25736 3.25 5.5V8.99998C3.25 10.2426 4.25736 11.25 5.5 11.25H9C10.2426 11.25 11.25 10.2426 11.25 8.99998V5.5C11.25 4.25736 10.2426 3.25 9 3.25H5.5ZM4.75 5.5C4.75 5.08579 5.08579 4.75 5.5 4.75H9C9.41421 4.75 9.75 5.08579 9.75 5.5V8.99998C9.75 9.41419 9.41421 9.74998 9 9.74998H5.5C5.08579 9.74998 4.75 9.41419 4.75 8.99998V5.5ZM5.5 12.75C4.25736 12.75 3.25 13.7574 3.25 15V18.5C3.25 19.7426 4.25736 20.75 5.5 20.75H9C10.2426 20.75 11.25 19.7427 11.25 18.5V15C11.25 13.7574 10.2426 12.75 9 12.75H5.5ZM4.75 15C4.75 14.5858 5.08579 14.25 5.5 14.25H9C9.41421 14.25 9.75 14.5858 9.75 15V18.5C9.75 18.9142 9.41421 19.25 9 19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5V15ZM12.75 5.5C12.75 4.25736 13.7574 3.25 15 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V8.99998C20.75 10.2426 19.7426 11.25 18.5 11.25H15C13.7574 11.25 12.75 10.2426 12.75 8.99998V5.5ZM15 4.75C14.5858 4.75 14.25 5.08579 14.25 5.5V8.99998C14.25 9.41419 14.5858 9.74998 15 9.74998H18.5C18.9142 9.74998 19.25 9.41419 19.25 8.99998V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H15ZM15 12.75C13.7574 12.75 12.75 13.7574 12.75 15V18.5C12.75 19.7426 13.7574 20.75 15 20.75H18.5C19.7426 20.75 20.75 19.7427 20.75 18.5V15C20.75 13.7574 19.7426 12.75 18.5 12.75H15ZM14.25 15C14.25 14.5858 14.5858 14.25 15 14.25H18.5C18.9142 14.25 19.25 14.5858 19.25 15V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15C14.5858 19.25 14.25 18.9142 14.25 18.5V15Z" fill="currentColor"></path>
-        </svg>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
 
         <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
 
-        <svg class="menu-item-arrow menu-item-arrow-active" :class="[(selected === 'Dashboard') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'xl:hidden' : '' ]" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
       </a>
 
       <!-- Dropdown Menu Start -->
-      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" x-show="selected === 'Dashboard'" x-collapse.duration.300ms="">
-        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex animate-in flex-col gap-1 pl-9 duration-300 fade-in-0 slide-in-from-top-1 rtl:pr-9 rtl:pl-0">
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
           <li>
-            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'ecommerce' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
           </li>
           <li>
-            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'analytics' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
           </li>
           <li>
-            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" :class="page === 'marketing' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
           </li>
           <li>
-            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'crm' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.crm')">CRM</a>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
           </li>
           <li>
-            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'saas' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.saas')">SaaS</a>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
           </li>
           <li>
-            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-active" :class="page === 'logistics' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.logistics')">Логистика</a>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-active" x-text="$t('sidebar.items.logistics')" aria-current="page">Логистика</a>
           </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="false" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
         </ul>
       </div>
     </li>
@@ -1878,6 +1921,7 @@ rect.legend-mouseover-inactive,
 </nav>
   </div>
 </aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
 
       <!-- ===== Sidebar End ===== -->
 
@@ -1894,28 +1938,20 @@ rect.legend-mouseover-inactive,
       <!-- Sidebar Toggle Button -->
       <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
         <!-- XIcon (shown when mobile sidebar is open) -->
-        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-          <path d="M18 6L6 18M6 6l12 12"></path>
-        </svg>
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
 
         <!-- MenuTwoIcon (shown by default / desktop) -->
-        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.583252 1C0.583252 0.585788 0.919038 0.25 1.33325 0.25H14.6666C15.0808 0.25 15.4166 0.585786 15.4166 1C15.4166 1.41421 15.0808 1.75 14.6666 1.75L1.33325 1.75C0.919038 1.75 0.583252 1.41422 0.583252 1ZM0.583252 11C0.583252 10.5858 0.919038 10.25 1.33325 10.25L14.6666 10.25C15.0808 10.25 15.4166 10.5858 15.4166 11C15.4166 11.4142 15.0808 11.75 14.6666 11.75L1.33325 11.75C0.919038 11.75 0.583252 11.4142 0.583252 11ZM1.33325 5.25C0.919038 5.25 0.583252 5.58579 0.583252 6C0.583252 6.41421 0.919038 6.75 1.33325 6.75L7.99992 6.75C8.41413 6.75 8.74992 6.41421 8.74992 6C8.74992 5.58579 8.41413 5.25 7.99992 5.25L1.33325 5.25Z" fill="currentColor"></path>
-        </svg>
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
       </button>
 
       <!-- Mobile Logo -->
       <a href="./ecommerce.html" class="xl:hidden">
-        <img class="h-8 w-auto object-contain" src="./assets/logo.svg" alt="MayBrands">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
       </a>
 
       <!-- Mobile Application Menu Toggle Button -->
       <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="1"></circle>
-          <circle cx="19" cy="12" r="1"></circle>
-          <circle cx="5" cy="12" r="1"></circle>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
       </button>
 
       <!-- Search Input (Desktop) -->
@@ -1924,9 +1960,7 @@ rect.legend-mouseover-inactive,
           <div class="xl:w-107.5">
             <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
               <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400">
-                  <path d="M14.382 14.383l3.325 3.326m-1.249-8.334a7.082 7.082 0 01-7.083 7.081 7.082 7.082 0 110-14.163 7.082 7.082 0 017.083 7.082z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
               </div>
 
               <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
@@ -1948,17 +1982,12 @@ rect.legend-mouseover-inactive,
       <div class="flex items-center gap-2 2xsm:gap-3">
         <!-- Theme Toggler -->
         <!-- Theme Toggle Button -->
-<button type="button" @click.prevent="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode); localStorage.setItem('darkMode', JSON.stringify(darkMode))" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
   <!-- Sun Icon (Dark Mode) -->
-  <svg x-show="darkMode" class="size-auto!" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
-    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"></circle>
-    <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
-  </svg>
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
 
   <!-- Moon Icon (Light Mode) -->
-  <svg x-show="!darkMode" class="size-auto!" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M6.247 6.668a6.668 6.668 0 0011.207 4.885A7.708 7.708 0 118.03 2.129a6.645 6.645 0 00-1.783 4.54z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-  </svg>
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
 </button>
 </div>
 
@@ -2024,9 +2053,7 @@ rect.legend-mouseover-inactive,
 
     <span class="me-1 block text-sm font-medium">Николай Репин</span>
 
-    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-180" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.792 7.396L10 12.604l5.208-5.208" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-180" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
   </button>
 
   <!-- Dropdown Menu Content -->
@@ -2045,18 +2072,13 @@ rect.legend-mouseover-inactive,
 
     <!-- Edit Profile -->
     <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300">
-        <path d="M17.775 19.107v-.261a4.5 4.5 0 00-4.5-4.5h-2.55a4.5 4.5 0 00-4.5 4.5v.261M21.25 12a9.25 9.25 0 11-18.5 0 9.25 9.25 0 0118.5 0zm-6.483-2.732a2.768 2.768 0 11-5.536 0 2.768 2.768 0 015.536 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
       <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
     </a>
 
     <!-- Account Settings -->
     <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300">
-        <path d="M6.775 5.52a1.484 1.484 0 00-2.028.542L3.231 8.688c-.41.71-.166 1.617.543 2.027.99.571.99 1.999 0 2.57a1.484 1.484 0 00-.543 2.027l1.516 2.626c.41.71 1.318.953 2.028.543A1.484 1.484 0 019 19.766c0 .82.664 1.484 1.484 1.484h3.032c.82 0 1.484-.664 1.484-1.484a1.484 1.484 0 012.225-1.285c.71.41 1.617.167 2.027-.543l1.516-2.626c.41-.71.167-1.617-.543-2.027a1.484 1.484 0 010-2.57c.71-.41.953-1.317.543-2.027l-1.516-2.626a1.484 1.484 0 00-2.027-.543 1.483 1.483 0 01-2.225-1.285c0-.82-.664-1.484-1.484-1.484h-3.032c-.82 0-1.484.664-1.484 1.484a1.484 1.484 0 01-2.226 1.285z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M15.085 12a3.085 3.085 0 11-6.17 0 3.085 3.085 0 016.17 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
       <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
     </a>
 
@@ -2064,9 +2086,7 @@ rect.legend-mouseover-inactive,
 
     <!-- Sign Out (Destructive) -->
     <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400">
-        <path d="M4 12h7.75M8 8l-3.998 4 3.997 4M9.75 4.996V4.25a1.5 1.5 0 011.5-1.5h6a1.5 1.5 0 011.5 1.5v15.5a1.5 1.5 0 01-1.5 1.5h-6a1.5 1.5 0 01-1.5-1.5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
       <span x-text="$t('userDropdown.signOut')">Выйти</span>
     </a>
   </div>
@@ -2076,16 +2096,14 @@ rect.legend-mouseover-inactive,
 </header>
 <!-- ===== Header End ===== -->
 
-          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6">
+          <div class="w-full p-4 pb-20 md:p-6 md:pb-6" data-admin-page="logistics" data-admin-section="dashboard" tabindex="-1">
             <div class="space-y-6">
               <!-- Logistics Metrics Start -->
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
   <!-- Metric Item 1 -->
   <div class="flex items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/3">
     <div class="inline-flex size-16 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90">
-      <svg class="size-7" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 24.59v-.004m0-11.718v11.718m-4.935-8.22v-5.758m9.87-4.933l-9.868 4.933M23.591 8.28c.178.277.277.603.277.944v9.554a1.75 1.75 0 01-.967 1.565l-8.118 4.058a1.748 1.748 0 01-.783.185M23.591 8.28l-8.808 4.404a1.75 1.75 0 01-1.565 0L4.41 8.28m19.181 0a1.748 1.748 0 00-.69-.621L14.783 3.6a1.75 1.75 0 00-1.565 0L5.101 7.66c-.287.144-.524.36-.69.62m0 0a1.749 1.749 0 00-.277.945v9.554c0 .663.374 1.269.967 1.565l8.117 4.058c.246.124.514.185.782.185" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg class="size-7" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-28"></use></svg>
     </div>
 
     <div>
@@ -2108,9 +2126,7 @@ rect.legend-mouseover-inactive,
   <!-- Metric Item 2 -->
   <div class="flex items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/3">
     <div class="inline-flex size-16 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90">
-      <svg class="size-7" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.041 4.667h8.75c.966 0 1.75.783 1.75 1.75v14m0 0V8.33h2.863a1.75 1.75 0 011.45.77l2.97 4.392c.093.137.166.287.216.444m-7.499 6.48h.008m-.008 0h-5.982m-8.018 0h2.634m18.95 0v-5.944c0-.183-.03-.364-.085-.536m.96 6.48h-3.066m-10.06 0h4.675m-.008-6.48h7.5M5.29 9.042h5.25m0 4.375h-7m14.008 7a2.701 2.701 0 015.385 0m-5.385 0a2.7 2.7 0 105.385 0m-11.375 0a2.7 2.7 0 11-5.385 0m5.385 0a2.701 2.701 0 00-5.384 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg class="size-7" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-29"></use></svg>
     </div>
 
     <div>
@@ -2133,9 +2149,7 @@ rect.legend-mouseover-inactive,
   <!-- Metric Item 3 -->
   <div class="flex items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/3">
     <div class="inline-flex size-16 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90">
-      <svg class="size-7" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5.625 9.333H3M4.75 14H3m.875 4.667H3m6.902 3.645h13.105a1.75 1.75 0 001.74-1.567L26.13 7.62a1.75 1.75 0 00-1.74-1.934H11.284a1.75 1.75 0 00-1.74 1.567L8.161 20.378a1.75 1.75 0 001.74 1.934zm6.56-16.625h3.117l-.875 5.821h-3.117l.875-5.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg class="size-7" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-30"></use></svg>
     </div>
 
     <div>
@@ -2178,9 +2192,7 @@ rect.legend-mouseover-inactive,
   <div class="relative inline-block" x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false">
     <button type="button" x-ref="trigger" @click="toggle()" class="inline-flex h-10 items-center justify-between gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800">
       <span x-text="selectedTimeframe === 'monthly' ? $t('logistics.deliveryStatistics.monthly') : $t('logistics.deliveryStatistics.yearly')">По месяцам</span>
-      <svg class="size-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
-      </svg>
+      <svg class="size-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-31"></use></svg>
     </button>
     <div x-ref="dropdown" x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute z-20 mt-2 w-32 rounded-xl border border-gray-200 bg-white p-1 text-sm text-gray-700 shadow-theme-md dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300" style="display: none;">
       <button type="button" @click="setTimeframe('monthly'); close()" class="flex w-full items-center rounded-lg px-3 py-2 text-start transition-colors hover:bg-gray-100 dark:hover:bg-gray-800" x-text="$t('logistics.deliveryStatistics.monthly')">По месяцам</button>
@@ -2223,11 +2235,7 @@ rect.legend-mouseover-inactive,
 
   <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
     <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
-      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="1"></circle>
-        <circle cx="12" cy="5" r="1"></circle>
-        <circle cx="12" cy="19" r="1"></circle>
-      </svg>
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-32"></use></svg>
     </button>
     <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
       <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
@@ -2260,11 +2268,7 @@ rect.legend-mouseover-inactive,
 
   <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
     <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
-      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="1"></circle>
-        <circle cx="12" cy="5" r="1"></circle>
-        <circle cx="12" cy="19" r="1"></circle>
-      </svg>
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-32"></use></svg>
     </button>
     <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
       <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
@@ -2295,7 +2299,7 @@ rect.legend-mouseover-inactive,
     </div>
 
     <div>
-      <img class="absolute -inset-e-6 -bottom-2 h-33 w-40 rtl:-scale-x-100" src="./logistics_files/truck.png" alt="Транспорт доставки">
+      <img class="absolute -inset-e-6 -bottom-2 h-33 w-40 rtl:-scale-x-100" src="./assets/images/truck.png" alt="Транспорт доставки">
     </div>
   </div>
 </div>
@@ -2315,11 +2319,7 @@ rect.legend-mouseover-inactive,
 
     <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
       <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
-        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="1"></circle>
-          <circle cx="12" cy="5" r="1"></circle>
-          <circle cx="12" cy="19" r="1"></circle>
-        </svg>
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-32"></use></svg>
       </button>
       <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
         <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
@@ -2355,9 +2355,7 @@ rect.legend-mouseover-inactive,
       <!-- Icon Circle -->
       <div class="relative z-1 flex size-11 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white p-0.5 dark:border-gray-700 dark:bg-gray-900">
         <div class="flex size-10 items-center justify-center rounded-full bg-brand-50 text-brand-500 dark:bg-brand-500/15 dark:text-brand-400">
-          <svg class="size-5" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 24.59v-.004m0-11.718v11.718m-4.935-8.22v-5.758m9.87-4.933l-9.868 4.933M23.591 8.28c.178.277.277.603.277.944v9.554a1.75 1.75 0 01-.967 1.565l-8.118 4.058a1.748 1.748 0 01-.783.185M23.591 8.28l-8.808 4.404a1.75 1.75 0 01-1.565 0L4.41 8.28m19.181 0a1.748 1.748 0 00-.69-.621L14.783 3.6a1.75 1.75 0 00-1.565 0L5.101 7.66c-.287.144-.524.36-.69.62m0 0a1.749 1.749 0 00-.277.945v9.554c0 .663.374 1.269.967 1.565l8.117 4.058c.246.124.514.185.782.185" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+          <svg class="size-5" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-28"></use></svg>
         </div>
       </div>
 
@@ -2384,9 +2382,7 @@ rect.legend-mouseover-inactive,
       <!-- Icon Circle -->
       <div class="relative z-1 flex size-11 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white p-0.5 dark:border-gray-700 dark:bg-gray-900">
         <div class="flex size-10 items-center justify-center rounded-full bg-brand-50 text-brand-500 dark:bg-brand-500/15 dark:text-brand-400">
-          <svg class="size-5" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.041 4.667h8.75c.966 0 1.75.783 1.75 1.75v14m0 0V8.33h2.863a1.75 1.75 0 011.45.77l2.97 4.392c.093.137.166.287.216.444m-7.499 6.48h.008m-.008 0h-5.982m-8.018 0h2.634m18.95 0v-5.944c0-.183-.03-.364-.085-.536m.96 6.48h-3.066m-10.06 0h4.675m-.008-6.48h7.5M5.29 9.042h5.25m0 4.375h-7m14.008 7a2.701 2.701 0 015.385 0m-5.385 0a2.7 2.7 0 105.385 0m-11.375 0a2.7 2.7 0 11-5.385 0m5.385 0a2.701 2.701 0 00-5.384 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+          <svg class="size-5" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-29"></use></svg>
         </div>
       </div>
 
@@ -2410,9 +2406,7 @@ rect.legend-mouseover-inactive,
       <!-- Icon Circle -->
       <div class="relative z-1 flex size-11 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white p-0.5 dark:border-gray-700 dark:bg-gray-900">
         <div class="flex size-10 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
-          <svg class="size-5" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.625 9.333H3M4.75 14H3m.875 4.667H3m6.902 3.645h13.105a1.75 1.75 0 001.74-1.567L26.13 7.62a1.75 1.75 0 00-1.74-1.934H11.284a1.75 1.75 0 00-1.74 1.567L8.161 20.378a1.75 1.75 0 001.74 1.934zm6.56-16.625h3.117l-.875 5.821h-3.117l.875-5.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+          <svg class="size-5" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-30"></use></svg>
         </div>
       </div>
 
@@ -2436,7 +2430,7 @@ rect.legend-mouseover-inactive,
   <!-- Courier details -->
   <div class="flex items-center gap-3">
     <div class="relative size-12 shrink-0 overflow-hidden rounded-full">
-      <img src="./logistics_files/avatar-1.png" alt="Олег Раков" class="size-full object-cover">
+      <img src="./assets/images/avatar-1.png" alt="Олег Раков" class="size-full object-cover">
     </div>
 
     <div>
@@ -2450,15 +2444,11 @@ rect.legend-mouseover-inactive,
   <!-- Action buttons -->
   <div class="flex items-center gap-2">
     <button type="button" aria-label="Чат с Олегом Раковым" class="inline-flex size-10 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5">
-      <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 12.096a8 8 0 118 8H5.06l1.283-1.283a.75.75 0 000-1.06A7.973 7.973 0 014 12.096zm8-9.5a9.5 9.5 0 00-7.227 15.666L2.72 20.315a.75.75 0 00.53 1.28H12a9.5 9.5 0 000-19zm-4.375 8.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm3.125 1.25a1.25 1.25 0 111.25 1.25c-.69 0-1.25-.559-1.25-1.25zm5.625-1.25a1.25 1.25 0 000 2.5 1.25 1.25 0 000-2.5z" fill="currentColor"></path>
-      </svg>
+      <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-33"></use></svg>
     </button>
 
     <button type="button" aria-label="Звонок Олегу Ракову" class="inline-flex size-10 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5">
-      <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 17.052V12a8 8 0 10-16 0v5.052m16-3.011v5.709a1.5 1.5 0 01-1.5 1.5H14m-7.5-2.5h-1a1.5 1.5 0 01-1.5-1.5v-3.5a1.5 1.5 0 011.5-1.5h1a1.5 1.5 0 011.5 1.5v3.5a1.5 1.5 0 01-1.5 1.5zm11 0h1a1.5 1.5 0 001.5-1.5v-3.5a1.5 1.5 0 00-1.5-1.5h-1a1.5 1.5 0 00-1.5 1.5v3.5a1.5 1.5 0 001.5 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-34"></use></svg>
     </button>
   </div>
 </div>
@@ -2498,9 +2488,7 @@ rect.legend-mouseover-inactive,
     <div class="flex items-center gap-3">
       <!-- Date range button -->
       <button type="button" class="inline-flex h-10 shrink-0 items-center gap-2 rounded-[10px] border border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5">
-        <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z" fill="currentColor"></path>
-        </svg>
+        <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-24"></use></svg>
         <span class="hidden sm:inline">05 фев. - 06 марта</span>
       </button>
 
@@ -2509,9 +2497,7 @@ rect.legend-mouseover-inactive,
         <button type="button" @click="isFilterOpen ? isFilterOpen = false : openFilterPopover()" class="inline-flex h-10 shrink-0 items-center gap-2 rounded-[10px] border px-4 text-sm font-medium shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px dark:hover:bg-white/5 border-gray-300 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="hasActiveFilters 
             ? 'border-brand-500 bg-brand-50/20 text-brand-500 dark:border-brand-400 dark:bg-brand-500/10 dark:text-brand-400' 
             : 'border-gray-300 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300'">
-          <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+          <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-18"></use></svg>
           <span x-text="$t('logistics.deliveriesActivity.filter.button')">Фильтр</span>
         </button>
 
@@ -2550,9 +2536,7 @@ rect.legend-mouseover-inactive,
                 <input type="checkbox" class="sr-only" @change="toggleSelectAll()" :checked="isAllSelected">
                 <span :class="isAllSelected ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'" class="flex size-4 items-center justify-center rounded-sm border-[1.25px] transition-colors">
                   <span :class="isAllSelected ? '' : 'opacity-0'">
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="1.6666" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-17"></use></svg>
                   </span>
                 </span>
               </span>
@@ -2566,12 +2550,8 @@ rect.legend-mouseover-inactive,
           <button type="button" @click="toggleSort('category')" class="group inline-flex items-center gap-1.5 font-medium transition-colors hover:text-gray-900 dark:hover:text-white">
             <span x-text="$t('logistics.deliveriesActivity.table.category')">Категория</span>
             <span class="flex flex-col text-gray-400">
-              <svg class="-mb-1 size-3" :class="getSortState('category') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
-              </svg>
-              <svg class="size-3" :class="getSortState('category') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
-              </svg>
+              <svg class="-mb-1 size-3" :class="getSortState('category') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-35"></use></svg>
+              <svg class="size-3" :class="getSortState('category') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-36"></use></svg>
             </span>
           </button>
         </th>
@@ -2581,12 +2561,8 @@ rect.legend-mouseover-inactive,
           <button type="button" @click="toggleSort('company')" class="group inline-flex items-center gap-1.5 font-medium transition-colors hover:text-gray-900 dark:hover:text-white">
             <span x-text="$t('logistics.deliveriesActivity.table.company')">Компания</span>
             <span class="flex flex-col text-gray-400">
-              <svg class="-mb-1 size-3" :class="getSortState('company') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
-              </svg>
-              <svg class="size-3" :class="getSortState('company') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
-              </svg>
+              <svg class="-mb-1 size-3" :class="getSortState('company') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-35"></use></svg>
+              <svg class="size-3" :class="getSortState('company') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-36"></use></svg>
             </span>
           </button>
         </th>
@@ -2596,12 +2572,8 @@ rect.legend-mouseover-inactive,
           <button type="button" @click="toggleSort('arrival')" class="group inline-flex items-center gap-1.5 font-medium transition-colors hover:text-gray-900 dark:hover:text-white">
             <span x-text="$t('logistics.deliveriesActivity.table.arrivalTime')">Время прибытия</span>
             <span class="flex flex-col text-gray-400">
-              <svg class="-mb-1 size-3" :class="getSortState('arrival') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
-              </svg>
-              <svg class="size-3" :class="getSortState('arrival') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
-              </svg>
+              <svg class="-mb-1 size-3" :class="getSortState('arrival') === 'asc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-35"></use></svg>
+              <svg class="size-3" :class="getSortState('arrival') === 'desc' ? 'text-brand-500' : ''" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-36"></use></svg>
             </span>
           </button>
         </th>
@@ -2628,9 +2600,7 @@ rect.legend-mouseover-inactive,
                   <input type="checkbox" class="sr-only" @change="toggleRow(row.original.id)" :checked="isRowSelected(row.original.id)">
                   <span :class="isRowSelected(row.original.id) ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'" class="flex size-4 items-center justify-center rounded-sm border-[1.25px] transition-colors">
                     <span :class="isRowSelected(row.original.id) ? '' : 'opacity-0'">
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="1.6666" stroke-linecap="round" stroke-linejoin="round"></path>
-                      </svg>
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-17"></use></svg>
                     </span>
                   </span>
                 </span>
@@ -2689,14 +2659,10 @@ rect.legend-mouseover-inactive,
 
     <div class="flex items-center gap-2">
       <button type="button" @click="prevPage()" :disabled="currentPage &lt;= 1" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" disabled="disabled">
-        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
-        </svg>
+        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-37"></use></svg>
       </button>
       <button type="button" @click="nextPage()" :disabled="currentPage &gt;= totalPages" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" disabled="disabled">
-        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-        </svg>
+        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-38"></use></svg>
       </button>
     </div>
   </div>
@@ -2706,9 +2672,7 @@ rect.legend-mouseover-inactive,
     <nav class="flex items-center gap-1.5" aria-label="Навигация по страницам">
       <!-- Previous -->
       <button type="button" @click="prevPage()" :disabled="currentPage &lt;= 1" aria-label="Предыдущая страница" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" disabled="disabled">
-        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
-        </svg>
+        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-37"></use></svg>
       </button>
 
       <!-- Pages -->
@@ -2727,9 +2691,7 @@ rect.legend-mouseover-inactive,
 
       <!-- Next -->
       <button type="button" @click="nextPage()" :disabled="currentPage &gt;= totalPages" aria-label="Следующая страница" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-300 bg-white text-gray-700 shadow-theme-xs transition-all duration-150 hover:bg-gray-50 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" disabled="disabled">
-        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-        </svg>
+        <svg class="size-5 rtl:rotate-180" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-icon-38"></use></svg>
       </button>
     </nav>
   </div>
@@ -2745,5 +2707,6 @@ rect.legend-mouseover-inactive,
     </div>
     <!-- ===== Page Wrapper End ===== -->
   <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
 
 </body></html>

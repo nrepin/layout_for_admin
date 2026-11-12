@@ -1,0 +1,59 @@
+#chartLineOne,
+#chartLineTwo,
+#chartLineFour,
+#chartLineFive {
+  min-height: 325px;
+}
+
+#chartLineThree {
+  min-height: 350px;
+}
+
+#chartPieOne,
+#chartPieThree,
+#chartPieFour,
+#chartPieFive {
+  min-height: 200px;
+}
+
+#chartPieTwo {
+  min-height: 240px;
+}
+
+#chartRadarOne,
+#chartRadarTwo {
+  min-height: 365px;
+}
+
+#chartRadarThree {
+  min-height: 395px;
+}
+
+#chartRadialOne {
+  min-height: 340px;
+}
+
+#chartRadialTwo,
+#chartRadialFour {
+  min-height: 280px;
+}
+
+#chartRadialThree,
+#chartRadialFive {
+  min-height: 300px;
+}
+
+#chartRadialSix {
+  min-height: 330px;
+}
+
+#chartBarOne,
+#chartBarTwo,
+#chartBarThree,
+#chartBarFour {
+  min-height: 215px;
+}
+
+#chartBarSix {
+  min-height: 32px;
+}

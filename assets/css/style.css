@@ -3088,7 +3088,8 @@ pre[class*="language-"] {
       }
     }
   }
-  .menu-item-active {
+  .menu-item-active,
+  aside.sidebar li:has(> [id^="menu-"] a[aria-current="page"]) > .sidebar-group-toggle {
     background-color: var(--color-brand-50);
     color: var(--color-brand-500);
     &:is(.dark *) {
@@ -4286,7 +4287,8 @@ pre[class*="language-"] {
       }
     }
   }
-  .menu-item-icon-active {
+  .menu-item-icon-active,
+  aside.sidebar li:has(> [id^="menu-"] a[aria-current="page"]) > .sidebar-group-toggle > .menu-item-icon-inactive {
     color: var(--color-brand-500);
     &:is(.dark *) {
       color: var(--color-brand-400);
@@ -13540,3 +13542,94 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
 }
 
+
+.update-notification {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.update-notification > svg {
+  grid-row: span 2;
+}
+
+.update-notification > [data-slot="alert-title"],
+.update-notification > [data-slot="alert-description"] {
+  grid-column: 2;
+}
+
+.bounded-popover {
+  max-width: calc(100vw - 16px);
+}
+
+.list-choice-indicator {
+  border-color: var(--color-gray-300);
+  background: var(--color-white);
+  color: var(--color-white);
+}
+
+.dark .list-choice-indicator {
+  border-color: var(--color-gray-700);
+  background: var(--color-gray-900);
+}
+
+.list-choice-indicator .list-choice-mark {
+  visibility: hidden;
+}
+
+input:checked + .list-choice-indicator {
+  border-color: var(--color-brand-500);
+  background: var(--color-brand-500);
+}
+
+input:checked + .list-choice-indicator .list-choice-mark {
+  visibility: visible;
+}
+
+html.dark {
+  background-color: var(--color-gray-900);
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: var(--color-gray-900);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  #main-content > header {
+    view-transition-name: admin-header;
+  }
+
+  @media (min-width: 1280px) {
+    aside.sidebar {
+      view-transition-name: admin-sidebar;
+    }
+  }
+
+  ::view-transition-group(admin-header),
+  ::view-transition-group(admin-sidebar),
+  ::view-transition-old(admin-header),
+  ::view-transition-old(admin-sidebar),
+  ::view-transition-old(root),
+  ::view-transition-new(admin-header),
+  ::view-transition-new(admin-sidebar),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-old(admin-header),
+  ::view-transition-old(admin-sidebar) {
+    opacity: 0;
+  }
+
+  ::view-transition-group(admin-sidebar) {
+    z-index: 1;
+  }
+}
+
+.sidebar-group-toggle[aria-expanded="true"] > .sidebar-group-arrow {
+  rotate: 180deg;
+}
