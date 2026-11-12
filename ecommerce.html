@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://demo.tailadmin.com/ -->
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+      Интернет-магазин | MayBrands
+    </title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><style id="apexcharts-css">@keyframes opaque {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes resizeanim {
+
+  0%,
+  to {
+    opacity: 0
+  }
+}
+
+.apexcharts-canvas {
+  position: relative;
+  direction: ltr !important;
+  user-select: none;
+  /* Focus indicator colour. Themes override below. */
+  --apexcharts-focus-color: #008FFB;
+}
+
+/* Dark theme & high-contrast: brighter focus colour for sufficient contrast. */
+.apexcharts-canvas .apexcharts-theme-dark,
+.apexcharts-theme-dark.apexcharts-canvas {
+  --apexcharts-focus-color: #FFD500;
+}
+.apexcharts-canvas.apexcharts-high-contrast,
+.apexcharts-high-contrast.apexcharts-canvas {
+  --apexcharts-focus-color: #FFFF00;
+}
+
+/* Visually-hidden aria-live status region (WCAG 4.1.3 Status Messages). */
+.apexcharts-sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect OS-level reduced-motion preference (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  .apexcharts-canvas *,
+  .apexcharts-canvas *::before,
+  .apexcharts-canvas *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5)
+}
+
+.apexcharts-inner {
+  position: relative
+}
+
+.apexcharts-text tspan {
+  font-family: inherit
+}
+
+rect.legend-mouseover-inactive,
+.legend-mouseover-inactive rect,
+.legend-mouseover-inactive path,
+.legend-mouseover-inactive circle,
+.legend-mouseover-inactive line,
+.legend-mouseover-inactive text.apexcharts-yaxis-title-text,
+.legend-mouseover-inactive text.apexcharts-yaxis-label {
+  transition: .15s ease all;
+  opacity: .2
+}
+
+/* Linked Views (#4): per-mark crossfilter dim. Applied to individual data
+   marks (not whole series) whose x is outside the brushed range. Opacity is
+   overridable per chart via the --apx-cf-dim custom property. */
+.apexcharts-crossfilter-dimmed {
+  transition: opacity .25s ease;
+  opacity: var(--apx-cf-dim, .2)
+}
+
+/* Linked Views (#4): default styling for the built-in crossfilter data table
+   (cf.dataTable). Deliberately light so host styles can override. */
+.apexcharts-cf-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.apexcharts-cf-table caption {
+  caption-side: bottom;
+  text-align: right;
+  padding: 6px 2px;
+  font-size: 12px;
+  opacity: .7
+}
+.apexcharts-cf-table th,
+.apexcharts-cf-table td {
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, .08)
+}
+.apexcharts-cf-table th {
+  font-weight: 600;
+  border-bottom-width: 2px
+}
+.apexcharts-cf-table tbody tr:hover {
+  background: rgba(99, 102, 241, .06)
+}
+
+/* Measure ruler (#18): measure / delta ruler.
+   Theme via these classes or the --apx-measure-* custom properties below
+   (config `chart.measure.colors` overrides both). The ruler group also carries
+   a direction class: apexcharts-measure-up | -down | -flat.
+   Element classes:
+     .apexcharts-measure-band     shaded span band
+     .apexcharts-measure-vline    vertical guide lines
+     .apexcharts-measure-line     free-mode diagonal line
+     .apexcharts-measure-label-bg readout box     .apexcharts-measure-label text
+   Colors are applied as SVG presentation attributes, so any rule you write on
+   these classes overrides them. */
+.apexcharts-canvas {
+  --apx-measure-up: #16a34a;
+  --apx-measure-down: #dc2626;
+  --apx-measure-neutral: #64748b;
+  --apx-measure-guide: #94a3b8;
+}
+.apexcharts-measure-capture {
+  cursor: crosshair;
+}
+
+/* Radial Actions (#chrome): right-click context menu. Theme via these classes
+   or the --apx-menu-* custom properties. */
+.apexcharts-canvas {
+  --apx-menu-bg: #ffffff;
+  --apx-menu-fg: #1e293b;
+  --apx-menu-border: #e2e8f0;
+  --apx-menu-hover: #f1f5f9;
+  --apx-menu-shadow: rgba(15, 23, 42, 0.18);
+}
+.apexcharts-context-menu {
+  min-width: 168px;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--apx-menu-bg);
+  border: 1px solid var(--apx-menu-border);
+  box-shadow: 0 6px 22px var(--apx-menu-shadow);
+  font-family: HelveticaNeueCyr, Arial, sans-serif;
+  font-size: 13px;
+  z-index: 20;
+  user-select: none;
+}
+.apexcharts-context-menu-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--apx-menu-fg);
+  font: inherit;
+  cursor: pointer;
+}
+.apexcharts-context-menu-item:hover,
+.apexcharts-context-menu-item--active {
+  background: var(--apx-menu-hover);
+}
+.apexcharts-context-menu-item:focus {
+  outline: none;
+}
+
+/* Ink Layer (#7): the floating note editor card, opened by clicking an
+   ink-managed annotation. Theme via these classes or the --apx-ink-* vars. */
+.apexcharts-canvas {
+  --apx-ink-card-bg: #ffffff;
+  --apx-ink-card-fg: #1e293b;
+  --apx-ink-card-border: #e2e8f0;
+  --apx-ink-card-hover: #f1f5f9;
+  --apx-ink-card-accent: #6366f1;
+  --apx-ink-card-shadow: rgba(15, 23, 42, 0.18);
+}
+.apexcharts-ink-card {
+  position: absolute;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--apx-ink-card-bg);
+  border: 1px solid var(--apx-ink-card-border);
+  box-shadow: 0 6px 22px var(--apx-ink-card-shadow);
+  font-family: HelveticaNeueCyr, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--apx-ink-card-fg);
+  user-select: none;
+}
+.apexcharts-ink-card-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.apexcharts-ink-card input.apexcharts-ink-editor {
+  flex: 1 1 auto;
+  width: 150px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--apx-ink-card-border);
+  border-radius: 5px;
+}
+.apexcharts-ink-card input.apexcharts-ink-editor:focus {
+  outline: none;
+  border-color: var(--apx-ink-card-accent);
+}
+.apexcharts-ink-btn {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+.apexcharts-ink-btn:hover,
+.apexcharts-ink-btn--active {
+  background: var(--apx-ink-card-hover);
+}
+.apexcharts-ink-btn:focus-visible,
+.apexcharts-ink-swatch:focus-visible {
+  outline: 2px solid var(--apx-ink-card-accent);
+  outline-offset: 1px;
+}
+.apexcharts-ink-btn--bold {
+  font-weight: 700;
+}
+.apexcharts-ink-btn--delete:hover {
+  color: #dc2626;
+}
+.apexcharts-ink-swatch {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid rgba(100, 116, 139, 0.45);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.apexcharts-ink-swatch--active {
+  box-shadow:
+    0 0 0 2px var(--apx-ink-card-bg),
+    0 0 0 4px var(--apx-ink-card-accent);
+}
+.apexcharts-ink-sep {
+  flex: 0 0 auto;
+  width: 1px;
+  height: 16px;
+  margin: 0 2px;
+  background: var(--apx-ink-card-border);
+}
+.apexcharts-ink-cardlabel {
+  flex: 0 0 auto;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-right: 2px;
+}
+.apexcharts-ink-marker-size {
+  flex: 0 0 auto;
+  min-width: 16px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.apexcharts-legend-text {
+  padding-left: 15px;
+  margin-left: -15px;
+}
+
+.apexcharts-legend-series[role="button"]:focus {
+  outline: 2px solid var(--apexcharts-focus-color, #008FFB);
+  outline-offset: 2px;
+}
+
+.apexcharts-legend-series[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.apexcharts-legend-series[role="button"]:focus-visible {
+  outline: 2px solid var(--apexcharts-focus-color, #008FFB);
+  outline-offset: 2px;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0
+}
+
+/* A series still playing its exit tween stays painted so it can visibly shrink
+   away, hiding it on the first frame leaves a hole in a stacked chart for the
+   length of the animation. Dropped once the tween lands. */
+.apexcharts-series-collapsed.apexcharts-series-collapsing {
+  opacity: 1
+}
+
+/* Its labels ride the shrinking marks, but a mark runs out of room for its text
+   well before it reaches zero, so fade them across the exit instead of holding
+   them crisp over a sliver. Duration is set inline from dynamicAnimation.speed. */
+.apexcharts-datalabels.apexcharts-series-collapsing {
+  animation: apexcharts-datalabels-exit var(--apexcharts-dl-exit, 400ms) ease-in
+    forwards;
+}
+
+@keyframes apexcharts-datalabels-exit {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}
+
+.apexcharts-canvas svg:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Keyboard navigation focus indicator on SVG data elements.
+   SVG elements don't support CSS outline, so we use stroke. */
+.apexcharts-bar-area.apexcharts-keyboard-focused,
+.apexcharts-candlestick-area.apexcharts-keyboard-focused,
+.apexcharts-boxPlot-area.apexcharts-keyboard-focused,
+.apexcharts-rangebar-area.apexcharts-keyboard-focused,
+.apexcharts-pie-area.apexcharts-keyboard-focused,
+.apexcharts-heatmap-rect.apexcharts-keyboard-focused,
+.apexcharts-treemap-rect.apexcharts-keyboard-focused {
+  stroke: var(--apexcharts-focus-color, #008FFB);
+  stroke-width: 2;
+  stroke-opacity: 1;
+}
+
+.apexcharts-tooltip {
+  --apx-tt-bg: #ffffff;
+  /* Shared by the body and the arrow's two outward facets, so the
+   * hairline reads as one continuous outline around the whole shape.
+   * Keep it strong enough to survive on its own: the shadow below is
+   * elevation, not edge definition. */
+  --apx-tt-border: rgba(15, 23, 42, 0.12);
+  /* Elevation, in three layers: a tight contact shadow that anchors the
+   * bottom edge, a directional key shadow for the lift, and a wide
+   * ambient one that grounds the whole box. Each is weaker and more
+   * diffuse than the last.
+   *
+   * A tooltip is unusual in that it floats over *data*, so reach costs
+   * more than it does on a page: every pixel the shadow travels tints a
+   * bar or a line the reader is trying to compare. These numbers are
+   * tuned to keep the near-edge contrast that reads as elevation while
+   * dropping the long low haze that only muddies the plot.
+   *
+   * Note there is deliberately no `0 0 0 1px` ring layer. That used to
+   * stand in for edge definition back when --apx-tt-border was barely
+   * visible; now that the border is a real hairline (and the arrow
+   * shares it) a ring only double-draws the outline, and being spread
+   * rather than offset it leaked ink upward too, flattening the lift.
+   *
+   * `--apx-tt-shadow-dir` flips the whole stack's Y in one place — see
+   * the `[data-placement="bottom"]` rule further down. */
+  --apx-tt-shadow-dir: 1;
+  --apx-tt-shadow: 0 calc(var(--apx-tt-shadow-dir) * 1px) 2px rgba(15, 23, 42, 0.06), 0 calc(var(--apx-tt-shadow-dir) * 4px) 8px -2px rgba(15, 23, 42, 0.10), 0 calc(var(--apx-tt-shadow-dir) * 12px) 20px -8px rgba(15, 23, 42, 0.14);
+  --apx-tt-arrow-bg: var(--apx-tt-bg);
+  --apx-tt-color: #0f172a;
+  --apx-tt-color-muted: rgba(15, 23, 42, 0.55);
+  border-radius: 8px;
+  background: var(--apx-tt-bg);
+  border: 1px solid var(--apx-tt-border);
+  box-shadow: var(--apx-tt-shadow);
+  color: var(--apx-tt-color);
+  cursor: default;
+  font-size: 13px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+  white-space: nowrap;
+  z-index: 12;
+  transition: opacity .12s ease
+}
+
+/* While the tooltip is visible, smoothly animate position changes
+ * between data points. Kept short (160 ms) and ease-out so it stays
+ * responsive — too long would feel laggy when sweeping across many
+ * points fast. The position transition is only attached after the
+ * first paint (Position.applyTooltipPosition flips `data-positioned`
+ * once the tooltip has been placed) so the *first* show doesn't slide
+ * the tooltip in from the previously-stale (0,0) coordinates. */
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: opacity .12s ease
+}
+.apexcharts-tooltip.apexcharts-active[data-positioned="true"] {
+  transition: opacity .12s ease, left .16s ease-out, top .16s ease-out
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  /* defaults already set above; class kept for backward-compat selectors */
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  --apx-tt-bg: #1c1c1f;
+  --apx-tt-border: rgba(255, 255, 255, 0.16);
+  /* Dark needs more alpha than light to register at all, but not as much
+   * as it used to: the light rim above now carries the edge, so the
+   * shadow is free to be pure elevation instead of doubling as an
+   * outline. Same geometry as light, heavier ink. */
+  --apx-tt-shadow: 0 calc(var(--apx-tt-shadow-dir) * 1px) 2px rgba(0, 0, 0, 0.24), 0 calc(var(--apx-tt-shadow-dir) * 4px) 8px -2px rgba(0, 0, 0, 0.30), 0 calc(var(--apx-tt-shadow-dir) * 12px) 20px -8px rgba(0, 0, 0, 0.38);
+  --apx-tt-color: #f3f4f6;
+  --apx-tt-color-muted: rgba(243, 244, 246, 0.55);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit
+}
+
+/* Point-annotation hover tooltip (apexcharts/apexcharts.js#2424). Reuses the
+ * glass body/border/shadow from `.apexcharts-tooltip` but holds free-form
+ * content, so it needs its own padding, wrapping and a sane max width. */
+.apexcharts-tooltip.apexcharts-annotation-tooltip {
+  padding: 6px 10px;
+  max-width: 240px;
+  white-space: normal;
+  line-height: 1.4;
+  pointer-events: none;
+  z-index: 13
+}
+
+.apexcharts-tooltip-title {
+  padding: 8px 12px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--apx-tt-color-muted);
+  background: transparent;
+  border-bottom: none;
+  margin-bottom: 0
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title,
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: transparent;
+  border-bottom: none
+}
+
+/* `fillSeriesColor`: each series-group already paints itself with the
+ * series colour. Drop the glass body entirely (transparent bg, no
+ * border, no backdrop-filter, no padding) and clip the coloured
+ * series-group(s) to the tooltip's rounded corners so they fill the
+ * shell edge-to-edge. Text inside the coloured group is forced to
+ * white for contrast. */
+.apexcharts-tooltip.apexcharts-tooltip-fill-series {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  color: #fff
+}
+
+.apexcharts-tooltip.apexcharts-tooltip-fill-series .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.22);
+  color: #fff;
+  opacity: 1;
+  padding: 6px 12px
+}
+
+.apexcharts-tooltip.apexcharts-tooltip-fill-series .apexcharts-tooltip-series-group {
+  color: #fff
+}
+
+/* Arrow connector — a 45°-rotated square straddling the body's edge, so
+ * the body's 1px border runs continuously out across the arrow and back.
+ * The two facets that face away from the tooltip carry the border; the
+ * two that face into it carry none, and the square's opaque fill covers
+ * the segment of the body's own border it sits on, hiding the seam.
+ *
+ * This is why it's a rotated square and not a triangle: `clip-path`
+ * erases `border` and `box-shadow` along with everything outside the
+ * polygon, which left `filter: drop-shadow` as the only way to suggest
+ * an edge — and a drop-shadow can only ever blur one, never draw a
+ * hairline. Nothing here needs a filter.
+ *
+ * Geometry: a square of side S rotated 45° reaches S/√2 from its centre
+ * to each corner, so S = 10px gives the ~7px tip overhang that
+ * ARROW_TIP_OVERHANG assumes (tooltip/constants.js) over a ~14px base.
+ * The offsets park the square's *centre* 1px outside the padding box
+ * (-6px = -1px border - 10px/2), i.e. exactly on the body's border line,
+ * so the two borders meet end to end instead of overlapping or gapping.
+ * `box-sizing` must be border-box or the bordered sides would grow the
+ * square asymmetrically and knock its centre off that line. */
+.apexcharts-tooltip-arrow {
+  position: absolute;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  background: var(--apx-tt-arrow-bg);
+  transform: rotate(45deg);
+  pointer-events: none;
+  top: calc(var(--apx-tt-arrow-y, 50%) - 5px)
+}
+
+/* Which two sides face outward depends on the placement. Under
+ * `rotate(45deg)` the square's bottom-left corner swings to the left,
+ * top-right to the right, top-left to the top and bottom-right to the
+ * bottom — so the pair of borders below is always the two sharing the
+ * corner that ends up as the tip. */
+.apexcharts-tooltip[data-placement="right"] .apexcharts-tooltip-arrow {
+  left: -6px;
+  border-left: 1px solid var(--apx-tt-border);
+  border-bottom: 1px solid var(--apx-tt-border)
+}
+
+.apexcharts-tooltip[data-placement="left"] .apexcharts-tooltip-arrow {
+  right: -6px;
+  border-top: 1px solid var(--apx-tt-border);
+  border-right: 1px solid var(--apx-tt-border)
+}
+
+/* Vertical arrow variants: tooltip is above/below the data point and the
+ * arrow points down/up. The base rule above uses `--apx-tt-arrow-y` for
+ * left/right placement; for top/bottom we centre on `--apx-tt-arrow-x`
+ * instead (set by applyTooltipPosition). */
+.apexcharts-tooltip[data-placement="top"] .apexcharts-tooltip-arrow,
+.apexcharts-tooltip[data-placement="bottom"] .apexcharts-tooltip-arrow {
+  top: auto;
+  left: calc(var(--apx-tt-arrow-x, 50%) - 5px)
+}
+
+.apexcharts-tooltip[data-placement="top"] .apexcharts-tooltip-arrow {
+  bottom: -6px;
+  border-right: 1px solid var(--apx-tt-border);
+  border-bottom: 1px solid var(--apx-tt-border)
+}
+
+.apexcharts-tooltip[data-placement="bottom"] .apexcharts-tooltip-arrow {
+  top: -6px;
+  border-top: 1px solid var(--apx-tt-border);
+  border-left: 1px solid var(--apx-tt-border)
+}
+
+/* When the tooltip is flipped below the data point, the default
+ * downward-biased shadow leaves its top edge undefined. Negating the
+ * direction casts the whole elevation upward instead, so the shadow
+ * falls between the tooltip and the mark above it. One multiplier flips
+ * all three layers together; the arrow needs no counterpart, since its
+ * border doesn't depend on light direction. */
+.apexcharts-tooltip[data-placement="bottom"] {
+  --apx-tt-shadow-dir: -1
+}
+
+.apexcharts-tooltip-text-goals-value,
+.apexcharts-tooltip-text-y-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 600
+}
+
+.apexcharts-tooltip-text-goals-label:empty,
+.apexcharts-tooltip-text-goals-value:empty,
+.apexcharts-tooltip-text-y-label:empty,
+.apexcharts-tooltip-text-y-value:empty,
+.apexcharts-tooltip-text-z-value:empty,
+.apexcharts-tooltip-title:empty {
+  display: none
+}
+
+.apexcharts-tooltip-text-goals-label,
+.apexcharts-tooltip-text-goals-value {
+  padding: 6px 0 5px
+}
+
+.apexcharts-tooltip-goals-group,
+.apexcharts-tooltip-text-goals-label,
+.apexcharts-tooltip-text-goals-value {
+  display: flex
+}
+
+.apexcharts-tooltip-text-goals-label:not(:empty),
+.apexcharts-tooltip-text-goals-value:not(:empty) {
+  margin-top: -6px
+}
+
+.apexcharts-tooltip-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: middle;
+  color: inherit;
+}
+
+.apexcharts-tooltip-marker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 4px 12px;
+  display: none;
+  gap: 8px;
+  text-align: left;
+  justify-content: left;
+  align-items: center
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active:last-child,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 8px
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px
+}
+
+/* `tooltip.compact`: a tight box instead of a card, for panels a normal card
+   would cover (small multiples, sparklines, tiles). Only the box shrinks, so
+   the arrow and every anchor rule still apply. Rows stay stacked when there
+   are several series (the names are what tells them apart); a one-series
+   chart collapses to a single line, see `-value-only` below. */
+.apexcharts-tooltip.apexcharts-tooltip-compact {
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 1.35
+}
+
+.apexcharts-tooltip-compact .apexcharts-tooltip-title {
+  padding: 0;
+  font-size: 11px;
+  white-space: nowrap
+}
+
+.apexcharts-tooltip-compact .apexcharts-tooltip-series-group,
+.apexcharts-tooltip-compact .apexcharts-tooltip-series-group.apexcharts-active:last-child,
+.apexcharts-tooltip-compact .apexcharts-tooltip-series-group:last-child {
+  padding: 0;
+  gap: 5px
+}
+
+.apexcharts-tooltip-compact .apexcharts-tooltip-y-group {
+  padding: 0
+}
+
+.apexcharts-tooltip-compact .apexcharts-tooltip-marker {
+  width: 8px;
+  height: 8px
+}
+
+/* A one-series panel: the series name repeats what the panel header already
+   says, so the value stands alone and the x label becomes its prefix on one
+   line ("Aug 2024  6.59"). */
+.apexcharts-tooltip.apexcharts-tooltip-compact.apexcharts-tooltip-value-only {
+  /* The tooltip body is a flex COLUMN by default (title row, then series
+     rows); one series needs no column, so the same box turns into one line. */
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px
+}
+
+.apexcharts-tooltip-value-only .apexcharts-tooltip-marker {
+  display: none
+}
+
+.apexcharts-tooltip-value-only .apexcharts-tooltip-text-y-label {
+  display: none
+}
+
+.apexcharts-custom-tooltip,
+.apexcharts-tooltip-box {
+  padding: 4px 8px
+}
+
+.apexcharts-tooltip-boxPlot {
+  display: flex;
+  flex-direction: column-reverse
+}
+
+.apexcharts-tooltip-box>div {
+  margin: 4px 0
+}
+
+.apexcharts-tooltip-box span.value {
+  font-weight: 700
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px
+}
+
+/* Streamgraph: every band read out at one column, top-down in stacking order.
+ * A row per band rather than the shared tooltip's list, because a streamgraph's
+ * `[lo, hi]` are stacking offsets and the values the reader gave live on
+ * w.streamgraphData. */
+.apexcharts-tooltip-stream {
+  padding: 5px 8px
+}
+
+.apexcharts-tooltip-stream .apexcharts-tooltip-title {
+  background: transparent;
+  border: 0;
+  padding: 0 0 4px;
+  margin: 0;
+  font-weight: 700
+}
+
+.apexcharts-tooltip-stream-band {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1.6;
+  opacity: .72
+}
+
+.apexcharts-tooltip-stream-band.apexcharts-active {
+  opacity: 1;
+  font-weight: 700
+}
+
+.apexcharts-tooltip-stream-band .series-name {
+  flex: 1 1 auto;
+  margin-right: 8px
+}
+
+.apexcharts-tooltip-stream-band .value {
+  font-weight: 700;
+  margin-left: auto
+}
+
+.apexcharts-tooltip-stream-total {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--apx-tt-border, rgba(15, 23, 42, .12))
+}
+
+.apexcharts-tooltip-stream-total .series-name {
+  flex: 1 1 auto;
+  font-weight: 600
+}
+
+.apexcharts-tooltip-stream-total .value {
+  font-weight: 700;
+  margin-left: auto
+}
+
+/* The band labels themselves. Pointer events off so a name never blocks a
+ * hover on the band it sits on. */
+.apexcharts-streamgraph-label {
+  pointer-events: none
+}
+
+/* X/Y axis tooltips — small popovers that label the crosshair on the
+ * axes. Restyled to match the modern data-tooltip palette: solid white
+ * body with a subtle border + soft drop-shadow, smaller font, rounded
+ * corners. The arrows still use the CSS border-triangle technique
+ * (cheap, crisp at small sizes); their colours flow from CSS variables
+ * so light/dark themes only need one override per axis. */
+.apexcharts-xaxistooltip,
+.apexcharts-yaxistooltip {
+  --apx-axt-bg: #ffffff;
+  --apx-axt-border: rgba(15, 23, 42, 0.08);
+  --apx-axt-color: #0f172a;
+  --apx-axt-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.18), 0 1px 3px -1px rgba(15, 23, 42, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  color: var(--apx-axt-color);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 10;
+  background: var(--apx-axt-bg);
+  border: 1px solid var(--apx-axt-border);
+  box-shadow: var(--apx-axt-shadow)
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark,
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  --apx-axt-bg: #1c1c1f;
+  --apx-axt-border: rgba(255, 255, 255, 0.1);
+  --apx-axt-color: #f3f4f6;
+  --apx-axt-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.55), 0 1px 3px -1px rgba(0, 0, 0, 0.45)
+}
+
+.apexcharts-xaxistooltip {
+  padding: 4px 8px;
+  transition: .15s ease all
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none
+}
+
+/* :before paints the 1px border outline of the triangle (slightly larger
+ * than :after); :after sits inside and paints the fill — leaves a 1px
+ * ring of :before visible at the edges. */
+.apexcharts-xaxistooltip:after {
+  border-color: transparent;
+  border-width: 5px;
+  margin-left: -5px
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: transparent;
+  border-width: 6px;
+  margin-left: -6px
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: var(--apx-axt-bg)
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: var(--apx-axt-border)
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: var(--apx-axt-bg)
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: var(--apx-axt-border)
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: .15s ease all
+}
+
+.apexcharts-yaxistooltip {
+  padding: 3px 8px
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: transparent;
+  border-width: 5px;
+  margin-top: -5px
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: transparent;
+  border-width: 6px;
+  margin-top: -6px
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: var(--apx-axt-bg)
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: var(--apx-axt-border)
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: var(--apx-axt-bg)
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: var(--apx-axt-border)
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: .15s ease all
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: .15s ease all
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0
+}
+
+.apexcharts-selection-rect {
+  cursor: move
+}
+
+.svg_select_shape {
+  stroke-width: 1;
+  stroke-dasharray: 10 10;
+  stroke: black;
+  stroke-opacity: 0.1;
+  pointer-events: none;
+  fill: none;
+}
+
+.svg_select_handle {
+  stroke-width: 3;
+  stroke: black;
+  fill: none;
+}
+
+.svg_select_handle_r {
+  cursor: e-resize;
+}
+
+.svg_select_handle_l {
+  cursor: w-resize;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-menu-icon,
+.apexcharts-measure-icon,
+.apexcharts-pan-icon,
+.apexcharts-reset-icon,
+.apexcharts-selection-icon,
+.apexcharts-toolbar-custom-icon,
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  cursor: pointer;
+  /* WCAG 2.5.8 Target Size (Minimum): 24×24 CSS px hit target. */
+  width: 26px;
+  height: 24px;
+  line-height: 24px;
+  color: #6e8192;
+  text-align: center;
+  /* Reset native <button> chrome — these are styled via SVG icons. */
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+.apexcharts-menu-icon svg,
+.apexcharts-measure-icon svg,
+.apexcharts-pan-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-selection-icon svg,
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
+
+.apexcharts-theme-dark .apexcharts-menu-icon,
+.apexcharts-theme-dark .apexcharts-measure-icon,
+.apexcharts-theme-dark .apexcharts-pan-icon,
+.apexcharts-theme-dark .apexcharts-reset-icon,
+.apexcharts-theme-dark .apexcharts-selection-icon,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon,
+.apexcharts-theme-dark .apexcharts-zoom-icon,
+.apexcharts-theme-dark .apexcharts-zoomin-icon,
+.apexcharts-theme-dark .apexcharts-zoomout-icon {
+  color: #d4d6dc
+}
+
+.apexcharts-canvas .apexcharts-measure-icon.apexcharts-selected,
+.apexcharts-canvas .apexcharts-pan-icon.apexcharts-selected,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected,
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected {
+  background: rgba(0, 143, 251, 0.12);
+  color: #008ffb
+}
+
+.apexcharts-theme-light .apexcharts-menu-icon:hover,
+.apexcharts-theme-light .apexcharts-measure-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-light .apexcharts-pan-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-light .apexcharts-reset-icon:hover,
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover {
+  background: rgba(15, 23, 42, 0.06);
+  color: #1f2937
+}
+
+.apexcharts-theme-dark .apexcharts-menu-icon:hover,
+.apexcharts-theme-dark .apexcharts-measure-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-dark .apexcharts-pan-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-dark .apexcharts-reset-icon:hover,
+.apexcharts-theme-dark .apexcharts-selection-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-dark .apexcharts-zoom-icon:not(.apexcharts-selected):hover,
+.apexcharts-theme-dark .apexcharts-zoomin-icon:hover,
+.apexcharts-theme-dark .apexcharts-zoomout-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff
+}
+
+.apexcharts-menu-icon,
+.apexcharts-selection-icon {
+  position: relative
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.apexcharts-theme-dark .apexcharts-toolbar {
+  background: rgba(28, 28, 31, 0.82);
+}
+
+.apexcharts-menu {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: absolute;
+  top: calc(100% + 4px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  padding: 4px;
+  right: 0;
+  opacity: 0;
+  min-width: 120px;
+  transition: opacity .15s ease, transform .15s ease;
+  transform: translateY(-2px);
+  pointer-events: none;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.12), 0 2px 4px -1px rgba(15, 23, 42, 0.06)
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all
+}
+
+.apexcharts-menu-item {
+  padding: 6px 9px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: rgba(15, 23, 42, 0.06)
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(28, 28, 31, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f3f4f6;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4)
+}
+
+.apexcharts-theme-dark .apexcharts-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08)
+}
+
+@media screen and (min-width:768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1
+  }
+}
+
+/* Toolbar keyboard accessibility: show toolbar when any button inside it is focused */
+.apexcharts-toolbar:focus-within {
+  opacity: 1
+}
+
+/* Focus indicator for toolbar icon buttons */
+.apexcharts-menu-icon:focus-visible,
+.apexcharts-measure-icon:focus-visible,
+.apexcharts-pan-icon:focus-visible,
+.apexcharts-reset-icon:focus-visible,
+.apexcharts-selection-icon:focus-visible,
+.apexcharts-toolbar-custom-icon:focus-visible,
+.apexcharts-zoom-icon:focus-visible,
+.apexcharts-zoomin-icon:focus-visible,
+.apexcharts-zoomout-icon:focus-visible {
+  outline: 2px solid var(--apexcharts-focus-color, #008FFB);
+  outline-offset: 1px;
+  border-radius: 5px
+}
+
+/* Focus indicator for hamburger menu items */
+.apexcharts-menu-item:focus-visible {
+  outline: 2px solid var(--apexcharts-focus-color, #008FFB);
+  outline-offset: -2px;
+  background: #eee
+}
+
+.apexcharts-canvas .apexcharts-element-hidden,
+.apexcharts-datalabel.apexcharts-element-hidden,
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-hidden-element-shown {
+  opacity: 1;
+  transition: 0.25s ease all;
+}
+
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value,
+.apexcharts-datalabels,
+.apexcharts-pie-label,
+.apexcharts-pie-name-label,
+.apexcharts-pie-name-label-group,
+.apexcharts-pie-label-connector,
+.apexcharts-unit-outer-label,
+.apexcharts-unit-outer-label-group,
+.apexcharts-unit-label-connector {
+  cursor: default;
+  pointer-events: none
+}
+
+.apexcharts-pie-label-connector,
+.apexcharts-unit-label-connector {
+  fill: none
+}
+
+.apexcharts-pie-label-delay,
+.apexcharts-unit-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease
+}
+
+/* Slower than the pie's, on purpose: these come in while the dots are still
+   easing into place, so a longer fade reads as arriving WITH the crowd. */
+.apexcharts-unit-label-delay {
+  animation-duration: .5s
+}
+
+.apexcharts-radialbar-label {
+  cursor: pointer;
+}
+
+.apexcharts-annotation-rect,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-gridline,
+.apexcharts-line,
+.apexcharts-point-annotation-label,
+.apexcharts-radar-series path:not(.apexcharts-marker),
+.apexcharts-radar-series polygon,
+.apexcharts-toolbar svg,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-xaxis-annotation-label,
+.apexcharts-yaxis-annotation-label,
+.apexcharts-zoom-rect,
+.no-pointer-events {
+  pointer-events: none
+}
+
+.apexcharts-tooltip-active .apexcharts-marker {
+  transition: .15s ease all
+}
+
+.apexcharts-radar-series .apexcharts-yaxis {
+  pointer-events: none;
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden
+}
+
+.contract-trigger:before,
+.resize-triggers,
+.resize-triggers>div {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.resize-triggers>div {
+  height: 100%;
+  width: 100%;
+  background: #eee;
+  overflow: auto
+}
+
+.contract-trigger:before {
+  overflow: hidden;
+  width: 200%;
+  height: 200%
+}
+
+.apexcharts-bar-goals-markers {
+  pointer-events: none
+}
+
+.apexcharts-bar-shadows {
+  pointer-events: none
+}
+
+.apexcharts-rangebar-goals-markers {
+  pointer-events: none
+}
+
+.apexcharts-drilldown-target {
+  cursor: pointer
+}
+
+.apexcharts-breadcrumb {
+  position: absolute;
+  z-index: 11;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-family: inherit;
+  padding: 2px 4px
+}
+
+.apexcharts-breadcrumb-item {
+  background: transparent;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  line-height: 1.2
+}
+
+.apexcharts-breadcrumb-item:hover:not(.apexcharts-breadcrumb-current) {
+  background: rgba(0, 0, 0, 0.08)
+}
+
+.apexcharts-breadcrumb-arrow {
+  margin-right: 4px;
+  font-weight: 600;
+  user-select: none
+}
+
+.apexcharts-breadcrumb-current {
+  cursor: default;
+  font-weight: 600;
+  opacity: 0.85
+}
+
+.apexcharts-breadcrumb-separator {
+  opacity: 0.5;
+  user-select: none
+}
+
+.apexcharts-theme-dark .apexcharts-breadcrumb-item:hover:not(.apexcharts-breadcrumb-current) {
+  background: rgba(255, 255, 255, 0.12)
+}
+
+.apexcharts-drilldown-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.62);
+  /* The chart underneath stays interactive-looking but must not take clicks
+     while a level is resolving, or a second drill can start mid-fetch. */
+  cursor: progress
+}
+
+.apexcharts-drilldown-loading-spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(0, 0, 0, 0.16);
+  border-top-color: rgba(0, 0, 0, 0.55);
+  animation: apexcharts-drilldown-spin 0.7s linear infinite
+}
+
+.apexcharts-drilldown-loading-text {
+  opacity: 0.8
+}
+
+.apexcharts-theme-dark .apexcharts-drilldown-loading {
+  background: rgba(30, 30, 30, 0.62)
+}
+
+.apexcharts-theme-dark .apexcharts-drilldown-loading-spinner {
+  border-color: rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.7)
+}
+
+@keyframes apexcharts-drilldown-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apexcharts-drilldown-loading-spinner {
+    animation: apexcharts-drilldown-pulse 1.4s ease-in-out infinite
+  }
+
+  @keyframes apexcharts-drilldown-pulse {
+    0%, 100% {
+      opacity: 0.35
+    }
+
+    50% {
+      opacity: 1
+    }
+  }
+}
+
+.apexcharts-disable-transitions * {
+  transition: none !important;
+}
+/* ── Trellis (#22): small multiples ─────────────────────────────────────── */
+.apexcharts-trellis {
+  position: relative;
+}
+.apexcharts-trellis-grid {
+  display: grid;
+}
+.apexcharts-trellis-cell {
+  min-width: 0;
+  position: relative;
+}
+.apexcharts-trellis-header {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 22px;
+  height: 22px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--apx-fore, #373d3f);
+}
+.apexcharts-trellis-title {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 2px 0 6px;
+  color: var(--apx-fore, #373d3f);
+}
+/* Edge-label policy: a muted cell hides its axis-label INK, never the label
+   SPACE — every panel keeps the identical plot rectangle, and flipping the
+   policy on a resize is a class toggle, not a re-render. */
+.apexcharts-trellis-mute-y .apexcharts-yaxis {
+  opacity: 0;
+}
+.apexcharts-trellis-mute-x .apexcharts-xaxis {
+  opacity: 0;
+}
+/* The shared toolbar floats at the top-right, so a grid that has one starts
+   below it: from four columns on, the last cell's header (or a 2-D column
+   strip label) would otherwise run under the buttons. One band for the whole
+   grid, not per panel. */
+.apexcharts-trellis-has-toolbar {
+  padding-top: 24px;
+}
+/* 2-D faceting (P4): column labels once across the top, row labels once
+   down the left. The row strip column is auto-sized; panel columns stay
+   equal fractions, so panel alignment is independent of the strip width. */
+.apexcharts-trellis-strip {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--apx-fore, #373d3f);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.apexcharts-trellis-strip-column {
+  text-align: center;
+  line-height: 22px;
+  height: 22px;
+  align-self: end;
+}
+.apexcharts-trellis-strip-row {
+  align-self: center;
+  max-width: 140px;
+  padding-right: 6px;
+}
+/* Empty (row, column) combinations. 'placeholder' keeps a REAL panel with a
+   quiet label; 'skip' shows the tinted skeleton; 'hide' shows nothing while
+   keeping the grid slot. */
+.apexcharts-trellis-cell-empty {
+  position: relative;
+}
+.apexcharts-trellis-empty-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--apx-fore, #373d3f);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.apexcharts-trellis-cell-hidden > * {
+  visibility: hidden;
+}
+/* P5: one shared gradient strip is a heatmap grid's legend. The slot is
+   content-sized inline (the strip svg's own box); centering is its own. */
+.apexcharts-trellis-gradient-legend {
+  margin: 10px auto 0;
+}
+/* Virtualization (P2): an unmounted panel's mount div reserves the exact
+   panel height (inline min-height) so page height and scroll position never
+   shift; the skeleton itself is a quiet tinted block. Deliberately not
+   animated: a shimmering grid of 200 placeholders is noise. */
+.apexcharts-trellis-panel.apexcharts-trellis-skeleton {
+  background: var(--apx-fore, #373d3f);
+  opacity: 0.05;
+  border-radius: 4px;
+}
+/* tooltip: 'panel' — the group still syncs every panel's crosshair, but only
+   the hovered cell shows its tooltip cards. */
+.apexcharts-trellis[data-tooltip-mode='panel'] .apexcharts-trellis-cell:not(:hover) .apexcharts-tooltip,
+.apexcharts-trellis[data-tooltip-mode='panel'] .apexcharts-trellis-cell:not(:hover) .apexcharts-xaxistooltip,
+.apexcharts-trellis[data-tooltip-mode='panel'] .apexcharts-trellis-cell:not(:hover) .apexcharts-yaxistooltip {
+  opacity: 0 !important;
+}
+/* tooltip: 'grid' (P3) — ALL per-panel tooltip ink is hidden (the group
+   still computes it; the trellis card reads it) and one trellis-owned card
+   follows the cursor with one row per panel. */
+.apexcharts-trellis[data-tooltip-mode='grid'] .apexcharts-trellis-cell .apexcharts-tooltip,
+.apexcharts-trellis[data-tooltip-mode='grid'] .apexcharts-trellis-cell .apexcharts-xaxistooltip,
+.apexcharts-trellis[data-tooltip-mode='grid'] .apexcharts-trellis-cell .apexcharts-yaxistooltip {
+  opacity: 0 !important;
+}
+.apexcharts-trellis-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 14;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  background: var(--apx-bg, #fff);
+  color: var(--apx-fore, #373d3f);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  min-width: 140px;
+  max-width: 320px;
+}
+.apexcharts-trellis-tooltip-active {
+  opacity: 1;
+}
+.apexcharts-trellis-tooltip .apexcharts-tooltip-title {
+  padding: 5px 10px;
+  font-weight: 600;
+  background: rgba(120, 120, 120, 0.08);
+  border-bottom: 1px solid rgba(120, 120, 120, 0.18);
+  margin-bottom: 2px;
+}
+.apexcharts-trellis-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 2px 10px;
+  line-height: 1.6;
+}
+.apexcharts-trellis-tooltip-row-active {
+  background: rgba(120, 120, 120, 0.1);
+  font-weight: 600;
+}
+.apexcharts-trellis-tooltip-key {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.apexcharts-trellis-tooltip-vals {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+.apexcharts-trellis-tooltip-val {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.apexcharts-trellis-tooltip-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+/* Panel promotion (P3): the promoted cell spans the grid; the rest park.
+   The promoted panel is the only visible one, so both its axes unmute. */
+.apexcharts-trellis-cell-promoted {
+  grid-column: 1 / -1;
+}
+.apexcharts-trellis-cell-parked {
+  display: none;
+}
+.apexcharts-trellis-cell-promoted.apexcharts-trellis-mute-y .apexcharts-yaxis,
+.apexcharts-trellis-cell-promoted.apexcharts-trellis-mute-x .apexcharts-xaxis {
+  opacity: 1;
+}
+.apexcharts-trellis-header-clickable {
+  cursor: pointer;
+}
+.apexcharts-trellis-header-clickable:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.apexcharts-trellis-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 2px 0 6px;
+  color: var(--apx-fore, #373d3f);
+}
+.apexcharts-trellis-breadcrumb-back {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--apx-accent, #008ffb);
+}
+.apexcharts-trellis-breadcrumb-back:hover {
+  text-decoration: underline;
+}
+.apexcharts-trellis-breadcrumb-sep {
+  opacity: 0.5;
+}
+.apexcharts-trellis-breadcrumb-current {
+  font-weight: 600;
+}
+/* The toolbar download menu (P3). */
+.apexcharts-trellis-menu {
+  position: absolute;
+  top: 26px;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  min-width: 132px;
+  background: var(--apx-bg, #fff);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  z-index: 15;
+}
+.apexcharts-trellis-menu-open {
+  display: flex;
+}
+.apexcharts-trellis-menu-item {
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--apx-fore, #373d3f);
+}
+.apexcharts-trellis-menu-item:hover {
+  background: rgba(120, 120, 120, 0.12);
+}
+.apexcharts-trellis-toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 2px;
+  z-index: 12;
+}
+.apexcharts-trellis-tool {
+  border: 0;
+  background: transparent;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 3px;
+  color: #6e8192;
+  line-height: 0;
+}
+.apexcharts-trellis-tool:hover {
+  color: var(--apx-fore, #373d3f);
+}
+.apexcharts-trellis-tool.apexcharts-selected {
+  color: var(--apx-accent, #008ffb);
+}
+.apexcharts-trellis-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  padding: 8px 10px 2px;
+}
+.apexcharts-trellis-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  line-height: 1;
+}
+.apexcharts-trellis-legend-item .apexcharts-legend-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.apexcharts-trellis-legend-item .apexcharts-legend-text {
+  font-size: 12px;
+  color: var(--apx-fore, #373d3f);
+}
+.apexcharts-trellis-legend-item.apexcharts-inactive-legend {
+  opacity: 0.45;
+}
+
+/* Printing (#3352). The sheet is narrower than the screen and nothing reports
+   its width to the page, so a chart laid out for the screen would be cropped at
+   the edge of the paper. The chart lays itself out again for print (see
+   chart.print in the options); this caps whatever is left over so it shrinks to
+   fit rather than being cut. Shrink only: a chart narrower than the page keeps
+   the size it was drawn at. */
+@media print {
+  /* Scoped to the class the chart adds while it is laid out for the sheet: this
+     pair of rules is only safe once an identity viewBox is in place, since
+     without one a capped width crops the drawing instead of scaling it. A chart
+     with chart.print.enabled:false gets neither, and prints as it always did. */
+  .apexcharts-canvas.apexcharts-printing,
+  .apexcharts-canvas.apexcharts-printing svg {
+    max-width: 100% !important;
+  }
+
+  .apexcharts-canvas.apexcharts-printing svg {
+    height: auto !important;
+  }
+
+  /* A scaled-down SVG is shorter than the box drawn for it, and the wrapper
+     carries the pre-scale height inline, so without this a chart shrunk to fit a
+     narrow column prints above a white gap the size of what it gave up. The
+     host element's own inline min-height is cleared by _beforePrint. */
+  .apexcharts-canvas.apexcharts-printing {
+    height: auto !important;
+  }
+
+  .apexcharts-toolbar {
+    display: none !important;
+  }
+}
+</style></head>
+  <body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
+         $watch('darkMode', value =&gt; localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark bg-gray-900': darkMode === true}">
+    <!-- ===== Preloader Start ===== -->
+    <div x-show="loaded" x-init="window.addEventListener('DOMContentLoaded', () =&gt; {setTimeout(() =&gt; loaded = false, 500)})" class="fixed top-0 left-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black" style="display: none;">
+  <div class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-brand-500 border-t-transparent"></div>
+</div>
+
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="https://demo.tailadmin.com/#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/logo.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/logo.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: $persist('Dashboard')}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M5.99915 10.2451C6.96564 10.2451 7.74915 11.0286 7.74915 11.9951V12.0051C7.74915 12.9716 6.96564 13.7551 5.99915 13.7551C5.03265 13.7551 4.24915 12.9716 4.24915 12.0051V11.9951C4.24915 11.0286 5.03265 10.2451 5.99915 10.2451ZM17.9991 10.2451C18.9656 10.2451 19.7491 11.0286 19.7491 11.9951V12.0051C19.7491 12.9716 18.9656 13.7551 17.9991 13.7551C17.0326 13.7551 16.2491 12.9716 16.2491 12.0051V11.9951C16.2491 11.0286 17.0326 10.2451 17.9991 10.2451ZM13.7491 11.9951C13.7491 11.0286 12.9656 10.2451 11.9991 10.2451C11.0326 10.2451 10.2491 11.0286 10.2491 11.9951V12.0051C10.2491 12.9716 11.0326 13.7551 11.9991 13.7551C12.9656 13.7551 13.7491 12.9716 13.7491 12.0051V11.9951Z" fill="currentColor"></path>
+    </svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-active" :class=" (selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'marketing' || page === 'crm' || page === 'saas' || page === 'logistics') ? 'menu-item-active' : 'menu-item-inactive'" aria-expanded="true">
+        <svg :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'marketing' || page === 'crm') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-item-icon-active">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 3.25C4.25736 3.25 3.25 4.25736 3.25 5.5V8.99998C3.25 10.2426 4.25736 11.25 5.5 11.25H9C10.2426 11.25 11.25 10.2426 11.25 8.99998V5.5C11.25 4.25736 10.2426 3.25 9 3.25H5.5ZM4.75 5.5C4.75 5.08579 5.08579 4.75 5.5 4.75H9C9.41421 4.75 9.75 5.08579 9.75 5.5V8.99998C9.75 9.41419 9.41421 9.74998 9 9.74998H5.5C5.08579 9.74998 4.75 9.41419 4.75 8.99998V5.5ZM5.5 12.75C4.25736 12.75 3.25 13.7574 3.25 15V18.5C3.25 19.7426 4.25736 20.75 5.5 20.75H9C10.2426 20.75 11.25 19.7427 11.25 18.5V15C11.25 13.7574 10.2426 12.75 9 12.75H5.5ZM4.75 15C4.75 14.5858 5.08579 14.25 5.5 14.25H9C9.41421 14.25 9.75 14.5858 9.75 15V18.5C9.75 18.9142 9.41421 19.25 9 19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5V15ZM12.75 5.5C12.75 4.25736 13.7574 3.25 15 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V8.99998C20.75 10.2426 19.7426 11.25 18.5 11.25H15C13.7574 11.25 12.75 10.2426 12.75 8.99998V5.5ZM15 4.75C14.5858 4.75 14.25 5.08579 14.25 5.5V8.99998C14.25 9.41419 14.5858 9.74998 15 9.74998H18.5C18.9142 9.74998 19.25 9.41419 19.25 8.99998V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H15ZM15 12.75C13.7574 12.75 12.75 13.7574 12.75 15V18.5C12.75 19.7426 13.7574 20.75 15 20.75H18.5C19.7426 20.75 20.75 19.7427 20.75 18.5V15C20.75 13.7574 19.7426 12.75 18.5 12.75H15ZM14.25 15C14.25 14.5858 14.5858 14.25 15 14.25H18.5C18.9142 14.25 19.25 14.5858 19.25 15V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15C14.5858 19.25 14.25 18.9142 14.25 18.5V15Z" fill="currentColor"></path>
+        </svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow menu-item-arrow-active" :class="[(selected === 'Dashboard') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'xl:hidden' : '' ]" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" x-show="selected === 'Dashboard'" x-collapse.duration.300ms="">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex animate-in flex-col gap-1 pl-9 duration-300 fade-in-0 slide-in-from-top-1 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-active" :class="page === 'ecommerce' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'analytics' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" :class="page === 'marketing' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'crm' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'saas' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" :class="page === 'logistics' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.583252 1C0.583252 0.585788 0.919038 0.25 1.33325 0.25H14.6666C15.0808 0.25 15.4166 0.585786 15.4166 1C15.4166 1.41421 15.0808 1.75 14.6666 1.75L1.33325 1.75C0.919038 1.75 0.583252 1.41422 0.583252 1ZM0.583252 11C0.583252 10.5858 0.919038 10.25 1.33325 10.25L14.6666 10.25C15.0808 10.25 15.4166 10.5858 15.4166 11C15.4166 11.4142 15.0808 11.75 14.6666 11.75L1.33325 11.75C0.919038 11.75 0.583252 11.4142 0.583252 11ZM1.33325 5.25C0.919038 5.25 0.583252 5.58579 0.583252 6C0.583252 6.41421 0.919038 6.75 1.33325 6.75L7.99992 6.75C8.41413 6.75 8.74992 6.41421 8.74992 6C8.74992 5.58579 8.41413 5.25 7.99992 5.25L1.33325 5.25Z" fill="currentColor"></path>
+        </svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/logo.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="1"></circle>
+          <circle cx="19" cy="12" r="1"></circle>
+          <circle cx="5" cy="12" r="1"></circle>
+        </svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400">
+                  <path d="M14.382 14.383l3.325 3.326m-1.249-8.334a7.082 7.082 0 01-7.083 7.081 7.082 7.082 0 110-14.163 7.082 7.082 0 017.083 7.082z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode); localStorage.setItem('darkMode', JSON.stringify(darkMode))" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg x-show="darkMode" class="size-auto!" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"></circle>
+    <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+  </svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg x-show="!darkMode" class="size-auto!" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M6.247 6.668a6.668 6.668 0 0011.207 4.885A7.708 7.708 0 118.03 2.129a6.645 6.645 0 00-1.783 4.54z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.792 7.396L10 12.604l5.208-5.208" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Николай Репин
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        nrepin@themay.com
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300">
+        <path d="M17.775 19.107v-.261a4.5 4.5 0 00-4.5-4.5h-2.55a4.5 4.5 0 00-4.5 4.5v.261M21.25 12a9.25 9.25 0 11-18.5 0 9.25 9.25 0 0118.5 0zm-6.483-2.732a2.768 2.768 0 11-5.536 0 2.768 2.768 0 015.536 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300">
+        <path d="M6.775 5.52a1.484 1.484 0 00-2.028.542L3.231 8.688c-.41.71-.166 1.617.543 2.027.99.571.99 1.999 0 2.57a1.484 1.484 0 00-.543 2.027l1.516 2.626c.41.71 1.318.953 2.028.543A1.484 1.484 0 019 19.766c0 .82.664 1.484 1.484 1.484h3.032c.82 0 1.484-.664 1.484-1.484a1.484 1.484 0 012.225-1.285c.71.41 1.617.167 2.027-.543l1.516-2.626c.41-.71.167-1.617-.543-2.027a1.484 1.484 0 010-2.57c.71-.41.953-1.317.543-2.027l-1.516-2.626a1.484 1.484 0 00-2.027-.543 1.483 1.483 0 01-2.225-1.285c0-.82-.664-1.484-1.484-1.484h-3.032c-.82 0-1.484.664-1.484 1.484a1.484 1.484 0 01-2.226 1.285z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M15.085 12a3.085 3.085 0 11-6.17 0 3.085 3.085 0 016.17 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400">
+        <path d="M4 12h7.75M8 8l-3.998 4 3.997 4M9.75 4.996V4.25a1.5 1.5 0 011.5-1.5h6a1.5 1.5 0 011.5 1.5v15.5a1.5 1.5 0 01-1.5 1.5h-6a1.5 1.5 0 01-1.5-1.5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6">
+            <div class="grid grid-cols-12 gap-4 md:gap-6">
+              <div class="col-span-12 space-y-6 xl:col-span-7">
+                <!-- Ecommerce Metrics Start -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
+  <!-- Metric Item Start -->
+  <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90 [&amp;&gt;svg]:size-6">
+      <svg class="size-6 text-gray-800 dark:text-white/90" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M14.109 5.104a2.947 2.947 0 11.001 5.39m1.687 2.727c3.802.224 5.024 2.788 5.416 4.47.186.797-.47 1.458-1.289 1.458H17.59m-5.839-11.35a2.947 2.947 0 11-5.894 0 2.947 2.947 0 015.894 0zM8.75 13.205c4.234 0 5.554 2.726 5.964 4.486.186.797-.47 1.458-1.29 1.458H4.076c-.818 0-1.475-.662-1.29-1.458.411-1.76 1.73-4.486 5.964-4.486z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="mt-5 flex items-end justify-between">
+      <div>
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.metrics.customers')">Клиенты</span>
+        <h4 class="mt-2 text-title-sm font-bold text-gray-800 dark:text-white/90">
+          3,782
+        </h4>
+      </div>
+      <span class="inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2.5 py-0.5 text-sm font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]">
+        <svg class="size-3.5 fill-current" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.065 1.624a.748.748 0 01.558-.25h.001c.192 0 .384.073.531.22l3 2.998a.75.75 0 11-1.06 1.06l-1.722-1.72v6.193a.75.75 0 01-1.5 0v-6.19L4.155 5.654a.75.75 0 01-1.06-1.061l2.97-2.968z" fill="currentColor"></path>
+        </svg>
+        11.01%
+      </span>
+    </div>
+  </div>
+  <!-- Metric Item End -->
+
+  <!-- Metric Item Start -->
+  <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90 [&amp;&gt;svg]:size-6">
+      <svg class="size-6 text-gray-800 dark:text-white/90" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 21.072V11.029m0 0c-.23 0-.46-.053-.67-.159m.67.159c.23 0 .46-.053.671-.159m0 0a1.5 1.5 0 01-1.341 0m1.341 0l7.55-3.774M11.33 10.87L3.78 7.096m16.441 0a1.499 1.499 0 00-.592-.533L12.67 3.084a1.5 1.5 0 00-1.341 0L4.372 6.563c-.247.123-.45.309-.592.533m16.441 0a1.5 1.5 0 01.237.808v8.19a1.5 1.5 0 01-.83 1.341l-6.957 3.479a1.5 1.5 0 01-1.341 0l-6.958-3.479a1.5 1.5 0 01-.829-1.342V7.904c0-.292.085-.571.237-.808" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+    <div class="mt-5 flex items-end justify-between">
+      <div>
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.metrics.orders')">Заказы</span>
+        <h4 class="mt-2 text-title-sm font-bold text-gray-800 dark:text-white/90">
+          5,359
+        </h4>
+      </div>
+
+      <span class="inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-red-50 px-2.5 py-0.5 text-sm font-medium whitespace-nowrap text-red-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-red-200)] dark:bg-red-500/15 dark:text-red-500 dark:[text-shadow:0_4px_4px_rgba(240,68,56,0.20)]">
+        <svg class="size-3.5 fill-current text-red-500" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.315 10.376c.137.153.336.25.558.25h.001a.748.748 0 00.531-.22l3-2.998a.75.75 0 10-1.06-1.06l-1.722 1.72V1.875a.75.75 0 10-1.5 0v6.19L3.405 6.346a.75.75 0 00-1.06 1.061l2.97 2.968z" fill="currentColor"></path>
+        </svg>
+        9.05%
+      </span>
+    </div>
+  </div>
+  <!-- Metric Item End -->
+</div>
+<!-- Ecommerce Metrics End -->
+
+                <!-- Monthly Sales Chart Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 sm:pb-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-center justify-between">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.monthlySales.title')">Продажи за месяц</h3>
+    <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+      <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="1"></circle>
+          <circle cx="19" cy="12" r="1"></circle>
+          <circle cx="5" cy="12" r="1"></circle>
+        </svg>
+      </button>
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+        <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+        <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-scrollbar max-w-full overflow-x-auto">
+    <div id="monthlySalesChart" class="min-w-162.5 xl:min-w-full apexcharts-tooltip-active" style="min-height: 215px;"></div>
+  </div>
+</div>
+<!-- Monthly Sales Chart End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-5">
+                <!-- Monthly Target Start -->
+                <div class="flex h-full flex-col justify-between rounded-2xl border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-white/3">
+  <div class="shadow-default flex flex-1 flex-col justify-between rounded-2xl bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 sm:pb-11 dark:bg-gray-900">
+    <div class="flex justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.monthlyTarget.title')">Цель на месяц</h3>
+    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.monthlyTarget.subtitle')">Цели на каждый месяц</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="relative">
+    <div class="max-h-45 overflow-hidden">
+      <div id="monthlyTargetChart" class="h-full [&amp;_.apexcharts-datalabels-group]:translate-y-0! [&amp;_.apexcharts-datalabels-group_.apexcharts-text]:fill-gray-800! [&amp;_.apexcharts-datalabels-group_.apexcharts-text]:font-semibold! dark:[&amp;_.apexcharts-datalabels-group_.apexcharts-text]:fill-white/90!" style="min-height: 330px;"></div>
+    </div>
+
+    <span class="absolute bottom-2.5 left-1/2 -translate-x-1/2 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600 dark:bg-green-500/15 dark:text-green-500">
+      +10%
+    </span>
+  </div>
+  <p class="mx-auto mt-4.5 w-full max-w-95 text-center text-sm text-gray-500 sm:text-base dark:text-gray-400" x-text="$t('ecommerce.monthlyTarget.earned', { amount: '3287 ₽' })">Сегодня вы заработали 3287 ₽. Это больше, чем в прошлом месяце. Так держать!</p>
+</div>
+</div>
+
+  <div class="flex items-center justify-center gap-5 px-6 py-3.5 sm:gap-8 sm:py-5">
+  <div>
+    <p class="mb-1 text-center text-xs text-gray-500 sm:text-sm dark:text-gray-400" x-text="$t('ecommerce.monthlyTarget.target')">Цель</p>
+    <p class="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg dark:text-white/90">
+      20K ₽
+      <svg class="text-red-500" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.315 10.376c.137.153.336.25.558.25h.001a.748.748 0 00.531-.22l3-2.998a.75.75 0 10-1.06-1.06l-1.722 1.72V1.875a.75.75 0 10-1.5 0v6.19L3.405 6.346a.75.75 0 00-1.06 1.061l2.97 2.968z" fill="currentColor"></path>
+      </svg>
+    </p>
+  </div>
+
+  <div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
+
+  <div>
+    <p class="mb-1 text-center text-xs text-gray-500 sm:text-sm dark:text-gray-400" x-text="$t('ecommerce.monthlyTarget.revenue')">Выручка</p>
+    <p class="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg dark:text-white/90">
+      70K ₽
+      <svg class="text-green-500" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.065 1.624a.748.748 0 01.558-.25h.001c.192 0 .384.073.531.22l3 2.998a.75.75 0 11-1.06 1.06l-1.722-1.72v6.193a.75.75 0 01-1.5 0v-6.19L4.155 5.654a.75.75 0 01-1.06-1.061l2.97-2.968z" fill="currentColor"></path>
+      </svg>
+    </p>
+  </div>
+
+  <div class="h-7 w-px bg-gray-200 dark:bg-gray-800"></div>
+
+  <div>
+    <p class="mb-1 text-center text-xs text-gray-500 sm:text-sm dark:text-gray-400" x-text="$t('ecommerce.monthlyTarget.today')">Сегодня</p>
+    <p class="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg dark:text-white/90">
+      30K ₽
+      <svg class="text-green-500" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.065 1.624a.748.748 0 01.558-.25h.001c.192 0 .384.073.531.22l3 2.998a.75.75 0 11-1.06 1.06l-1.722-1.72v6.193a.75.75 0 01-1.5 0v-6.19L4.155 5.654a.75.75 0 01-1.06-1.061l2.97-2.968z" fill="currentColor"></path>
+      </svg>
+    </p>
+  </div>
+</div>
+</div>
+<!-- Monthly Target End -->
+              </div>
+
+              <div class="col-span-12">
+                <!-- Statistics Chart Start -->
+                <div x-data="{
+    selectedTab: 'overview',
+    setTab(tab) {
+      this.selectedTab = tab;
+      if (window.updateStatisticsChart) {
+        window.updateStatisticsChart({ tab: this.selectedTab });
+      }
+    }
+  }" class="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.statistics.title')">Статистика</h3>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.statistics.subtitle')">Цели на каждый месяц</p>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3 sm:justify-end">
+    <div class="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
+  <button type="button" @click="setTab('overview')" :class="selectedTab === 'overview' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white" x-text="$t('ecommerce.statistics.overview')">Обзор</button>
+
+  <button type="button" @click="setTab('sales')" :class="selectedTab === 'sales' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('ecommerce.statistics.sales')">Продажи</button>
+
+  <button type="button" @click="setTab('revenue')" :class="selectedTab === 'revenue' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('ecommerce.statistics.revenue')">Выручка</button>
+</div>
+<div class="relative inline-flex items-center">
+  <svg class="pointer-events-none absolute inset-s-3 top-1/2 z-10 size-5 -translate-y-1/2 text-gray-500 dark:text-gray-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z" fill="currentColor"></path>
+  </svg>
+  <div class="flatpickr-wrapper"><input id="statisticsChartDatePicker" class="h-9 w-48 max-w-full cursor-pointer rounded-lg border border-gray-200 bg-white ps-9 pe-3 text-sm font-medium text-gray-700 shadow-theme-xs outline-none hover:bg-gray-50 focus:border-brand-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 flatpickr-input" placeholder="Выберите период" :placeholder="$t('ecommerce.statistics.selectDateRange')" data-class="flatpickr-right" readonly="readonly" type="text"><div class="flatpickr-calendar rangeMode animate static flatpickr-right" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.25 6L9 12.25L15.25 18.5" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><span class="cur-month">Ноябрь </span><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Год"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.75 19L15 12.75L8.75 6.5" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
+      <span class="flatpickr-weekday">
+        вс</span><span class="flatpickr-weekday">пн</span><span class="flatpickr-weekday">вт</span><span class="flatpickr-weekday">ср</span><span class="flatpickr-weekday">чт</span><span class="flatpickr-weekday">пт</span><span class="flatpickr-weekday">сб
+      </span>
+      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day" aria-label="1 ноября 2026" tabindex="-1">1</span><span class="flatpickr-day" aria-label="2 ноября 2026" tabindex="-1">2</span><span class="flatpickr-day" aria-label="3 ноября 2026" tabindex="-1">3</span><span class="flatpickr-day" aria-label="4 ноября 2026" tabindex="-1">4</span><span class="flatpickr-day" aria-label="5 ноября 2026" tabindex="-1">5</span><span class="flatpickr-day" aria-label="6 ноября 2026" tabindex="-1">6</span><span class="flatpickr-day" aria-label="7 ноября 2026" tabindex="-1">7</span><span class="flatpickr-day" aria-label="8 ноября 2026" tabindex="-1">8</span><span class="flatpickr-day" aria-label="9 ноября 2026" tabindex="-1">9</span><span class="flatpickr-day" aria-label="10 ноября 2026" tabindex="-1">10</span><span class="flatpickr-day today" aria-label="11 ноября 2026" aria-current="date" tabindex="-1">11</span><span class="flatpickr-day" aria-label="12 ноября 2026" tabindex="-1">12</span><span class="flatpickr-day" aria-label="13 ноября 2026" tabindex="-1">13</span><span class="flatpickr-day" aria-label="14 ноября 2026" tabindex="-1">14</span><span class="flatpickr-day" aria-label="15 ноября 2026" tabindex="-1">15</span><span class="flatpickr-day" aria-label="16 ноября 2026" tabindex="-1">16</span><span class="flatpickr-day" aria-label="17 ноября 2026" tabindex="-1">17</span><span class="flatpickr-day" aria-label="18 ноября 2026" tabindex="-1">18</span><span class="flatpickr-day" aria-label="19 ноября 2026" tabindex="-1">19</span><span class="flatpickr-day" aria-label="20 ноября 2026" tabindex="-1">20</span><span class="flatpickr-day" aria-label="21 ноября 2026" tabindex="-1">21</span><span class="flatpickr-day" aria-label="22 ноября 2026" tabindex="-1">22</span><span class="flatpickr-day" aria-label="23 ноября 2026" tabindex="-1">23</span><span class="flatpickr-day" aria-label="24 ноября 2026" tabindex="-1">24</span><span class="flatpickr-day" aria-label="25 ноября 2026" tabindex="-1">25</span><span class="flatpickr-day" aria-label="26 ноября 2026" tabindex="-1">26</span><span class="flatpickr-day" aria-label="27 ноября 2026" tabindex="-1">27</span><span class="flatpickr-day" aria-label="28 ноября 2026" tabindex="-1">28</span><span class="flatpickr-day" aria-label="29 ноября 2026" tabindex="-1">29</span><span class="flatpickr-day" aria-label="30 ноября 2026" tabindex="-1">30</span><span class="flatpickr-day nextMonthDay" aria-label="1 декабря 2026" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="2 декабря 2026" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="3 декабря 2026" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="4 декабря 2026" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="5 декабря 2026" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="6 декабря 2026" tabindex="-1">6</span><span class="flatpickr-day nextMonthDay" aria-label="7 декабря 2026" tabindex="-1">7</span><span class="flatpickr-day nextMonthDay" aria-label="8 декабря 2026" tabindex="-1">8</span><span class="flatpickr-day nextMonthDay" aria-label="9 декабря 2026" tabindex="-1">9</span><span class="flatpickr-day nextMonthDay" aria-label="10 декабря 2026" tabindex="-1">10</span><span class="flatpickr-day nextMonthDay" aria-label="11 декабря 2026" tabindex="-1">11</span><span class="flatpickr-day nextMonthDay" aria-label="12 декабря 2026" tabindex="-1">12</span></div></div></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+  <div class="min-w-250 xl:min-w-full">
+    <div id="statisticsChart" class="h-full [&amp;_.apexcharts-tooltip]:border-0! [&amp;_.apexcharts-tooltip]:bg-transparent! [&amp;_.apexcharts-tooltip]:p-0! [&amp;_.apexcharts-tooltip]:shadow-none! [&amp;_.apexcharts-tooltip]:before:hidden! [&amp;_.apexcharts-tooltip]:after:hidden! dark:[&amp;_.apexcharts-tooltip]:border-0! dark:[&amp;_.apexcharts-tooltip]:bg-transparent!" style="min-height: 325px;"></div>
+  </div>
+</div>
+</div>
+<!-- Statistics Chart End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-5">
+                <!-- Demographic Card Start -->
+                <div>
+                  <div class="h-full rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.demographic.title')">География клиентов</h3>
+    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.demographic.subtitle')">Число клиентов по странам</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="my-6 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 px-4 py-6 sm:px-6 dark:border-gray-800 dark:bg-gray-900">
+    <div id="mapOne" class="mapOne map-btn -mx-4 -my-6 h-53 w-63 2xsm:w-76.75 xsm:w-89.5 sm:-mx-6 md:w-167 lg:w-158.5 xl:w-98.25 2xl:w-138.5"></div>
+</div>
+
+  <div class="flex flex-col gap-5">
+  <!-- USA -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative size-8 shrink-0 overflow-hidden rounded-lg">
+        <img src="./ecommerce_files/usa.png" alt="США" class="h-8 w-8 object-cover">
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.demographic.usa')">США</p>
+        <span class="block text-xs font-normal text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.demographic.customers', { count: '2,379' })">Клиенты · 2,379</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">40.99%</p>
+    </div>
+  </div>
+
+  <!-- France -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative size-8 shrink-0 overflow-hidden rounded-lg">
+        <img src="./ecommerce_files/france.png" alt="Франция" class="h-8 w-8 object-cover">
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.demographic.france')">Франция</p>
+        <span class="block text-xs font-normal text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.demographic.customers', { count: '589' })">Клиенты · 589</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">59.01%</p>
+    </div>
+  </div>
+
+  <!-- Yemen -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative size-8 shrink-0 overflow-hidden rounded-lg">
+        <img src="./ecommerce_files/yemen.png" alt="Йемен" class="h-8 w-8 object-cover">
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.demographic.yemen')">Йемен</p>
+        <span class="block text-xs font-normal text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.demographic.customers', { count: '412' })">Клиенты · 412</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">32.40%</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+                <!-- Demographic Card End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-7">
+                <!-- Recent Orders Start -->
+                <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('ecommerce.recentOrders.title')">Последние заказы</h3>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button type="button" class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('common.filter')">Фильтр</span>
+    </button>
+    <button type="button" class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+      <span x-text="$t('common.seeAll')">Смотреть все</span>
+    </button>
+  </div>
+</div>
+<div class="max-w-full overflow-x-auto">
+  <table class="min-w-full">
+    <thead class="border-y border-gray-100 dark:border-gray-800">
+      <tr>
+        <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.products')">Товары</th>
+        <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.category')">Категория</th>
+        <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.price')">Цена</th>
+        <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.status')">Статус</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+      <!-- Order 1 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img src="./ecommerce_files/product-01.jpg" class="h-12.5 w-12.5 object-cover" alt="MacBook Pro 13”">
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                MacBook Pro 13”
+              </p>
+              <span class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.variants', { count: 2 })">2 варианта</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.categories.laptop')">Ноутбук</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">2399.00 ₽</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]" x-text="$t('ecommerce.recentOrders.statuses.delivered')">Доставлено</span>
+        </td>
+      </tr>
+
+      <!-- Order 2 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img src="./ecommerce_files/product-02.jpg" class="h-12.5 w-12.5 object-cover" alt="Apple Watch Ultra">
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                Apple Watch Ultra
+              </p>
+              <span class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.variants', { count: 1 })">1 вариант</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.categories.watch')">Часы</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">879.00 ₽</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-amber-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-amber-600 transition-colors select-none [text-shadow:0_4px_4px_rgba(254,223,137,0.60)] dark:bg-amber-500/15 dark:text-orange-400 dark:[text-shadow:0_4px_4px_rgba(247,144,9,0.20)]" x-text="$t('ecommerce.recentOrders.statuses.pending')">В ожидании</span>
+        </td>
+      </tr>
+
+      <!-- Order 3 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img src="./ecommerce_files/product-03.jpg" class="h-12.5 w-12.5 object-cover" alt="iPhone 15 Pro Max">
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                iPhone 15 Pro Max
+              </p>
+              <span class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.variants', { count: 2 })">2 варианта</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.categories.smartphone')">Смартфон</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">1869.00 ₽</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]" x-text="$t('ecommerce.recentOrders.statuses.delivered')">Доставлено</span>
+        </td>
+      </tr>
+
+      <!-- Order 4 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img src="./ecommerce_files/product-04.jpg" class="h-12.5 w-12.5 object-cover" alt="iPad Pro 3rd Gen">
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                iPad Pro 3rd Gen
+              </p>
+              <span class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.variants', { count: 2 })">2 варианта</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.categories.electronics')">Электроника</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">1699.00 ₽</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-red-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-red-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-red-200)] dark:bg-red-500/15 dark:text-red-500 dark:[text-shadow:0_4px_4px_rgba(240,68,56,0.20)]" x-text="$t('ecommerce.recentOrders.statuses.canceled')">Отменено</span>
+        </td>
+      </tr>
+
+      <!-- Order 5 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img src="./ecommerce_files/product-05.jpg" class="h-12.5 w-12.5 object-cover" alt="AirPods Pro 2nd Gen">
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                AirPods Pro 2nd Gen
+              </p>
+              <span class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.variants', { count: 1 })">1 вариант</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400" x-text="$t('ecommerce.recentOrders.categories.accessories')">Аксессуары</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">240.00 ₽</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]" x-text="$t('ecommerce.recentOrders.statuses.delivered')">Доставлено</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- Recent Orders End -->
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer="" src="./assets/js/bundle.js"></script>
+
+<div class="jvm-tooltip"></div></body></html>
