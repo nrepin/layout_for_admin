@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Финансы | MayBrands</title>
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet">
+  </head>
+  <body x-data="{ page: 'finance', section: 'dashboard', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+          <li><a href="./ai.html" class="group menu-dropdown-item menu-dropdown-item-inactive">ИИ-аналитика</a></li>
+          <li><a href="./sales.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Продажи</a></li>
+          <li><a href="./finance.html" class="group menu-dropdown-item menu-dropdown-item-active" aria-current="page">Финансы</a></li>
+          <li><a href="./hr.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Персонал</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Поддержка</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li><a href="./chat.html" class="group menu-item menu-item-inactive" aria-label="Чаты"><svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-chat"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Чаты</span></a></li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-support-tickets').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-support-tickets" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./support-tickets.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Обращения в поддержку</a></li>
+          <li><a href="./ticket-reply.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Ответ на обращение</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-email').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-email" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./inbox.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Входящие</a></li>
+          <li><a href="./inbox-deatil.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Просмотр письма</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="true" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Николай Репин
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        nrepin@themay.com
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6" data-admin-page="finance" data-admin-section="dashboard" tabindex="-1">
+            <!-- Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'Финансы' }">
+              <div class="mb-6 flex flex-col items-start gap-2">
+  <nav aria-label="Хлебные крошки">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li>
+        <a class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" href="./index.html">
+          Главная
+          <svg class="stroke-current rtl:rotate-180" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-16"></use></svg>
+        </a>
+      </li>
+      <li aria-current="page" class="text-sm text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Финансы</li>
+    </ol>
+  </nav>
+  <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Финансы</h1>
+</div>
+</div>
+            <!-- Breadcrumb End -->
+
+            <div class="space-y-5">
+              <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+                <div class="xl:col-span-6 2xl:col-span-5">
+                  <div x-data="{
+    currencies: [
+      { name: 'USD', flag: './assets/images/finance/country-01.svg' },
+      { name: 'EUR', flag: './assets/images/finance/country-02.svg' },
+      { name: 'GBP', flag: './assets/images/finance/country-03.svg' },
+      { name: 'JPY', flag: './assets/images/finance/japan.png' }
+    ],
+    selectedCurrency: { name: 'USD', flag: './assets/images/finance/country-01.svg' },
+    periods: ['Июнь 2025', 'Май 2025', 'Апрель 2025', 'Q1 2025', 'Последние 30 дней', 'Последние 7 дней'],
+    selectedPeriod: 'Июнь 2025',
+    isCopied: false,
+    balanceData: {
+      USD: {
+        'Июнь 2025': { amount: '$19,857.00', percentage: '3.2%', isPositive: true, chartData: [20, 24, 23, 25, 30, 35, 40, 30, 32, 33, 29, 28, 27, 29, 45, 58, 70, 80, 72, 68, 85, 79, 77, 75], accountNumber: '•••• •••• •••• 5332' },
+        'Май 2025': { amount: '$17,420.00', percentage: '1.8%', isPositive: false, chartData: [68, 65, 62, 58, 55, 60, 52, 48, 50, 47, 44, 46, 42, 39, 41, 38, 35, 33, 30, 32, 28, 26, 25, 20], accountNumber: '•••• •••• •••• 5332' },
+        'Апрель 2025': { amount: '$18,950.00', percentage: '4.6%', isPositive: true, chartData: [25, 28, 32, 30, 36, 42, 45, 40, 48, 52, 55, 50, 58, 62, 65, 68, 70, 66, 72, 75, 78, 80, 82, 85], accountNumber: '•••• •••• •••• 5332' },
+        'Q1 2025': { amount: '$54,120.00', percentage: '8.1%', isPositive: true, chartData: [18, 24, 28, 35, 42, 48, 55, 60, 68, 74, 80, 88], accountNumber: '•••• •••• •••• 5332' },
+        'Последние 30 дней': { amount: '$19,857.00', percentage: '0.9%', isPositive: false, chartData: [55, 58, 54, 52, 50, 48, 46, 49, 47, 45, 42, 40, 38, 36, 35, 37, 34, 32, 30, 28, 26, 25, 24, 22], accountNumber: '•••• •••• •••• 5332' },
+        'Последние 7 дней': { amount: '$19,857.00', percentage: '2.3%', isPositive: true, chartData: [30, 35, 32, 45, 42, 50, 58], accountNumber: '•••• •••• •••• 5332' }
+      },
+      EUR: {
+        'Июнь 2025': { amount: '€18,240.50', percentage: '2.8%', isPositive: true, chartData: [22, 26, 25, 28, 32, 38, 42, 35, 36, 38, 32, 30, 31, 34, 48, 60, 72, 78, 74, 70, 82, 77, 75, 73], accountNumber: '•••• •••• •••• 8421' },
+        'Май 2025': { amount: '€16,110.00', percentage: '2.1%', isPositive: false, chartData: [72, 69, 64, 60, 58, 62, 54, 50, 52, 48, 45, 47, 43, 40, 42, 39, 36, 34, 31, 33, 29, 27, 24, 22], accountNumber: '•••• •••• •••• 8421' },
+        'Апрель 2025': { amount: '€17,350.00', percentage: '3.9%', isPositive: true, chartData: [28, 30, 34, 32, 38, 44, 48, 42, 50, 54, 58, 52, 60, 64, 68, 70, 72, 68, 74, 78, 80, 82, 84, 86], accountNumber: '•••• •••• •••• 8421' },
+        'Q1 2025': { amount: '€49,800.00', percentage: '7.4%', isPositive: true, chartData: [20, 26, 30, 38, 44, 50, 58, 64, 70, 76, 82, 90], accountNumber: '•••• •••• •••• 8421' },
+        'Последние 30 дней': { amount: '€18,240.50', percentage: '1.2%', isPositive: false, chartData: [58, 60, 56, 54, 52, 50, 48, 51, 49, 47, 44, 42, 40, 38, 36, 38, 35, 33, 31, 29, 27, 26, 25, 23], accountNumber: '•••• •••• •••• 8421' },
+        'Последние 7 дней': { amount: '€18,240.50', percentage: '1.9%', isPositive: true, chartData: [32, 36, 34, 46, 44, 52, 60], accountNumber: '•••• •••• •••• 8421' }
+      },
+      GBP: {
+        'Июнь 2025': { amount: '£15,620.00', percentage: '4.1%', isPositive: true, chartData: [18, 22, 21, 24, 28, 33, 38, 31, 33, 34, 29, 27, 28, 31, 44, 55, 66, 74, 68, 65, 78, 73, 71, 70], accountNumber: '•••• •••• •••• 1947' },
+        'Май 2025': { amount: '£13,850.00', percentage: '1.5%', isPositive: false, chartData: [65, 62, 58, 55, 52, 56, 49, 45, 47, 44, 41, 43, 39, 36, 38, 35, 32, 30, 28, 30, 26, 24, 22, 19], accountNumber: '•••• •••• •••• 1947' },
+        'Апрель 2025': { amount: '£14,900.00', percentage: '5.2%', isPositive: true, chartData: [22, 25, 29, 27, 33, 39, 42, 37, 45, 49, 52, 47, 55, 59, 62, 65, 67, 63, 69, 72, 75, 77, 79, 81], accountNumber: '•••• •••• •••• 1947' },
+        'Q1 2025': { amount: '£42,500.00', percentage: '9.0%', isPositive: true, chartData: [16, 22, 26, 32, 39, 45, 52, 57, 65, 71, 77, 85], accountNumber: '•••• •••• •••• 1947' },
+        'Последние 30 дней': { amount: '£15,620.00', percentage: '0.7%', isPositive: false, chartData: [52, 55, 51, 49, 47, 45, 43, 46, 44, 42, 39, 37, 35, 33, 32, 34, 31, 29, 27, 25, 23, 22, 21, 19], accountNumber: '•••• •••• •••• 1947' },
+        'Последние 7 дней': { amount: '£15,620.00', percentage: '2.7%', isPositive: true, chartData: [28, 33, 30, 42, 39, 47, 55], accountNumber: '•••• •••• •••• 1947' }
+      },
+      JPY: {
+        'Июнь 2025': { amount: '¥2,950,000', percentage: '1.9%', isPositive: true, chartData: [25, 28, 27, 30, 35, 40, 45, 36, 38, 40, 34, 32, 33, 36, 50, 62, 75, 82, 76, 72, 86, 81, 79, 77], accountNumber: '•••• •••• •••• 6204' },
+        'Май 2025': { amount: '¥2,680,000', percentage: '3.0%', isPositive: false, chartData: [75, 71, 67, 63, 60, 65, 57, 53, 55, 51, 48, 50, 46, 43, 45, 42, 39, 37, 34, 36, 32, 30, 27, 24], accountNumber: '•••• •••• •••• 6204' },
+        'Апрель 2025': { amount: '¥2,810,000', percentage: '3.5%', isPositive: true, chartData: [27, 31, 35, 33, 39, 45, 49, 43, 51, 55, 59, 53, 61, 65, 69, 72, 74, 70, 76, 80, 83, 85, 87, 89], accountNumber: '•••• •••• •••• 6204' },
+        'Q1 2025': { amount: '¥8,100,000', percentage: '6.8%', isPositive: true, chartData: [22, 28, 32, 40, 46, 52, 60, 66, 72, 78, 84, 92], accountNumber: '•••• •••• •••• 6204' },
+        'Последние 30 дней': { amount: '¥2,950,000', percentage: '1.5%', isPositive: false, chartData: [60, 63, 59, 57, 55, 53, 51, 54, 52, 50, 47, 45, 43, 41, 39, 41, 38, 36, 34, 32, 30, 29, 28, 26], accountNumber: '•••• •••• •••• 6204' },
+        'Последние 7 дней': { amount: '¥2,950,000', percentage: '2.0%', isPositive: true, chartData: [34, 39, 36, 48, 45, 54, 62], accountNumber: '•••• •••• •••• 6204' }
+      }
+    },
+    get currentData() {
+      return this.balanceData[this.selectedCurrency.name]?.[this.selectedPeriod] || this.balanceData.USD['Июнь 2025'];
+    },
+    selectCurrency(curr) {
+      this.selectedCurrency = curr;
+      if (window.updateBalanceChart) {
+        window.updateBalanceChart(this.currentData.chartData);
+      }
+    },
+    selectPeriod(per) {
+      this.selectedPeriod = per;
+      if (window.updateBalanceChart) {
+        window.updateBalanceChart(this.currentData.chartData);
+      }
+    },
+    copyAccount() {
+      navigator.clipboard.writeText(this.currentData.accountNumber);
+      this.isCopied = true;
+      setTimeout(() =&gt; { this.isCopied = false; }, 2000);
+    }
+  }" class="rounded-[18px] border border-gray-200 bg-gray-100 p-1.5 dark:border-gray-800 dark:bg-white/3">
+  <div class="rounded-xl border-none bg-white p-6 pb-8 shadow-none sm:p-6 sm:pb-8 dark:bg-gray-900">
+    <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.totalBalanceOverview.title')">Общий баланс</h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('finance.totalBalanceOverview.overview')">Обзор текущих средств</p>
+  </div>
+
+  <div class="flex shrink-0 items-center gap-2">
+    <!-- Currency Dropdown -->
+    <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+      <button x-ref="trigger" type="button" @click="toggle" class="inline-flex h-9 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <img :src="selectedCurrency.flag" :alt="selectedCurrency.name" class="size-4 rounded-full object-cover" src="./assets/images/finance/country-01.svg" alt="USD">
+        <span x-text="selectedCurrency.name">USD</span>
+        <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-36 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <template x-for="curr in currencies" :key="curr.name"><button type="button" @click="selectCurrency(curr); open = false" class="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-gray-700 hover:bg-gray-100 rtl:text-right dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedCurrency.name === curr.name ? 'bg-gray-100 font-medium dark:bg-white/5' : ''">
+            <img :src="curr.flag" :alt="curr.name" class="size-4 rounded-full object-cover" src="./assets/images/finance/country-01.svg" alt="USD">
+            <span x-text="curr.name">USD</span>
+            <svg x-show="selectedCurrency.name === curr.name" class="ms-auto size-3.5 text-brand-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </button></template>
+      </div>
+    </div>
+
+    <!-- Period Dropdown -->
+    <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+      <button x-ref="trigger" type="button" @click="toggle" class="inline-flex h-9 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <span x-text="selectedPeriod">Июнь 2025</span>
+        <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-38 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <template x-for="period in periods" :key="period"><button type="button" @click="selectPeriod(period); open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedPeriod === period ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="period">Июнь 2025</button></template>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+      <div class="flex items-end border-b border-dashed border-gray-200 pb-7 dark:border-gray-800">
+  <div>
+    <h3 class="mb-2 text-3xl font-medium text-gray-800 dark:text-white/90" x-text="currentData.amount">$19,857.00</h3>
+    <p class="flex items-center gap-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
+      <span class="flex items-center gap-1 font-medium text-green-600 dark:text-green-500" :class="currentData.isPositive ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'">
+        <template x-if="currentData.isPositive"><svg class="size-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.99967 11.0837L6.99967 2.91699M6.99967 2.91699L3.49967 6.41699M6.99967 2.91699L10.4997 6.41699" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg></template>
+        <template x-if="!currentData.isPositive"><span aria-hidden="true">↓</span></template>
+        <span x-text="currentData.percentage">3.2%</span>
+      </span>
+      <span x-text="$t('finance.totalBalanceOverview.thanLastMonth')">к прошлому месяцу</span>
+    </p>
+  </div>
+
+  <div class="ms-auto w-25 sm:w-37.5">
+    <div id="balanceOverviewChart" style="min-height: 70px;"></div>
+  </div>
+</div>
+<div class="pt-7.5">
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+    <p class="shrink-0 text-sm text-gray-700 dark:text-gray-400" x-text="$t('finance.totalBalanceOverview.primaryAccount')">Основной счёт:</p>
+    <div class="flex items-center gap-2">
+      <p class="shrink-0 text-lg font-medium text-gray-700 dark:text-gray-400" x-text="currentData.accountNumber">•••• •••• •••• 5332</p>
+
+      <!-- Copy Button -->
+      <button type="button" @click="copyAccount" class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-700 shadow-theme-xs hover:bg-gray-100 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900" aria-label="Скопировать номер счёта">
+        <template x-if="isCopied"><span aria-hidden="true">✓</span></template>
+        <template x-if="!isCopied"><svg class="size-4 text-gray-500 dark:text-gray-400" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.3333 6.00008V12.6667C13.3333 13.0349 13.0348 13.3334 12.6667 13.3334H6.00002C5.63183 13.3334 5.33335 13.0349 5.33335 12.6667V6.00008C5.33335 5.63189 5.63183 5.33341 6.00002 5.33341H12.6667C13.0348 5.33341 13.3333 5.63189 13.3333 6.00008Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M10.6667 5.33333V3.33333C10.6667 2.96514 10.3682 2.66667 10 2.66667H3.33333C2.96514 2.66667 2.66667 2.96514 2.66667 3.33333V10C2.66667 10.3682 2.96514 10.6667 3.33333 10.6667H5.33333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg></template>
+      </button>
+
+      <!-- Details Button -->
+      <button type="button" class="inline-flex h-8 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-100 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900" x-text="$t('finance.totalBalanceOverview.seeDetails')">Подробнее</button>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+  <div class="flex items-center gap-3 border-none p-0 px-3.5 pt-5 pb-4">
+  <button type="button" class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-brand-500 text-sm font-medium text-white shadow-theme-xs hover:bg-brand-600 active:translate-y-px">
+    <svg class="size-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.83301 14.1667L14.1663 5.83337M14.1663 5.83337H6.66634M14.1663 5.83337V13.3334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span x-text="$t('finance.totalBalanceOverview.transfer')">Переводы</span>
+  </button>
+
+  <button type="button" class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900">
+    <svg class="size-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.1663 5.83337L5.83301 14.1667M5.83301 14.1667H13.333M5.83301 14.1667V6.66671" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span x-text="$t('finance.totalBalanceOverview.received')">Поступления</span>
+  </button>
+
+  <button type="button" class="inline-flex size-11 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-700 shadow-theme-xs hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900" aria-label="Добавить">
+    <svg class="size-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 4.16663V15.8333M4.16669 9.99996H15.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</div>
+</div>
+</div>
+                <div class="xl:col-span-6 2xl:col-span-7">
+                  <div class="h-full rounded-[18px] border border-gray-200 bg-gray-100 p-1.5 dark:border-gray-800 dark:bg-white/3">
+  <div class="grid h-full grid-cols-1 gap-1.5 sm:grid-cols-2">
+    <!-- Stat Card 1: Total Balance -->
+    <div class="flex flex-col justify-between rounded-xl border-none bg-white p-6 shadow-none dark:border-none dark:bg-gray-900">
+      <div>
+        <div class="mb-1.5 flex items-center justify-between">
+          <p class="text-base text-gray-500 dark:text-gray-400" x-text="$t('finance.stats.totalBalance')">Общий баланс</p>
+          <span class="inline-flex size-9 items-center justify-center rounded-lg bg-brand-500/10">
+            <svg class="size-6 text-brand-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8H18.5C19.3284 8 20 8.67157 20 9.5V18.5C20 19.3284 19.3284 20 18.5 20H5.5C4.67157 20 4 19.3284 4 18.5V8ZM4 8V5.5C4 4.67157 4.67157 4 5.5 4H16C16.8284 4 17.5 4.67157 17.5 5.5V8M20 12H16.75C15.9216 12 15.25 12.6716 15.25 13.5V14.5C15.25 15.3284 15.9216 16 16.75 16H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <h2 class="text-3xl font-medium text-gray-700 dark:text-white/90">
+          $24,830
+        </h2>
+      </div>
+
+      <p class="flex items-center gap-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span class="flex items-center gap-1 font-medium text-green-600 dark:text-green-500">
+          <svg class="size-4 rotate-45" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.9974 2.66602L7.9974 13.3336M4 6.66334L7.99987 2.66602L12 6.66334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          3.2%
+        </span>
+        <span x-text="$t('finance.stats.thanLastMonth')">к прошлому месяцу</span>
+      </p>
+    </div>
+
+    <!-- Stat Card 2: Monthly Income -->
+    <div class="flex flex-col justify-between rounded-xl border-none bg-white p-6 shadow-none dark:border-none dark:bg-gray-900">
+      <div>
+        <div class="mb-1.5 flex items-center justify-between">
+          <p class="text-base text-gray-500 dark:text-gray-400" x-text="$t('finance.stats.monthlyIncome')">Доход за месяц</p>
+          <span class="inline-flex size-9 items-center justify-center rounded-lg bg-green-500/10">
+            <svg class="size-6 text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.0005 20H5.5C4.67157 20 4 19.3284 4 18.5V4M4 15.4191L9.19963 10.2195L13.1523 14.1722L18.7431 8.58135M18.7431 8.58135L18.7471 12.1162M18.7431 8.58135L15.2115 8.58067" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <h2 class="text-3xl font-medium text-gray-700 dark:text-white/90">
+          $5,200
+        </h2>
+      </div>
+
+      <p class="flex items-center gap-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span class="flex items-center gap-1 font-medium text-red-600 dark:text-red-500">
+          <svg class="size-4 rotate-45" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.9974 13.3338L7.9974 2.66626M4 9.33644L7.99987 13.3338L12 9.33644" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          3.2%
+        </span>
+        <span x-text="$t('finance.stats.thanLastMonth')">к прошлому месяцу</span>
+      </p>
+    </div>
+
+    <!-- Stat Card 3: Total Spent -->
+    <div class="flex flex-col justify-between rounded-xl border-none bg-white p-6 shadow-none dark:border-none dark:bg-gray-900">
+      <div>
+        <div class="mb-1.5 flex items-center justify-between">
+          <p class="text-base text-gray-500 dark:text-gray-400" x-text="$t('finance.stats.totalSpent')">Всего потрачено</p>
+          <span class="inline-flex size-9 items-center justify-center rounded-lg bg-orange-500/10">
+            <svg class="size-6 text-orange-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.75 10.5V17.25C2.75 18.0784 3.42157 18.75 4.25 18.75H9.30078M2.75 10.5V9M2.75 10.5H12.082C12.082 10.5 13.7908 9.00694 16.6263 9M2.75 9V6.75C2.75 5.92157 3.42157 5.25 4.25 5.25H19.75C20.5784 5.25 21.25 5.92157 21.25 6.75V9M2.75 9H16.6263M21.25 9V10.5625C21.25 10.5625 19.532 9.00701 16.666 9M21.25 9H16.666M16.6263 9C16.6395 8.99997 16.6528 8.99997 16.666 9M16.6263 9H16.666M18.375 14.4768C18.375 13.7519 17.7873 13.1642 17.0624 13.1642H16.375C15.5466 13.1642 14.875 13.8358 14.875 14.6642V14.9293C14.875 15.5546 15.2628 16.1142 15.8483 16.3338L17.4017 16.9164C17.9872 17.1359 18.375 17.6956 18.375 18.3209V18.5859C18.375 19.4144 17.7034 20.0859 16.875 20.0859H16.1876C15.4627 20.0859 14.875 19.4983 14.875 18.7733M16.625 20.0859V21.25M16.625 12V13.1642" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <h2 class="text-3xl font-medium text-gray-700 dark:text-white/90">
+          $3,831
+        </h2>
+      </div>
+
+      <p class="flex items-center gap-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span class="flex items-center gap-1 font-medium text-green-600 dark:text-green-500">
+          <svg class="size-4 rotate-45" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.9974 2.66602L7.9974 13.3336M4 6.66334L7.99987 2.66602L12 6.66334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          295
+        </span>
+        <span x-text="$t('finance.stats.thanLastMonth')">к прошлому месяцу</span>
+      </p>
+    </div>
+
+    <!-- Stat Card 4: Saving Rate -->
+    <div class="flex flex-col justify-between rounded-xl border-none bg-white p-6 shadow-none dark:border-none dark:bg-gray-900">
+      <div>
+        <div class="mb-1.5 flex items-center justify-between">
+          <p class="text-base text-gray-500 dark:text-gray-400" x-text="$t('finance.stats.savingRate')">Доля сбережений</p>
+          <span class="inline-flex size-9 items-center justify-center rounded-lg bg-pink-500/10">
+            <svg class="size-6 text-pink-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.999 15.4605H11.5616C10.8367 15.4605 10.249 14.8728 10.249 14.1479M11.999 15.4605H12.249C13.0775 15.4605 13.749 14.7889 13.749 13.9605V13.6954C13.749 13.0701 13.3612 12.5105 12.7757 12.2909L11.2223 11.7083C10.6369 11.4888 10.249 10.9291 10.249 10.3038V10.0388C10.249 9.21034 10.9206 8.53876 11.749 8.53876H11.999M11.999 15.4605V16.6245M11.999 8.53876H12.4364C13.1614 8.53876 13.749 9.12643 13.749 9.85136M11.999 8.53876V7.37452M19.9994 7.76672V12.7605C19.9994 14.782 18.9814 16.6676 17.2914 17.7767L12.8227 20.7094C12.323 21.0373 11.6763 21.0373 11.1767 20.7094L6.70797 17.7767C5.01792 16.6676 4 14.782 4 12.7605V7.76672C4 7.035 4.52576 6.40446 5.23056 6.20778C6.65684 5.80977 9.09916 4.94592 11.3415 3.27064C11.7304 2.9801 12.269 2.9801 12.6578 3.27064C14.9002 4.94592 17.3425 5.80977 18.7688 6.20778C19.4736 6.40446 19.9994 7.035 19.9994 7.76672Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <h2 class="text-3xl font-medium text-gray-700 dark:text-white/90">
+          26.1%
+        </h2>
+      </div>
+
+      <p class="flex items-center gap-2.5 text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span>
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="stroke-gray-300 dark:stroke-gray-700" cx="12" cy="12" r="10.75" stroke="currentColor" stroke-width="2.5"></circle>
+            <mask id="path-2-inside-1_finance_goal_progress_stats" fill="white">
+              <path d="M12 0C14.3225 2.76958e-08 16.5951 0.673978 18.5422 1.94017C20.4892 3.20636 22.0269 5.01036 22.9688 7.13331C23.9108 9.25625 24.2164 11.6069 23.8486 13.9001C23.4808 16.1934 22.4555 18.3306 20.897 20.0525L19.0444 18.3758C20.2784 17.0124 21.0902 15.3202 21.3814 13.5045C21.6725 11.6888 21.4306 9.82759 20.6848 8.1467C19.939 6.46581 18.7215 5.03747 17.1799 4.03493C15.6383 3.0324 13.8389 2.49876 12 2.49876V0Z"></path>
+            </mask>
+            <path d="M12 0C14.3225 2.76958e-08 16.5951 0.673978 18.5422 1.94017C20.4892 3.20636 22.0269 5.01036 22.9688 7.13331C23.9108 9.25625 24.2164 11.6069 23.8486 13.9001C23.4808 16.1934 22.4555 18.3306 20.897 20.0525L19.0444 18.3758C20.2784 17.0124 21.0902 15.3202 21.3814 13.5045C21.6725 11.6888 21.4306 9.82759 20.6848 8.1467C19.939 6.46581 18.7215 5.03747 17.1799 4.03493C15.6383 3.0324 13.8389 2.49876 12 2.49876V0Z" stroke="#088450" stroke-width="4" mask="url(#path-2-inside-1_finance_goal_progress_stats)"></path>
+          </svg>
+        </span>
+        <span x-text="$t('finance.stats.goalProgress')">Цель — 30%, осталось 3,9 п. п.</span>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+              </div>
+              <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+                <div class="col-span-12 space-y-5 xl:col-span-8">
+                  <div x-data="{
+    years: ['2028', '2027', '2026', '2025', '2024'],
+    selectedYear: '2028',
+    timeframes: ['12 месяцев', '6 месяцев', '3 месяца', '30 дней'],
+    selectedTimeframe: '12 месяцев',
+    revenue: '$9,758.00',
+    growth: '+7.96%',
+    isPositive: true,
+    selectYear(year) {
+      this.selectedYear = year;
+      this.updateChart();
+    },
+    selectTimeframe(tf) {
+      this.selectedTimeframe = tf;
+      this.updateChart();
+    },
+    updateChart() {
+      if (window.updateCashflowChart) {
+        const ds = window.updateCashflowChart(this.selectedYear, this.selectedTimeframe);
+        if (ds) {
+          this.revenue = ds.revenue;
+          this.growth = ds.growth;
+          this.isPositive = ds.isPositive;
+        }
+      }
+    }
+  }" class="space-y-4 rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+  <div>
+    <h3 class="text-title-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('finance.cashflow.title')">Денежный поток</h3>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <!-- Year Dropdown -->
+    <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+      <button x-ref="trigger" type="button" @click="toggle" class="inline-flex h-9 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <span x-text="selectedYear">2028</span>
+        <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-32 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <template x-for="year in years" :key="year"><button type="button" @click="selectYear(year); open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedYear === year ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="year">2028</button></template>
+      </div>
+    </div>
+
+    <!-- Timeframe Dropdown -->
+    <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+      <button x-ref="trigger" type="button" @click="toggle" class="inline-flex h-9 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <span x-text="selectedTimeframe">12 месяцев</span>
+        <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-36 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <template x-for="tf in timeframes" :key="tf"><button type="button" @click="selectTimeframe(tf); open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedTimeframe === tf ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="tf">12 месяцев</button></template>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex flex-wrap items-end justify-between gap-4">
+  <!-- Total Revenue & Badge -->
+  <div>
+    <p class="mb-0.5 text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.cashflow.totalRevenue')">Общая выручка</p>
+    <div class="flex items-center gap-2">
+      <h4 class="text-heading-five font-medium text-gray-800 dark:text-white/90" x-text="revenue">$9,758.00</h4>
+      <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500" :class="isPositive ? 'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500' : 'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500'" x-text="growth">+7.96%</span>
+    </div>
+  </div>
+
+  <!-- Income & Expense Toggles -->
+  <div class="flex items-center gap-5">
+    <button type="button" @click="if (window.toggleCashflowSeries) window.toggleCashflowSeries('Income')" class="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80">
+      <span class="block size-2.5 rounded-full bg-brand-500"></span>
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.cashflow.income')">Доходы</span>
+    </button>
+
+    <button type="button" @click="if (window.toggleCashflowSeries) window.toggleCashflowSeries('Expense')" class="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80">
+      <span class="block size-2.5 rounded-full bg-[#7CD4FD]"></span>
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.cashflow.expense')">Расходы</span>
+    </button>
+  </div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+  <div class="-ms-4 min-w-130 xl:min-w-full [&amp;_.apexcharts-tooltip]:border-0! [&amp;_.apexcharts-tooltip]:bg-transparent! [&amp;_.apexcharts-tooltip]:p-0! [&amp;_.apexcharts-tooltip]:shadow-none! [&amp;&gt;div]:max-h-55!">
+    <div id="cashflowChart" style="min-height: 235px;"></div>
+  </div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                    <div x-data="{
+    timeframes: ['Yearly', 'Monthly'],
+    selectedTimeframe: 'Yearly',
+    total: '$10,758',
+    selectTimeframe(tf) {
+      this.selectedTimeframe = tf;
+      if (window.updateSpendingChart) {
+        const ds = window.updateSpendingChart(tf);
+        if (ds) {
+          this.total = ds.total;
+        }
+      }
+    }
+  }" class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-center justify-between gap-4">
+  <div>
+    <h3 class="text-title-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('finance.spending.title')">Расходы</h3>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex h-9 items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <span x-text="selectedTimeframe === 'Yearly' ? $t('finance.spending.yearly') : $t('finance.spending.monthly')">По годам</span>
+      <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-32 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+      <template x-for="tf in timeframes" :key="tf"><button type="button" @click="selectTimeframe(tf); open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedTimeframe === tf ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="tf === 'Yearly' ? $t('finance.spending.yearly') : $t('finance.spending.monthly')">По годам</button></template>
+    </div>
+  </div>
+</div>
+<div class="mt-6 flex flex-col gap-5">
+    <div>
+      <p class="mb-0.5 text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.spending.total')">Всего</p>
+      <h4 class="text-3xl leading-10 font-medium text-gray-800 dark:text-white/90" x-text="total">$10,758</h4>
+    </div>
+
+    <div class="-ms-1 w-full [&amp;_.apexcharts-tooltip]:border-0! [&amp;_.apexcharts-tooltip]:bg-transparent! [&amp;_.apexcharts-tooltip]:p-0! [&amp;_.apexcharts-tooltip]:shadow-none!">
+  <div id="spendingChart" style="min-height: 50px;"></div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#3CB67E]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.activity')">Операция</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#7CD4FD]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.onlinePurchases')">Интернет-покупки</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#BDB4FE]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.groceries')">Продукты</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#FE9EFE]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.digitalGoods')">Цифровые товары</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#6FEAA6]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.stationery')">Канцтовары</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="size-2.5 shrink-0 rounded-full bg-[#D0D5DD]"></span>
+    <span class="text-sm font-normal text-gray-700 dark:text-gray-300" x-text="$t('finance.spending.categories.others')">Прочее</span>
+  </div>
+</div>
+</div>
+</div>
+<div x-data="{
+    recipients: [
+      { id: 17, avatar: './assets/images/users/user-17.jpg', name: 'Alex Morgan' },
+      { id: 18, avatar: './assets/images/users/user-18.jpg', name: 'Sophia Davis' },
+      { id: 19, avatar: './assets/images/users/user-19.jpg', name: 'Emma Watson' },
+      { id: 20, avatar: './assets/images/users/user-20.jpg', name: 'James Wilson' },
+      { id: 21, avatar: './assets/images/users/user-21.jpg', name: 'Michael Brown' },
+      { id: 22, avatar: './assets/images/users/user-22.jpg', name: 'Olivia Taylor' },
+      { id: 23, avatar: './assets/images/users/user-23.jpg', name: 'Daniel Martinez' },
+      { id: 24, avatar: './assets/images/users/user-24.jpg', name: 'Emily Clark' },
+      { id: 25, avatar: './assets/images/users/user-25.jpg', name: 'David Anderson' },
+      { id: 26, avatar: './assets/images/users/user-26.jpg', name: 'Jessica White' }
+    ],
+    selectedRecipientId: 19,
+    paymentMethods: [
+      { id: 'visa-3657', label: 'Visa •••• •••• 3657' },
+      { id: 'master-4912', label: 'Master •••• •••• 4912' }
+    ],
+    selectedPaymentMethod: { id: 'visa-3657', label: 'Visa •••• •••• 3657' },
+    currencies: [
+      { code: 'USD', label: '$ USD' },
+      { code: 'EUR', label: '€ EUR' },
+      { code: 'GBP', label: '£ GBP' }
+    ],
+    selectedCurrency: { code: 'USD', label: '$ USD' },
+    amount: '1,250.00'
+  }" class="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-center justify-between">
+  <div>
+    <h3 class="text-title-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('finance.quickSend.title')">Быстрый перевод</h3>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="flex flex-col gap-3.5">
+    <div class="flex items-center gap-1.5 sm:gap-2">
+  <button type="button" @click="$refs.recipientScroll.scrollBy({ left: -120, behavior: 'smooth' })" aria-label="Предыдущие получатели" class="flex size-7 shrink-0 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white">
+    <svg class="size-4 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <div x-ref="recipientScroll" class="no-scrollbar flex flex-1 items-center gap-2 overflow-x-auto scroll-smooth py-1 sm:gap-2.5">
+    <template x-for="r in recipients" :key="r.id"><button type="button" @click="selectedRecipientId = r.id" :aria-label="r.name" class="relative flex shrink-0 items-center justify-center rounded-full p-0.75 transition-all border border-transparent hover:border-gray-300 dark:hover:border-gray-700" :class="selectedRecipientId === r.id ? 'border border-brand-500' : 'border border-transparent hover:border-gray-300 dark:hover:border-gray-700'" aria-label="Alex Morgan">
+        <img :src="r.avatar" :alt="r.name" class="size-10 rounded-full object-cover" src="./assets/images/users/user-17.jpg" alt="Alex Morgan">
+      </button></template>
+  </div>
+
+  <button type="button" @click="$refs.recipientScroll.scrollBy({ left: 120, behavior: 'smooth' })" aria-label="Следующие получатели" class="flex size-7 shrink-0 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white">
+    <svg class="size-4 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</div>
+<form @submit.prevent="" class="flex flex-col gap-3.5">
+  <!-- Send From Select -->
+  <div>
+    <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-400" x-text="$t('finance.quickSend.sendFrom')">Списать с</label>
+    <div x-data="dropdown({ placement: 'bottom-start', matchWidth: true })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+      <button x-ref="trigger" type="button" @click="toggle" class="flex h-11 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-800 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:hover:bg-gray-800" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+        <span x-text="selectedPaymentMethod.label">Visa •••• •••• 3657</span>
+        <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <template x-for="pm in paymentMethods" :key="pm.id"><button type="button" @click="selectedPaymentMethod = pm; open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedPaymentMethod.id === pm.id ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="pm.label">Visa •••• •••• 3657</button></template>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3">
+    <!-- Currency Select -->
+    <div>
+      <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-400" x-text="$t('finance.quickSend.currency')">Валюта</label>
+      <div x-data="dropdown({ placement: 'bottom-start', matchWidth: true })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+        <button x-ref="trigger" type="button" @click="toggle" class="flex h-11 w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-800 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:hover:bg-gray-800" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+          <span x-text="selectedCurrency.label">$ USD</span>
+          <svg class="size-4 text-gray-500 transition-transform dark:text-gray-400" :class="open ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+          <template x-for="c in currencies" :key="c.code"><button type="button" @click="selectedCurrency = c; open = false" class="flex w-full rounded-lg px-2.5 py-2 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 bg-gray-100 font-medium dark:bg-white/5" :class="selectedCurrency.code === c.code ? 'bg-gray-100 font-medium dark:bg-white/5' : ''" x-text="c.label">$ USD</button></template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amount Input -->
+    <div>
+      <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-400" x-text="$t('finance.quickSend.amount')">Сумма</label>
+      <input type="text" x-model="amount" class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-800 shadow-theme-xs outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-500" placeholder="0.00">
+    </div>
+  </div>
+
+  <button type="submit" class="mt-1 flex h-10 w-full items-center justify-center rounded-[10px] bg-brand-500 text-sm font-medium text-white shadow-theme-xs hover:bg-brand-600 active:translate-y-px sm:h-11" x-text="$t('finance.quickSend.sendMoney')">Перевести деньги</button>
+</form>
+</div>
+</div>
+</div>
+                </div>
+                <div class="col-span-12 xl:col-span-4">
+                  <div class="h-full rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-center justify-between">
+  <div>
+    <h3 class="text-title-sm font-semibold text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.title')">Мои карты</h3>
+  </div>
+
+  <div>
+    <button type="button" class="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900">
+      <svg class="size-4" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 3.33331V12.6666M3.33337 7.99998H12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('finance.myCards.addCard')">Добавить карту</span>
+    </button>
+  </div>
+</div>
+<div class="pt-6">
+    <div class="swiper my-cards-slider w-full">
+  <div class="swiper-wrapper">
+    <!-- Card 1 -->
+    <div class="swiper-slide">
+      <div class="relative flex flex-col gap-7 overflow-hidden rounded-[14px] bg-gray-900 p-6 select-none dark:bg-gray-950">
+        <img src="./assets/images/finance/card-vector.png" alt="" class="pointer-events-none absolute inset-e-0 top-0 h-[95px] w-[122px] rtl:-scale-x-100">
+        <div class="relative z-1 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.5 8C9.5 9.5 9.5 14.5 8.5 16M12 6C13.5 8 13.5 16 12 18M15.5 4C17.5 6.5 17.5 17.5 15.5 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="flex h-6 shrink-0 items-center rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-500 capitalize">
+              active
+            </span>
+          </div>
+          <div>
+            <img src="./assets/images/finance/mastercard.png" alt="Логотип" class="h-[30px] w-12 object-contain">
+          </div>
+        </div>
+
+        <div class="relative z-1">
+          <h4 class="text-base font-normal text-white">Musharof Chy</h4>
+        </div>
+
+        <div class="relative z-1 flex justify-between gap-5 sm:gap-10">
+          <div class="flex-1">
+            <p class="text-xs text-white/80">Номер карты</p>
+            <p class="text-base font-normal text-white">•••• •••• •••• 4983</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">Расходы</p>
+            <p class="text-base font-normal text-white">09/29</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">CVC</p>
+            <p class="text-base font-normal text-white">659</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="swiper-slide">
+      <div class="relative flex flex-col gap-7 overflow-hidden rounded-[14px] bg-gray-900 p-6 select-none dark:bg-gray-950">
+        <img src="./assets/images/finance/card-vector.png" alt="" class="pointer-events-none absolute inset-e-0 top-0 h-[95px] w-[122px] rtl:-scale-x-100">
+        <div class="relative z-1 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.5 8C9.5 9.5 9.5 14.5 8.5 16M12 6C13.5 8 13.5 16 12 18M15.5 4C17.5 6.5 17.5 17.5 15.5 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="flex h-6 shrink-0 items-center rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-500 capitalize">
+              active
+            </span>
+          </div>
+          <div>
+            <img src="./assets/images/finance/mastercard.png" alt="Логотип" class="h-[30px] w-12 object-contain">
+          </div>
+        </div>
+
+        <div class="relative z-1">
+          <h4 class="text-base font-normal text-white">John Adward</h4>
+        </div>
+
+        <div class="relative z-1 flex justify-between gap-5 sm:gap-10">
+          <div class="flex-1">
+            <p class="text-xs text-white/80">Номер карты</p>
+            <p class="text-base font-normal text-white">•••• •••• •••• 1234</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">Расходы</p>
+            <p class="text-base font-normal text-white">12/28</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">CVC</p>
+            <p class="text-base font-normal text-white">123</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="swiper-slide">
+      <div class="relative flex flex-col gap-7 overflow-hidden rounded-[14px] bg-gray-900 p-6 select-none dark:bg-gray-950">
+        <img src="./assets/images/finance/card-vector.png" alt="" class="pointer-events-none absolute inset-e-0 top-0 h-[95px] w-[122px] rtl:-scale-x-100">
+        <div class="relative z-1 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.5 8C9.5 9.5 9.5 14.5 8.5 16M12 6C13.5 8 13.5 16 12 18M15.5 4C17.5 6.5 17.5 17.5 15.5 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="flex h-6 shrink-0 items-center rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-medium text-gray-400 capitalize dark:text-white/90">
+              inactive
+            </span>
+          </div>
+          <div>
+            <img src="./assets/images/finance/mastercard.png" alt="Логотип" class="h-[30px] w-12 object-contain">
+          </div>
+        </div>
+
+        <div class="relative z-1">
+          <h4 class="text-base font-normal text-white">John Wick</h4>
+        </div>
+
+        <div class="relative z-1 flex justify-between gap-5 sm:gap-10">
+          <div class="flex-1">
+            <p class="text-xs text-white/80">Номер карты</p>
+            <p class="text-base font-normal text-white">•••• •••• •••• 5678</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">Расходы</p>
+            <p class="text-base font-normal text-white">10/27</p>
+          </div>
+          <div>
+            <p class="text-xs text-white/80">CVC</p>
+            <p class="text-base font-normal text-white">987</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="border-b border-dashed border-gray-200 pt-4 pb-6 dark:border-gray-800">
+  <div class="flex items-center justify-between">
+    <div>
+      <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.virtualCard')">Виртуальная карта</h5>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button type="button" class="flex size-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-theme-xs transition-colors hover:bg-gray-100 hover:text-gray-800 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white" disabled="">
+        <svg class="size-4 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <button type="button" id="card-slider-next" aria-label="Следующая карта" class="flex size-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-theme-xs transition-colors hover:bg-gray-100 hover:text-gray-800 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white">
+        <svg class="size-4 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="pt-6">
+  <p class="mb-2 text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.recentTransactions')">Последние операции</p>
+
+  <ul class="space-y-1">
+    <!-- Item 1 -->
+    <li>
+      <a href="#finance-transactions" class="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+        <div class="flex items-center gap-3">
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+            <img src="./assets/images/finance/payment-1.svg" alt="Платёж" class="size-5 dark:hidden">
+            <img src="./assets/images/finance/payment-1-dark.svg" alt="Платёж" class="hidden size-5 dark:block">
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.transactions.paymentReceived')">Получен платёж</h5>
+            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.transactions.cashbackDesc')">Кешбэк от Stellar Rewards</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-end">
+            <p class="text-sm font-medium text-green-600 dark:text-green-500">
+              +$139.50
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">20 марта</p>
+          </div>
+          <svg class="size-4 text-gray-400 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </a>
+    </li>
+
+    <!-- Item 2 -->
+    <li>
+      <a href="#finance-transactions" class="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+        <div class="flex items-center gap-3">
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+            <img src="./assets/images/finance/payment-2.svg" alt="Netflix" class="size-5">
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.transactions.netflixSubscription')">Подписка Netflix</h5>
+            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.transactions.netflixDesc')">Оплата подписки за сентябрь</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-end">
+            <p class="text-sm font-medium text-red-600 dark:text-red-500">
+              -$36.24
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">18 сентября</p>
+          </div>
+          <svg class="size-4 text-gray-400 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </a>
+    </li>
+
+    <!-- Item 3 -->
+    <li>
+      <a href="#finance-transactions" class="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+        <div class="flex items-center gap-3">
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+            <img src="./assets/images/finance/payment-3.svg" alt="PayPal" class="size-5">
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.transactions.moneyReceived')">Деньги получены</h5>
+            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.transactions.paypalDesc')">Получен платёж через PayPal</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-end">
+            <p class="text-sm font-medium text-green-600 dark:text-green-500">
+              +$590
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">12 февраля</p>
+          </div>
+          <svg class="size-4 text-gray-400 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </a>
+    </li>
+
+    <!-- Item 4 -->
+    <li>
+      <a href="#finance-transactions" class="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+        <div class="flex items-center gap-3">
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+            <img src="./assets/images/finance/payment-4.svg" alt="Google Ads" class="size-5">
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.transactions.googleAds')">Google Ads</h5>
+            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.transactions.googleAdsDesc')">Получен платёж от Google Ads</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-end">
+            <p class="text-sm font-medium text-green-600 dark:text-green-500">
+              +$236.24
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">28 января</p>
+          </div>
+          <svg class="size-4 text-gray-400 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </a>
+    </li>
+
+    <!-- Item 5 -->
+    <li>
+      <a href="#finance-transactions" class="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+        <div class="flex items-center gap-3">
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+            <img src="./assets/images/finance/payment-3.svg" alt="PayPal" class="size-5">
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('finance.myCards.transactions.moneyReceived')">Деньги получены</h5>
+            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('finance.myCards.transactions.paypalDesc')">Получен платёж через PayPal</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-end">
+            <p class="text-sm font-medium text-green-600 dark:text-green-500">
+              +$1,093
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">10 января</p>
+          </div>
+          <svg class="size-4 text-gray-400 rtl:rotate-180" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <a href="#finance-transactions" class="mt-3 flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900" x-text="$t('finance.myCards.seeAllTransactions')">Все операции</a>
+</div>
+</div>
+</div>
+</div>
+              </div>
+              <div id="finance-transactions" x-data="financeTransactionsTable()" class="w-full max-w-full min-w-0 overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('finance.transactionsTable.title')">Последние операции</h3>
+  </div>
+
+  <div class="flex w-full items-center gap-3 sm:w-auto">
+    <div class="relative flex-1 sm:w-80 sm:flex-initial">
+      <span class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-400">
+        <svg class="size-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M17.5 17.5L13.875 13.875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+      <input type="text" x-model="searchQuery" :placeholder="$t('finance.transactionsTable.searchPlaceholder')" class="h-10 w-full rounded-lg border border-gray-300 bg-white ps-10 pe-3.5 text-sm font-medium text-gray-800 shadow-theme-xs outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-500" placeholder="Поиск…">
+    </div>
+
+    <button type="button" class="inline-flex h-10 shrink-0 items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900">
+      <svg class="size-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 5.83333H17.5M5 10H15M7.5 14.1667H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('finance.transactionsTable.filter')">Фильтр</span>
+    </button>
+  </div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+  <table class="w-full text-start">
+    <thead class="border-y border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-gray-800/40">
+      <tr>
+        <th class="h-11 min-w-44 py-3 ps-6 pe-4 text-start whitespace-nowrap">
+          <div class="flex items-center gap-3">
+            <label class="flex cursor-pointer items-center select-none">
+              <span class="relative">
+                <input type="checkbox" class="sr-only" @change="toggleSelectAll()" :checked="isAllSelected">
+                <span :class="isAllSelected ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'" class="flex size-4 items-center justify-center rounded-sm border-[1.25px] transition-colors bg-transparent border-gray-300 dark:border-gray-700">
+                  <span :class="isAllSelected ? '' : 'opacity-0'" class="opacity-0">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="1.6666" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </label>
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('finance.transactionsTable.table.orderId')">Номер операции</span>
+          </div>
+        </th>
+        <th class="h-11 min-w-48 px-6 py-3 text-start text-sm font-normal whitespace-nowrap text-gray-500 dark:text-gray-400" x-text="$t('finance.transactionsTable.table.activity')">Операция</th>
+        <th class="h-11 min-w-36 px-6 py-3 text-start text-sm font-normal whitespace-nowrap text-gray-500 dark:text-gray-400" x-text="$t('finance.transactionsTable.table.price')">Сумма</th>
+        <th class="h-11 min-w-52 px-6 py-3 text-start text-sm font-normal whitespace-nowrap text-gray-500 dark:text-gray-400" x-text="$t('finance.transactionsTable.table.date')">Дата</th>
+        <th class="h-11 min-w-32 px-6 py-3 text-start text-sm font-normal whitespace-nowrap text-gray-500 dark:text-gray-400" x-text="$t('finance.transactionsTable.table.status')">Статус</th>
+        <th class="h-11 min-w-16 py-3 ps-4 pe-6 text-end whitespace-nowrap"></th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+      <template x-for="row in rows" :key="row.original.id"><tr class="transition-colors hover:bg-gray-50 dark:hover:bg-white/2" :class="isRowSelected(row.original.id) ? 'bg-gray-50/50 dark:bg-white/2' : ''">
+          <td class="py-3.5 ps-6 pe-4 whitespace-nowrap">
+            <div class="flex items-center gap-3">
+              <label class="flex cursor-pointer items-center select-none">
+                <span class="relative">
+                  <input type="checkbox" class="sr-only" @change="toggleRow(row.original.id)" :checked="isRowSelected(row.original.id)">
+                  <span :class="isRowSelected(row.original.id) ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'" class="flex size-4 items-center justify-center rounded-sm border-[1.25px] transition-colors bg-transparent border-gray-300 dark:border-gray-700">
+                    <span :class="isRowSelected(row.original.id) ? '' : 'opacity-0'" class="opacity-0">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="1.6666" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </label>
+              <a href="#finance-transactions" class="text-sm font-medium text-gray-800 hover:text-brand-500 dark:text-white/90 dark:hover:text-brand-400" x-text="row.original.orderId">NIV_034834</a>
+            </div>
+          </td>
+
+          <td class="px-6 py-3.5 whitespace-nowrap">
+            <p class="text-sm text-gray-700 dark:text-gray-300" x-text="$t('finance.transactionsTable.activities.' + row.original.activityKey) || row.original.activity">Бронирование отеля</p>
+          </td>
+
+          <td class="px-6 py-3.5 whitespace-nowrap">
+            <p class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="row.original.price">$9,234.87</p>
+          </td>
+
+          <td class="px-6 py-3.5 whitespace-nowrap">
+            <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$demoDate(row.original.date)">15 марта 2028 08:22</p>
+          </td>
+
+          <td class="px-6 py-3.5 whitespace-nowrap">
+            <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500" :class="getStatusBadgeClass(row.original.status)" x-text="$t('finance.transactionsTable.statuses.' + row.original.statusKey) || row.original.status">Завершено</span>
+          </td>
+
+          <td class="py-3.5 ps-4 pe-6 text-end whitespace-nowrap">
+            <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative inline-block text-start">
+              <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="19" cy="12" r="1"></circle>
+                  <circle cx="5" cy="12" r="1"></circle>
+                </svg>
+              </button>
+
+              <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+                <a href="#finance-transactions" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</a>
+                <button type="button" @click="deleteItem(row.original.id); open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+              </div>
+            </div>
+          </td>
+        </tr></template>
+
+      <!-- Empty state -->
+      <tr x-show="rows.length === 0" style="display: none;">
+        <td colspan="6" class="px-6 py-12 text-center text-sm text-gray-500 dark:text-gray-400">
+          <div class="flex flex-col items-center justify-center">
+            <div class="mb-3 flex size-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+              <svg class="size-6 text-gray-800 dark:text-white/90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 7.5V16.5C21 17.0304 20.7893 17.5391 20.4142 17.9142C20.0391 18.2893 19.5304 18.5 19 18.5H5C4.46957 18.5 3.96086 18.2893 3.58579 17.9142C3.21071 17.5391 3 17.0304 3 16.5V7.5M21 7.5L12 2.5L3 7.5M21 7.5L12 12.5M3 7.5L12 12.5M12 12.5V21.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h4 class="text-base font-semibold text-gray-800 dark:text-white/90">
+              Операции не найдены
+            </h4>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              Попробуйте изменить параметры поиска.
+            </p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+          </div>
+                </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer src="./assets/js/localization.js"></script>
+  <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
+
+</body></html>

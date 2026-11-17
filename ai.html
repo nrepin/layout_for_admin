@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ИИ-аналитика | MayBrands</title>
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet">
+  </head>
+  <body x-data="{ page: 'ai', section: 'dashboard', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+          <li><a href="./ai.html" class="group menu-dropdown-item menu-dropdown-item-active" aria-current="page">ИИ-аналитика</a></li>
+          <li><a href="./sales.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Продажи</a></li>
+          <li><a href="./finance.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Финансы</a></li>
+          <li><a href="./hr.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Персонал</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Поддержка</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li><a href="./chat.html" class="group menu-item menu-item-inactive" aria-label="Чаты"><svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-chat"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Чаты</span></a></li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-support-tickets').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-support-tickets" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./support-tickets.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Обращения в поддержку</a></li>
+          <li><a href="./ticket-reply.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Ответ на обращение</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-email').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-email" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./inbox.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Входящие</a></li>
+          <li><a href="./inbox-deatil.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Просмотр письма</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="true" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Николай Репин
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        nrepin@themay.com
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6" data-admin-page="ai" data-admin-section="dashboard" tabindex="-1">
+            <!-- Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'ИИ-аналитика' }">
+              <div class="mb-6 flex flex-col items-start gap-2">
+  <nav aria-label="Хлебные крошки">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li>
+        <a class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" href="./index.html">
+          Главная
+          <svg class="stroke-current rtl:rotate-180" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-16"></use></svg>
+        </a>
+      </li>
+      <li aria-current="page" class="text-sm text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">ИИ-аналитика</li>
+    </ol>
+  </nav>
+  <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">ИИ-аналитика</h1>
+</div>
+</div>
+            <!-- Breadcrumb End -->
+
+            <div class="space-y-6">
+              <!-- AI Metrics Start -->
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+  <!-- Users Metric -->
+  <div class="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 sm:p-5 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.users')">Пользователи</span>
+      <svg class="size-6 text-brand-500 dark:text-brand-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.109 5.10414C14.4743 4.94178 14.8789 4.85156 15.3045 4.85156C16.932 4.85156 18.2514 6.17095 18.2514 7.79851C18.2514 9.42606 16.932 10.7455 15.3045 10.7455C14.8794 10.7455 14.4753 10.6555 14.1103 10.4935M15.797 13.2207C19.5989 13.4453 20.821 16.009 21.2134 17.6906C21.3993 18.4875 20.7424 19.1487 19.9241 19.1487H17.59M11.7512 7.79855C11.7512 9.4261 10.4318 10.7455 8.80427 10.7455C7.17671 10.7455 5.85732 9.4261 5.85732 7.79855C5.85732 6.171 7.17671 4.8516 8.80427 4.8516C10.4318 4.8516 11.7512 6.171 11.7512 7.79855ZM8.74941 13.205C12.9833 13.205 14.3026 15.9309 14.7132 17.6906C14.8991 18.4875 14.2422 19.1487 13.4239 19.1487H4.07489C3.25661 19.1487 2.59973 18.4875 2.78565 17.6906C3.19623 15.9309 4.51554 13.205 8.74941 13.205Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-2">
+      <h3 class="text-3xl font-semibold text-gray-800 dark:text-white/90">
+        10,590
+      </h3>
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.last30Days')">Последние 30 дней</span>
+        <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+          <svg class="size-3.5 shrink-0" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.99967 11.6666V2.33325M6.99967 2.33325L2.91634 6.41659M6.99967 2.33325L11.083 6.41659" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          +3.52%
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Metric -->
+  <div class="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 sm:p-5 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.projects')">Проекты</span>
+      <svg class="size-6 text-blue-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.12012 16.5216V6.47999C3.12012 5.6847 3.76482 5.03999 4.56012 5.03999H8.64012C9.09337 5.03999 9.52017 5.25339 9.79212 5.61599L11.0881 7.34399C11.3601 7.70659 11.7869 7.91999 12.2401 7.91999H18.2401C19.0354 7.91999 19.6801 8.5647 19.6801 9.35999V11.5404M19.6801 11.5404C20.5438 11.6866 21.101 12.5919 20.7882 13.4521L18.9555 18.4921C18.7485 19.0612 18.2077 19.44 17.6022 19.44H4.56664C3.74345 19.44 3.12642 18.7623 3.12538 17.9999M19.6801 11.5404C19.6008 11.527 19.5189 11.52 19.4349 11.52H6.39936C5.79383 11.52 5.25299 11.8988 5.04606 12.4679L3.21332 17.5079C3.15361 17.6721 3.12561 17.8379 3.12538 17.9999M3.12538 17.9999V16.5216" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-2">
+      <h3 class="text-3xl font-semibold text-gray-800 dark:text-white/90">
+        15,682
+      </h3>
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.last30Days')">Последние 30 дней</span>
+        <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+          <svg class="size-3.5 shrink-0" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.99967 11.6666V2.33325M6.99967 2.33325L2.91634 6.41659M6.99967 2.33325L11.083 6.41659" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          +3.52%
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue Metric -->
+  <div class="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 sm:p-5 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.revenue')">Выручка</span>
+      <svg class="size-6 text-green-500" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.484 7.72311C15.484 6.2798 14.314 5.10976 12.8707 5.10976H11.8138C9.99228 5.10976 8.51562 6.58641 8.51562 8.40795C8.51562 9.78276 9.36841 11.0134 10.6557 11.4961L13.344 12.5043C14.6312 12.9871 15.484 14.2177 15.484 15.5925C15.484 17.414 14.0074 18.8907 12.1858 18.8907H11.129C9.68566 18.8907 8.51562 17.7206 8.51562 16.2773M11.9996 19.2829L11.9996 21.2083M11.9996 2.79175L11.9996 4.7171" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-2">
+      <h3 class="text-3xl font-semibold text-gray-800 dark:text-white/90">
+        $90,369
+      </h3>
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.last30Days')">Последние 30 дней</span>
+        <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+          <svg class="size-3.5 shrink-0" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.99967 11.6666V2.33325M6.99967 2.33325L2.91634 6.41659M6.99967 2.33325L11.083 6.41659" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          +14.8%
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paid Users Metric -->
+  <div class="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 sm:p-5 dark:border-gray-800 dark:bg-white/3">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.paidUsers')">Платные пользователи</span>
+      <svg class="size-6 text-orange-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.12 14.3777C18.12 13.6818 17.5558 13.1176 16.8599 13.1176H16.2C15.4047 13.1176 14.76 13.7624 14.76 14.5576V14.8121C14.76 15.4124 15.1323 15.9496 15.6944 16.1604L17.1856 16.7197C17.7477 16.9305 18.12 17.4678 18.12 18.0681V18.3225C18.12 19.1178 17.4753 19.7625 16.68 19.7625H16.0201C15.3242 19.7625 14.76 19.1984 14.76 18.5024M16.44 19.7625V20.88M16.44 12V13.1176M10.0055 19.92H6.17437C5.37908 19.92 4.73438 19.2753 4.73438 18.48V17.2214C4.73438 14.8355 6.66851 12.9014 9.05437 12.9014H10.0313M15.4498 6.5708C15.4498 8.47663 13.9047 10.0216 11.9989 10.0216C10.0932 10.0216 8.54813 8.47663 8.54813 6.5708C8.54813 4.66497 10.0932 3.12 11.9989 3.12C13.9047 3.12 15.4498 4.66497 15.4498 6.5708Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-2">
+      <h3 class="text-3xl font-semibold text-gray-800 dark:text-white/90">
+        520
+      </h3>
+
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.stats.last30Days')">Последние 30 дней</span>
+        <span class="flex items-center gap-1 text-sm font-medium text-red-600 dark:text-red-500">
+          <svg class="size-3.5 shrink-0" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.99967 2.33325V11.6666M6.99967 11.6666L2.91634 7.58325M6.99967 11.6666L11.083 7.58325" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          -9.05%
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- AI Metrics End -->
+
+              <div class="grid grid-cols-1 gap-6 xl:grid-cols-12">
+                <div class="xl:col-span-8">
+                  <!-- Statistics Chart Start -->
+                  <div x-data="{
+    selectedTab: 'monthly',
+    setTab(tab) {
+      this.selectedTab = tab;
+      if (window.updateAiStatisticsChart) {
+        window.updateAiStatisticsChart(tab);
+      }
+    }
+  }" class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('aiDashboard.userRevenue.title')">Пользователи &amp; Revenue Statistics</h3>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.userRevenue.subtitle')">Динамика показателей и вовлечённости по месяцам.</p>
+  </div>
+
+  <div class="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
+    <button type="button" @click="setTab('monthly')" :class="selectedTab === 'monthly' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white" x-text="$t('aiDashboard.userRevenue.monthly')">По месяцам</button>
+    <button type="button" @click="setTab('quarterly')" :class="selectedTab === 'quarterly' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('aiDashboard.userRevenue.quarterly')">По кварталам</button>
+    <button type="button" @click="setTab('annually')" :class="selectedTab === 'annually' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('aiDashboard.userRevenue.annually')">По годам</button>
+  </div>
+</div>
+<div class="mt-6 mb-2 flex items-center gap-5">
+  <div class="flex items-center gap-1.5">
+    <span class="size-2.5 rounded-full bg-brand-500"></span>
+    <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userRevenue.users')">Пользователи</span>
+  </div>
+  <div class="flex items-center gap-1.5">
+    <span class="size-2.5 rounded-full bg-[#00BCFF]"></span>
+    <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userRevenue.revenue')">Выручка</span>
+  </div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+  <div class="-ms-4 min-w-162.5 ps-2 xl:min-w-full">
+    <div id="aiStatisticsChart" class="h-full [&amp;_.apexcharts-tooltip]:border-0! [&amp;_.apexcharts-tooltip]:bg-transparent! [&amp;_.apexcharts-tooltip]:p-0! [&amp;_.apexcharts-tooltip]:shadow-none! [&amp;_.apexcharts-tooltip]:before:hidden! [&amp;_.apexcharts-tooltip]:after:hidden! dark:[&amp;_.apexcharts-tooltip]:border-0! dark:[&amp;_.apexcharts-tooltip]:bg-transparent!" style="min-height: 385px;"></div>
+  </div>
+</div>
+</div>
+<!-- Statistics Chart End -->
+                </div>
+                <div class="xl:col-span-4">
+                  <!-- Token Usage Chart Start -->
+                  <div class="rounded-2xl border border-gray-200 bg-white px-3 pt-2 pb-1 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-center justify-between gap-5 px-4 pt-4">
+  <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('aiDashboard.apiToken.title')">Расход токенов API</h3>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative inline-block text-left">
+    <button x-ref="trigger" type="button" @click="toggle" aria-label="Дополнительные действия" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" :class="open ? 'text-gray-700 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="api-token-chart my-6 flex justify-center">
+  <div id="apiTokenUsageChart" class="w-full [&amp;_.apexcharts-datalabel-label]:fill-gray-800! dark:[&amp;_.apexcharts-datalabel-label]:fill-white! [&amp;_.apexcharts-tooltip]:border-0! [&amp;_.apexcharts-tooltip]:bg-transparent! [&amp;_.apexcharts-tooltip]:p-0! [&amp;_.apexcharts-tooltip]:shadow-none! [&amp;_.apexcharts-tooltip]:before:hidden! [&amp;_.apexcharts-tooltip]:after:hidden! dark:[&amp;_.apexcharts-tooltip]:border-0! dark:[&amp;_.apexcharts-tooltip]:bg-transparent!" style="min-height: 200px;"></div>
+</div>
+<div>
+  <ul class="divide-y divide-gray-100 border-y border-gray-100 dark:divide-gray-800 dark:border-gray-800">
+    <!-- GPT -->
+    <li class="flex items-center justify-between px-4 py-3">
+      <!-- Left -->
+      <div class="flex items-center gap-3">
+        <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 dark:border-gray-800">
+          <svg class="size-5.5 text-gray-800 dark:text-white/90" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.51399 8.00796V5.91795C8.51399 5.74192 8.58003 5.60984 8.73397 5.52194L12.9361 3.10197C13.5081 2.77199 14.1901 2.61806 14.894 2.61806C17.5341 2.61806 19.2061 4.66411 19.2061 6.84203C19.2061 6.99598 19.2061 7.17201 19.184 7.34803L14.828 4.79597C14.5641 4.64204 14.3 4.64204 14.036 4.79597L8.51399 8.00796ZM18.326 16.1481V11.1539C18.326 10.8458 18.1939 10.6259 17.93 10.4719L12.408 7.25993L14.212 6.22586C14.3659 6.13795 14.498 6.13795 14.652 6.22586L18.8541 8.64584C20.0642 9.34993 20.878 10.8458 20.878 12.2978C20.878 13.9697 19.8882 15.5098 18.326 16.1478V16.1481ZM7.216 11.748L5.412 10.6921C5.25806 10.6042 5.19203 10.4721 5.19203 10.2961V5.45613C5.19203 3.10218 6.99602 1.32005 9.43808 1.32005C10.3622 1.32005 11.22 1.62816 11.9462 2.1781L7.61222 4.68619C7.34828 4.84014 7.21621 5.06012 7.21621 5.36823V11.7482L7.216 11.748ZM11.0991 13.992L8.51398 12.5401V9.46013L11.0991 8.00819L13.6839 9.46013V12.5401L11.0991 13.992ZM12.76 20.6801C11.836 20.6801 10.9781 20.372 10.252 19.8221L14.5859 17.3139C14.8498 17.16 14.9819 16.9401 14.9819 16.632V10.2519L16.808 11.3079C16.962 11.3958 17.028 11.5278 17.028 11.7039V16.5439C17.028 18.8977 15.2018 20.68 12.76 20.68V20.6801ZM7.54596 15.7741L3.34385 13.3541C2.13375 12.65 1.31988 11.1541 1.31988 9.7022C1.31988 8.00819 2.33188 6.4902 3.8938 5.85214V10.8681C3.8938 11.1762 4.02587 11.3962 4.28981 11.5502L9.78993 14.74L7.98593 15.7741C7.83198 15.8621 7.6999 15.8621 7.54596 15.7741ZM7.3041 19.3822C4.81809 19.3822 2.99201 17.512 2.99201 15.2021C2.99201 15.026 3.01408 14.85 3.03597 14.674L7.36993 17.1821C7.63387 17.336 7.89801 17.336 8.16195 17.1821L13.6839 13.9922V16.0823C13.6839 16.2583 13.6179 16.3903 13.464 16.4782L9.26184 18.8982C8.68983 19.2281 8.00779 19.3822 7.3039 19.3822L7.3041 19.3822ZM12.76 22C15.422 22 17.6439 20.108 18.1502 17.6C20.6141 16.9619 22.1982 14.6519 22.1982 12.298C22.1982 10.7579 21.5382 9.26204 20.3501 8.18401C20.4601 7.72197 20.5263 7.25993 20.5263 6.7981C20.5263 3.65215 17.9742 1.29799 15.0261 1.29799C14.4322 1.29799 13.8602 1.3859 13.2881 1.58401C12.298 0.615974 10.934 0 9.43808 0C6.77604 0 4.55416 1.89191 4.04795 4.39999C1.58403 5.03804 0 7.34804 0 9.70198C0 11.242 0.659934 12.7379 1.84795 13.816C1.73795 14.278 1.67192 14.74 1.67192 15.2019C1.67192 18.3478 4.22396 20.7019 7.17204 20.7019C7.76593 20.7019 8.33797 20.6141 8.90999 20.416C9.89989 21.384 11.2639 22 12.76 22Z" fill="currentColor"></path>
+          </svg>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+            GPT
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.configuredKey', { count: 2 })">Настроено 2 ключа API</p>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="text-end rtl:text-start">
+        <div class="flex items-center justify-end gap-1">
+          <span class="size-1.5 rounded-full bg-brand-400"></span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-400">
+            7M
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.tokenUsed')">Использовано токенов</p>
+      </div>
+    </li>
+
+    <!-- Gemini -->
+    <li class="flex items-center justify-between px-4 py-3">
+      <!-- Left -->
+      <div class="flex items-center gap-3">
+        <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 dark:border-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+            <mask id="mask0_6186_74473" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="9" y="9" width="23" height="22">
+              <path d="M20.1797 9C20.4104 9 20.6111 9.15757 20.6673 9.38139C20.8399 10.066 21.065 10.7338 21.3451 11.3833C22.0746 13.0783 23.0758 14.5618 24.3468 15.8329C25.6185 17.1039 27.1014 18.105 28.7964 18.8347C29.4465 19.1147 30.1137 19.3398 30.7983 19.5123C31.0221 19.5686 31.1797 19.7693 31.1797 20C31.1797 20.2307 31.0222 20.4314 30.7983 20.4877C30.1137 20.6602 29.4459 20.8853 28.7964 21.1654C27.1014 21.895 25.6179 22.8961 24.3468 24.1672C23.0758 25.4388 22.0747 26.9217 21.3451 28.6167C21.065 29.2669 20.8399 29.934 20.6673 30.6186C20.6111 30.8425 20.4104 31 20.1797 31C19.949 31 19.7483 30.8424 19.692 30.6186C19.5195 29.934 19.2944 29.2662 19.0144 28.6167C18.2847 26.9218 17.2842 25.4382 16.0126 24.1672C14.7409 22.8961 13.258 21.895 11.563 21.1654C10.9128 20.8853 10.2457 20.6602 9.56108 20.4877C9.33725 20.4314 9.17969 20.2307 9.17969 20C9.17972 19.7693 9.33727 19.5686 9.56108 19.5123C10.2457 19.3398 10.9134 19.1148 11.563 18.8347C13.258 18.105 14.7415 17.1039 16.0126 15.8329C17.2836 14.5618 18.2847 13.0783 19.0144 11.3833C19.2944 10.7331 19.5195 10.066 19.692 9.38139C19.7483 9.15758 19.949 9.00003 20.1797 9Z" fill="black"></path>
+              <path d="M20.1797 9C20.4104 9 20.6111 9.15757 20.6673 9.38139C20.8399 10.066 21.065 10.7338 21.3451 11.3833C22.0746 13.0783 23.0758 14.5618 24.3468 15.8329C25.6185 17.1039 27.1014 18.105 28.7964 18.8347C29.4465 19.1147 30.1137 19.3398 30.7983 19.5123C31.0221 19.5686 31.1797 19.7693 31.1797 20C31.1797 20.2307 31.0222 20.4314 30.7983 20.4877C30.1137 20.6602 29.4459 20.8853 28.7964 21.1654C27.1014 21.895 25.6179 22.8961 24.3468 24.1672C23.0758 25.4388 22.0747 26.9217 21.3451 28.6167C21.065 29.2669 20.8399 29.934 20.6673 30.6186C20.6111 30.8425 20.4104 31 20.1797 31C19.949 31 19.7483 30.8424 19.692 30.6186C19.5195 29.934 19.2944 29.2662 19.0144 28.6167C18.2847 26.9218 17.2842 25.4382 16.0126 24.1672C14.7409 22.8961 13.258 21.895 11.563 21.1654C10.9128 20.8853 10.2457 20.6602 9.56108 20.4877C9.33725 20.4314 9.17969 20.2307 9.17969 20C9.17972 19.7693 9.33727 19.5686 9.56108 19.5123C10.2457 19.3398 10.9134 19.1148 11.563 18.8347C13.258 18.105 14.7415 17.1039 16.0126 15.8329C17.2836 14.5618 18.2847 13.0783 19.0144 11.3833C19.2944 10.7331 19.5195 10.066 19.692 9.38139C19.7483 9.15758 19.949 9.00003 20.1797 9Z" fill="url(#paint0_linear_6186_74473)"></path>
+            </mask>
+            <g mask="url(#mask0_6186_74473)">
+              <g filter="url(#filter0_f_6186_74473)">
+                <path d="M7.19401 26.1996C9.73595 27.1023 12.6576 25.4097 13.7196 22.4191C14.7817 19.4284 13.582 16.2722 11.0401 15.3695C8.49815 14.4668 5.57653 16.1594 4.51446 19.15C3.4524 22.1407 4.65207 25.2969 7.19401 26.1996Z" fill="#FFE432"></path>
+              </g>
+              <g filter="url(#filter1_f_6186_74473)">
+                <path d="M18.4794 16.3392C21.9715 16.3392 24.8025 13.446 24.8025 9.87709C24.8025 6.30815 21.9715 3.41495 18.4794 3.41495C14.9872 3.41495 12.1562 6.30815 12.1562 9.87709C12.1562 13.446 14.9872 16.3392 18.4794 16.3392Z" fill="#FC413D"></path>
+              </g>
+              <g filter="url(#filter2_f_6186_74473)">
+                <path d="M16.0226 37.0053C19.668 36.8271 22.436 32.8543 22.2052 28.1318C21.9743 23.4093 18.832 19.7255 15.1865 19.9037C11.5411 20.0819 8.77308 24.0547 9.00394 28.7772C9.2348 33.4997 12.3771 37.1835 16.0226 37.0053Z" fill="#00B95C"></path>
+              </g>
+              <g filter="url(#filter3_f_6186_74473)">
+                <path d="M16.0226 37.0053C19.668 36.8271 22.436 32.8543 22.2052 28.1318C21.9743 23.4093 18.832 19.7255 15.1865 19.9037C11.5411 20.0819 8.77308 24.0547 9.00394 28.7772C9.2348 33.4997 12.3771 37.1835 16.0226 37.0053Z" fill="#00B95C"></path>
+              </g>
+              <g filter="url(#filter4_f_6186_74473)">
+                <path d="M19.6732 34.1484C22.7293 32.289 23.5473 28.0542 21.5002 24.6897C19.4532 21.3252 15.3162 20.1051 12.2601 21.9645C9.20402 23.824 8.38604 28.0588 10.4331 31.4233C12.4802 34.7878 16.6171 36.0079 19.6732 34.1484Z" fill="#00B95C"></path>
+              </g>
+              <g filter="url(#filter5_f_6186_74473)">
+                <path d="M32.0263 23.5754C35.4612 23.5754 38.2459 20.8939 38.2459 17.5861C38.2459 14.2783 35.4612 11.5969 32.0263 11.5969C28.5913 11.5969 25.8066 14.2783 25.8066 17.5861C25.8066 20.8939 28.5913 23.5754 32.0263 23.5754Z" fill="#3186FF"></path>
+              </g>
+              <g filter="url(#filter6_f_6186_74473)">
+                <path d="M4.7508 22.8804C7.91358 25.2856 12.5341 24.531 15.0709 21.195C17.6078 17.859 17.1004 13.2049 13.9377 10.7997C10.7749 8.39451 6.15439 9.14909 3.61751 12.4851C1.08063 15.8211 1.58802 20.4752 4.7508 22.8804Z" fill="#FBBC04"></path>
+              </g>
+              <g filter="url(#filter7_f_6186_74473)">
+                <path d="M20.9574 26.4356C24.7326 29.0311 29.7366 28.308 32.1343 24.8206C34.532 21.3332 33.4153 16.402 29.6402 13.8065C25.865 11.211 20.861 11.934 18.4633 15.4215C16.0656 18.9089 17.1823 23.8401 20.9574 26.4356Z" fill="#3186FF"></path>
+              </g>
+              <g filter="url(#filter8_f_6186_74473)">
+                <path d="M27.8198 8.20807C28.7803 9.51389 27.5462 12.0528 25.0634 13.8789C22.5806 15.705 19.7893 16.1268 18.8289 14.821C17.8684 13.5152 19.1026 10.9763 21.5853 9.15015C24.0681 7.32404 26.8594 6.90226 27.8198 8.20807Z" fill="#749BFF"></path>
+              </g>
+              <g filter="url(#filter9_f_6186_74473)">
+                <path d="M19.9354 14.4596C23.775 10.898 25.0929 6.07598 22.879 3.68917C20.6651 1.30235 15.7577 2.25462 11.9181 5.81613C8.07844 9.37763 6.76057 14.1997 8.9745 16.5865C11.1884 18.9733 16.0958 18.0211 19.9354 14.4596Z" fill="#FC413D"></path>
+              </g>
+              <g filter="url(#filter10_f_6186_74473)">
+                <path d="M12.0644 27.2518C14.3465 28.8851 16.9665 29.1333 17.9163 27.8062C18.8662 26.479 17.7862 24.0791 15.5041 22.4458C13.2221 20.8124 10.6021 20.5642 9.6522 21.8914C8.70234 23.2185 9.78232 25.6184 12.0644 27.2518Z" fill="#FFEE48"></path>
+              </g>
+            </g>
+            <defs>
+              <filter id="filter0_f_6186_74473" x="2.46023" y="13.459" width="13.3139" height="14.6511" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="0.83385" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter1_f_6186_74473" x="4.0938" y="-4.6475" width="28.7714" height="29.0492" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="4.03122" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter2_f_6186_74473" x="2.13637" y="13.0436" width="26.9363" height="30.8218" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="3.42693" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter3_f_6186_74473" x="2.13637" y="13.0436" width="26.9363" height="30.8218" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="3.42693" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter4_f_6186_74473" x="2.4518" y="14.2409" width="27.03" height="27.6311" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="3.42693" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter5_f_6186_74473" x="19.2935" y="5.08368" width="25.4658" height="25.0049" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="3.25659" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter6_f_6186_74473" x="-3.89988" y="3.4901" width="26.4882" height="26.6999" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="2.95141" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter7_f_6186_74473" x="11.9287" y="6.97766" width="26.7402" height="26.2868" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="2.63573" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter8_f_6186_74473" x="13.786" y="2.7324" width="19.0765" height="17.5642" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="2.35848" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter9_f_6186_74473" x="3.91634" y="-1.60991" width="24.0208" height="23.4955" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="1.99203" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <filter id="filter10_f_6186_74473" x="4.37667" y="16.1071" width="18.815" height="17.4833" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                <fegaussianblur stdDeviation="2.46547" result="effect1_foregroundBlur_6186_74473"></fegaussianblur>
+              </filter>
+              <lineargradient id="paint0_linear_6186_74473" x1="15.4336" y1="23.72" x2="26.8601" y2="14.0864" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4893FC"></stop>
+                <stop offset="0.27" stop-color="#4893FC"></stop>
+                <stop offset="0.776981" stop-color="#969DFF"></stop>
+                <stop offset="1" stop-color="#BD99FE"></stop>
+              </lineargradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+            Gemini
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.configuredKey', { count: 1 })">Настроен 1 ключ API</p>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="text-end rtl:text-start">
+        <div class="flex items-center justify-end gap-1">
+          <span class="size-1.5 rounded-full bg-purple-300"></span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-400">
+            2M
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.tokenUsed')">Использовано токенов</p>
+      </div>
+    </li>
+
+    <!-- xAI -->
+    <li class="flex items-center justify-between px-4 py-3">
+      <!-- Left -->
+      <div class="flex items-center gap-3">
+        <div class="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 dark:border-gray-800">
+          <svg class="size-4.5 text-gray-800 dark:text-white/90" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.2569 5.79799L13.5668 18H16.049L16.3593 1.35603L13.2569 5.79799Z" fill="currentColor"></path>
+            <path d="M16.3593 0H12.5718L6.62844 8.51004L8.52218 11.2214L16.3593 0Z" fill="currentColor"></path>
+            <path d="M0 18H3.78747L5.68158 15.2887L3.78747 12.577L0 18Z" fill="currentColor"></path>
+            <path d="M0 5.79799L8.52218 18H12.3096L3.78747 5.79799H0Z" fill="currentColor"></path>
+          </svg>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+            xAI
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.configuredKey', { count: 2 })">Настроено 2 ключа API</p>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="text-end rtl:text-start">
+        <div class="flex items-center justify-end gap-1">
+          <span class="size-1.5 rounded-full bg-sky-300"></span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-400">
+            4.5M
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.apiToken.tokenUsed')">Использовано токенов</p>
+      </div>
+    </li>
+  </ul>
+
+  <a href="#" class="flex justify-center px-4 py-3 text-center text-sm font-medium text-gray-500 transition-colors hover:text-gray-800 dark:text-gray-400 dark:hover:text-white/90" x-text="$t('aiDashboard.apiToken.viewAllUsageDetails')">Вся статистика использования</a>
+</div>
+</div>
+<!-- Token Usage Chart End -->
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <!-- User Analytics Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-5 flex items-start justify-between">
+  <div>
+    <h3 class="mb-1 text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('aiDashboard.userAnalytics.title')">Аналитика пользователей</h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.userAnalytics.subtitle')">Данные о пользователях платформы</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative inline-block text-left">
+    <button x-ref="trigger" type="button" @click="toggle" aria-label="Параметры" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" :class="open ? 'text-gray-700 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="mb-3 flex items-center justify-between gap-4">
+  <div class="flex items-center gap-1.5">
+    <svg class="size-6 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.109 5.10414C14.4743 4.94178 14.8789 4.85156 15.3045 4.85156C16.932 4.85156 18.2514 6.17095 18.2514 7.79851C18.2514 9.42606 16.932 10.7455 15.3045 10.7455C14.8794 10.7455 14.4753 10.6555 14.1103 10.4935M15.797 13.2207C19.5989 13.4453 20.821 16.009 21.2134 17.6906C21.3993 18.4875 20.7424 19.1487 19.9241 19.1487H17.59M11.7512 7.79855C11.7512 9.4261 10.4318 10.7455 8.80427 10.7455C7.17671 10.7455 5.85732 9.4261 5.85732 7.79855C5.85732 6.171 7.17671 4.8516 8.80427 4.8516C10.4318 4.8516 11.7512 6.171 11.7512 7.79855ZM8.74941 13.205C12.9833 13.205 14.3026 15.9309 14.7132 17.6906C14.8991 18.4875 14.2422 19.1487 13.4239 19.1487H4.07489C3.25661 19.1487 2.59973 18.4875 2.78565 17.6906C3.19623 15.9309 4.51554 13.205 8.74941 13.205Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span class="text-gray-500 dark:text-white/90" x-text="$t('aiDashboard.userAnalytics.totalUsers')">Всего пользователей</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-medium text-gray-800 dark:text-white/90">10,590</h3>
+  </div>
+</div>
+<div class="grid grid-cols-1 gap-1 rounded-2xl bg-gray-100 p-1 sm:grid-cols-2 dark:bg-white/3">
+  <!-- Free Users -->
+  <div class="flex flex-col rounded-t-xl bg-white p-5 sm:rounded-none sm:rounded-ss-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userAnalytics.freeUsers')">Бесплатные пользователи</span>
+      <svg class="size-5 text-brand-500 dark:text-brand-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.109 5.10414C14.4743 4.94178 14.8789 4.85156 15.3045 4.85156C16.932 4.85156 18.2514 6.17095 18.2514 7.79851C18.2514 9.42606 16.932 10.7455 15.3045 10.7455C14.8794 10.7455 14.4753 10.6555 14.1103 10.4935M15.797 13.2207C19.5989 13.4453 20.821 16.009 21.2134 17.6906C21.3993 18.4875 20.7424 19.1487 19.9241 19.1487H17.59M11.7512 7.79855C11.7512 9.4261 10.4318 10.7455 8.80427 10.7455C7.17671 10.7455 5.85732 9.4261 5.85732 7.79855C5.85732 6.171 7.17671 4.8516 8.80427 4.8516C10.4318 4.8516 11.7512 6.171 11.7512 7.79855ZM8.74941 13.205C12.9833 13.205 14.3026 15.9309 14.7132 17.6906C14.8991 18.4875 14.2422 19.1487 13.4239 19.1487H4.07489C3.25661 19.1487 2.59973 18.4875 2.78565 17.6906C3.19623 15.9309 4.51554 13.205 8.74941 13.205Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      15,682
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
+        95%
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.userAnalytics.ofTotalUser')">от всех пользователей</span>
+    </div>
+  </div>
+
+  <!-- Paid Users -->
+  <div class="flex flex-col bg-white p-5 sm:rounded-none sm:rounded-se-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userAnalytics.paidUsers')">Платные пользователи</span>
+      <svg class="size-5 text-orange-500 dark:text-orange-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.12 14.3777C18.12 13.6818 17.5558 13.1176 16.8599 13.1176H16.2C15.4047 13.1176 14.76 13.7624 14.76 14.5576V14.8121C14.76 15.4124 15.1323 15.9496 15.6944 16.1604L17.1856 16.7197C17.7477 16.9305 18.12 17.4678 18.12 18.0681V18.3225C18.12 19.1178 17.4753 19.7625 16.68 19.7625H16.0201C15.3242 19.7625 14.76 19.1984 14.76 18.5024M16.44 19.7625V20.88M16.44 12V13.1176M10.0055 19.92H6.17437C5.37908 19.92 4.73438 19.2753 4.73438 18.48V17.2214C4.73438 14.8355 6.66851 12.9014 9.05437 12.9014H10.0313M15.4498 6.5708C15.4498 8.47663 13.9047 10.0216 11.9989 10.0216C10.0932 10.0216 8.54813 8.47663 8.54813 6.5708C8.54813 4.66497 10.0932 3.12 11.9989 3.12C13.9047 3.12 15.4498 4.66497 15.4498 6.5708Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      305
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
+        5%
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.userAnalytics.ofTotalUser')">от всех пользователей</span>
+    </div>
+  </div>
+
+  <!-- This Month -->
+  <div class="flex flex-col bg-white p-5 sm:rounded-none sm:rounded-es-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userAnalytics.thisMonth')">Этот месяц</span>
+      <svg class="size-5 text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      4,925
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-green-600 dark:text-green-500">
+        +5,238
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.userAnalytics.fromLastMonth')">к прошлому месяцу</span>
+    </div>
+  </div>
+
+  <!-- This Year -->
+  <div class="flex flex-col rounded-b-xl bg-white p-5 sm:rounded-none sm:rounded-ee-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.userAnalytics.thisYear')">Этот год</span>
+      <svg class="size-5 text-pink-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      12,489
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-green-600 dark:text-green-500">
+        +12,495
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.userAnalytics.fromLastYear')">к прошлому году</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- User Analytics End -->
+
+                <!-- Project Analytics Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-5 flex items-start justify-between">
+  <div>
+    <h3 class="mb-1 text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('aiDashboard.projectAnalytics.title')">Аналитика проектов</h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.projectAnalytics.subtitle')">Подробные данные о проектах</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative inline-block text-left">
+    <button x-ref="trigger" type="button" @click="toggle" aria-label="Параметры" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" :class="open ? 'text-gray-700 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="mb-3 flex items-center justify-between gap-4">
+  <div class="flex items-center gap-1.5">
+    <svg class="size-6 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.12012 16.5216V6.47999C3.12012 5.6847 3.76482 5.03999 4.56012 5.03999H8.64012C9.09337 5.03999 9.52017 5.25339 9.79212 5.61599L11.0881 7.34399C11.3601 7.70659 11.7869 7.91999 12.2401 7.91999H18.2401C19.0354 7.91999 19.6801 8.5647 19.6801 9.35999V11.5404M19.6801 11.5404C20.5438 11.6866 21.101 12.5919 20.7882 13.4521L18.9555 18.4921C18.7485 19.0612 18.2077 19.44 17.6022 19.44H4.56664C3.74345 19.44 3.12642 18.7623 3.12538 17.9999M19.6801 11.5404C19.6008 11.527 19.5189 11.52 19.4349 11.52H6.39936C5.79383 11.52 5.25299 11.8988 5.04606 12.4679L3.21332 17.5079C3.15361 17.6721 3.12561 17.8379 3.12538 17.9999M3.12538 17.9999V16.5216" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span class="text-gray-500 dark:text-white/90" x-text="$t('aiDashboard.projectAnalytics.totalProjects')">Всего проектов</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-medium text-gray-800 dark:text-white/90">15,682</h3>
+  </div>
+</div>
+<div class="grid grid-cols-1 gap-1 rounded-2xl bg-gray-100 p-1 sm:grid-cols-2 dark:bg-white/3">
+  <!-- Today -->
+  <div class="flex flex-col rounded-t-xl bg-white p-5 sm:rounded-none sm:rounded-ss-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.projectAnalytics.today')">Сегодня</span>
+      <svg class="size-5 text-purple-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.5 13H11.5L10 21L17.5 11H12.5L14 3L6.5 13Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      120
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-gray-400" x-text="$t('aiDashboard.projectAnalytics.projectCreated')">Созданные проекты</span>
+    </div>
+  </div>
+
+  <!-- Yesterday -->
+  <div class="flex flex-col bg-white p-5 sm:rounded-none sm:rounded-se-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.projectAnalytics.yesterday')">Вчера</span>
+      <svg class="size-5 text-sky-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      392
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-gray-400" x-text="$t('aiDashboard.projectAnalytics.projectCreated')">Созданные проекты</span>
+    </div>
+  </div>
+
+  <!-- This Month -->
+  <div class="flex flex-col bg-white p-5 sm:rounded-none sm:rounded-es-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.projectAnalytics.thisMonth')">Этот месяц</span>
+      <svg class="size-5 text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      3,835
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-green-600 dark:text-green-500">
+        +2,093
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.projectAnalytics.fromLastMonth')">к прошлому месяцу</span>
+    </div>
+  </div>
+
+  <!-- This Year -->
+  <div class="flex flex-col rounded-b-xl bg-white p-5 sm:rounded-none sm:rounded-ee-xl dark:border-gray-800 dark:bg-gray-900">
+    <div class="mb-4 flex items-center justify-between">
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.projectAnalytics.thisYear')">Этот год</span>
+      <svg class="size-5 text-pink-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h2 class="mb-1 text-xl font-medium text-gray-800 dark:text-white/90">
+      12,958
+    </h2>
+
+    <div class="flex items-center gap-1 text-xs">
+      <span class="text-sm font-medium text-green-600 dark:text-green-500">
+        +8,532
+      </span>
+      <span class="text-gray-400" x-text="$t('aiDashboard.projectAnalytics.fromLastYear')">к прошлому году</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Project Analytics End -->
+              </div>
+
+              <!-- Recent Transactions Start -->
+              <div x-data="transactionsTable()" class="w-full max-w-full min-w-0 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 sm:p-0 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('aiDashboard.recentTransactions.title')">Последние операции</h3>
+  </div>
+
+  <div class="flex w-full items-center gap-3 sm:w-auto">
+    <div class="relative flex-1 sm:w-75 sm:flex-initial">
+      <span class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-gray-400 rtl:right-3 rtl:left-auto">
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04199 9.37381C3.04199 5.87712 5.87735 3.04218 9.37533 3.04218C12.8733 3.04218 15.7087 5.87712 15.7087 9.37381C15.7087 12.8705 12.8733 15.7055 9.37533 15.7055C5.87735 15.7055 3.04199 12.8705 3.04199 9.37381ZM9.37533 1.54218C5.04926 1.54218 1.54199 5.04835 1.54199 9.37381C1.54199 13.6993 5.04926 17.2055 9.37533 17.2055C11.2676 17.2055 13.0032 16.5346 14.3572 15.4178L17.1773 18.2381C17.4702 18.531 17.945 18.5311 18.2379 18.2382C18.5308 17.9453 18.5309 17.4704 18.238 17.1775L15.4182 14.3575C16.5367 13.0035 17.2087 11.2671 17.2087 9.37381C17.2087 5.04835 13.7014 1.54218 9.37533 1.54218Z" fill="currentColor"></path>
+        </svg>
+      </span>
+      <input type="text" x-model="searchQuery" :placeholder="$t('aiDashboard.recentTransactions.searchPlaceholder')" class="h-10 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-4 pl-10 text-sm text-gray-800 placeholder-gray-400 transition outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rtl:pr-10 rtl:pl-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder-gray-500 dark:focus:border-brand-500" placeholder="Поиск…">
+    </div>
+
+    <button type="button" class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+      <svg class="size-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 5.83333H17.5M5 10H15M7.5 14.1667H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('aiDashboard.recentTransactions.filter')">Фильтр</span>
+    </button>
+  </div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+  <table class="w-full min-w-160 table-auto text-left rtl:text-right">
+    <thead class="border-y border-gray-100 dark:border-gray-800">
+      <tr class="h-11">
+        <th class="min-w-44 py-3 ps-5 text-start text-sm font-normal text-gray-500 sm:ps-6 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.paidBy')">Плательщик</th>
+        <th class="min-w-44 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.packageName')">Тариф</th>
+        <th class="min-w-32 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.price')">Сумма</th>
+        <th class="min-w-36 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.paidDate')">Дата оплаты</th>
+        <th class="min-w-28 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.status')">Статус</th>
+        <th class="min-w-16 py-3 pe-5 text-end text-sm font-normal text-gray-500 sm:pe-6 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.table.actions')">Действия</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+      <template x-for="row in rows" :key="row.id"><tr class="h-16">
+          <td class="min-w-44 py-3 ps-5 sm:ps-6">
+            <div class="flex items-center gap-3">
+              <div>
+                <p class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="row.original.name">John Doe</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400" x-text="row.original.email">johndeo@gmail.com</p>
+              </div>
+            </div>
+          </td>
+          <td class="min-w-44 px-4 py-3 text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="$t('aiDashboard.recentTransactions.packages.' + row.original.packageKey)">Начальный — помесячно</td>
+          <td class="min-w-32 px-4 py-3 text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="row.original.price">$20.00</td>
+          <td class="min-w-36 px-4 py-3 text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="$demoDate(row.original.paidDate)">28 февраля 2029</td>
+          <td class="min-w-28 px-4 py-3 text-sm whitespace-nowrap">
+            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500" :class="row.original.statusKey === 'active'
+                ? 'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500'
+                : 'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500'" x-text="$t('aiDashboard.recentTransactions.statuses.' + row.original.statusKey)">Активен</span>
+          </td>
+          <td class="min-w-16 py-3 pe-5 text-end whitespace-nowrap sm:pe-6">
+            <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative inline-block text-left">
+              <button x-ref="trigger" type="button" @click="toggle" aria-label="Удалить операцию" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-500 transition-all outline-none select-none hover:text-red-500 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-400 dark:hover:text-red-500" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                  <path d="M17.0837 5H2.91699M8.33366 9.16667V14.1667M11.667 9.16667V14.1667M15.417 5V15.8333C15.417 16.7538 14.6708 17.5 13.7503 17.5H6.25033C5.32985 17.5 4.58366 16.7538 4.58366 15.8333V5M12.917 5V3.33333C12.917 2.8731 12.5439 2.5 12.0837 2.5H7.91699C7.45676 2.5 7.08366 2.8731 7.08366 3.33333V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-32 space-y-1 rounded-2xl border border-gray-200 bg-white p-1 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+                <button type="button" @click="deleteItem(row.original.id); open = false;" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.confirm')">Подтвердить</button>
+                <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.cancel')">Отмена</button>
+              </div>
+            </div>
+          </td>
+        </tr></template>
+
+      <!-- Empty State -->
+      <tr x-show="rows.length === 0" style="display: none;">
+        <td colspan="6" class="px-6 py-12 text-center text-sm text-gray-500 dark:text-gray-400">
+          <div class="flex flex-col items-center justify-center">
+            <div class="mb-3 flex size-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+              <svg class="size-6 text-gray-800 dark:text-white/90" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z" stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M3 9H21M9 21V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <h4 class="text-base font-semibold text-gray-800 dark:text-white/90">
+              Операции не найдены
+            </h4>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              Попробуйте изменить поисковый запрос.
+            </p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="border-t-0 px-5 py-4 sm:px-6">
+  <!-- Mobile Pagination (< sm) -->
+  <div class="flex w-full items-center justify-between sm:hidden">
+    <span class="text-sm font-medium text-gray-700 dark:text-gray-400">
+      <span x-text="currentPage">1</span>/<span x-text="totalPages">3</span>
+    </span>
+
+    <div class="flex items-center gap-2">
+      <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 pointer-events-none opacity-50 cursor-not-allowed" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" aria-disabled="true" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+          <path d="M15 18l-6-6 6-6"></path>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Desktop Pagination (>= sm) -->
+  <div class="hidden sm:flex sm:items-center sm:justify-start">
+    <nav role="navigation" aria-label="Навигация по страницам" class="mx-0 flex w-auto justify-start">
+      <ul class="flex items-center gap-1.5">
+        <!-- Previous Button -->
+        <li>
+          <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 pointer-events-none opacity-50 cursor-not-allowed" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" aria-disabled="true" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </a>
+        </li>
+
+        <!-- Page Numbers & Ellipsis -->
+        <template x-for="(page, index) in getPages()" :key="index"><li>
+            <template x-if="page === '...'"><span class="px-2 text-gray-500">…</span></template>
+            <template x-if="page !== '...'"><a href="#" :aria-label="'Страница ' + page" :aria-current="currentPage === page ? 'page' : undefined" x-on:click.prevent="setPage(page)" class="inline-flex size-10 shrink-0 animate-in items-center justify-center rounded-[10px] text-sm font-medium shadow-theme-xs transition-all duration-150 fade-in-0 outline-none select-none focus-visible:outline-hidden active:translate-y-px border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600" :class="currentPage === page 
+                  ? 'border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600' 
+                  : 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white'" x-text="page" aria-label="Страница 1" aria-current="page">1</a></template>
+          </li></template>
+
+        <!-- Next Button -->
+        <li>
+          <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+<!-- Recent Transactions End -->
+            </div>
+          </div>
+                </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer src="./assets/js/localization.js"></script>
+  <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
+
+</body></html>

@@ -12,6 +12,15 @@
 | [logistics.html](logistics.html) | Логистика |
 | [marketing.html](marketing.html) | Маркетинг |
 | [saas.html](saas.html) | SaaS |
+| [ai.html](ai.html) | ИИ-аналитика |
+| [sales.html](sales.html) | Продажи |
+| [finance.html](finance.html) | Финансы |
+| [hr.html](hr.html) | Персонал |
+| [chat.html](chat.html) | Чаты |
+| [support-tickets.html](support-tickets.html) | Обращения в поддержку |
+| [ticket-reply.html](ticket-reply.html) | Ответ на обращение |
+| [inbox.html](inbox.html) | Входящие |
+| [inbox-deatil.html](inbox-deatil.html) | Просмотр письма |
 
 ## Как создать свой интерфейс
 

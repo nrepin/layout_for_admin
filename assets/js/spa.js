@@ -12,7 +12,7 @@
     const scroller = main.parentElement;
     const directory = new URL("./", location.href).pathname;
     const routes = new Map(
-      Array.from(sidebar.querySelectorAll(".menu-dropdown-item[href]"), link => [new URL(link.href).pathname, link]),
+      Array.from(sidebar.querySelectorAll(".menu-dropdown-item[href], .menu-item[href]:not(.sidebar-group-toggle)"), link => [new URL(link.href).pathname, link]),
     );
     routes.set(directory, routes.get(`${directory}index.html`));
     let activeLink = sidebar.querySelector("[aria-current='page']");
@@ -62,9 +62,11 @@
         const nextLink = routes.get(target.pathname);
         if (nextLink && activeLink !== nextLink) {
           activeLink?.removeAttribute("aria-current");
-          activeLink?.classList.replace("menu-dropdown-item-active", "menu-dropdown-item-inactive");
+          if (activeLink) setLinkActive(activeLink, false);
           nextLink.setAttribute("aria-current", "page");
-          nextLink.classList.replace("menu-dropdown-item-inactive", "menu-dropdown-item-active");
+          setLinkActive(nextLink, true);
+          const group = nextLink.closest("[data-support-menu]");
+          if (group) Alpine.$data(group).open = true;
           activeLink = nextLink;
         }
         widgets.mount();
@@ -85,6 +87,17 @@
           pending = undefined;
           main.removeAttribute("aria-busy");
         }
+      }
+    }
+
+    function setLinkActive(link, active) {
+      const prefix = link.classList.contains("menu-dropdown-item") ? "menu-dropdown-item" : "menu-item";
+      link.classList.toggle(`${prefix}-active`, active);
+      link.classList.toggle(`${prefix}-inactive`, !active);
+      const icon = link.querySelector(":scope > svg");
+      if (icon && prefix === "menu-item") {
+        icon.classList.toggle("menu-item-icon-active", active);
+        icon.classList.toggle("menu-item-icon-inactive", !active);
       }
     }
 

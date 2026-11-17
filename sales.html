@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Продажи | MayBrands</title>
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet">
+  </head>
+  <body x-data="{ page: 'sales', section: 'dashboard', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+          <li><a href="./ai.html" class="group menu-dropdown-item menu-dropdown-item-inactive">ИИ-аналитика</a></li>
+          <li><a href="./sales.html" class="group menu-dropdown-item menu-dropdown-item-active" aria-current="page">Продажи</a></li>
+          <li><a href="./finance.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Финансы</a></li>
+          <li><a href="./hr.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Персонал</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Поддержка</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li><a href="./chat.html" class="group menu-item menu-item-inactive" aria-label="Чаты"><svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-chat"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Чаты</span></a></li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-support-tickets').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-support-tickets" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./support-tickets.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Обращения в поддержку</a></li>
+          <li><a href="./ticket-reply.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Ответ на обращение</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-email').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-email" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./inbox.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Входящие</a></li>
+          <li><a href="./inbox-deatil.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Просмотр письма</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="true" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Николай Репин
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        nrepin@themay.com
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6" data-admin-page="sales" data-admin-section="dashboard" tabindex="-1">
+            <!-- Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'Продажи' }">
+              <div class="mb-6 flex flex-col items-start gap-2">
+  <nav aria-label="Хлебные крошки">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li>
+        <a class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" href="./index.html">
+          Главная
+          <svg class="stroke-current rtl:rotate-180" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-16"></use></svg>
+        </a>
+      </li>
+      <li aria-current="page" class="text-sm text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Продажи</li>
+    </ol>
+  </nav>
+  <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Продажи</h1>
+</div>
+</div>
+            <!-- Breadcrumb End -->
+
+            <div class="grid grid-cols-12 gap-4 md:gap-6">
+              <div class="col-span-12">
+                <!-- Sales Metrics Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-5 flex flex-col justify-between gap-5 sm:flex-row">
+  <div>
+    <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesStats.subtitle')">Отслеживайте выручку, показатели и рост продаж в реальном времени</p>
+  </div>
+
+  <div class="flex items-center gap-3 lg:flex-row">
+    <!-- Date input -->
+    <div class="relative hidden items-center xl:inline-flex">
+      <svg class="pointer-events-none absolute inset-s-1/2 top-1/2 z-10 size-5 -translate-x-1/2 -translate-y-1/2 text-gray-500 lg:inset-s-3 lg:top-1/2 lg:translate-x-0 lg:-translate-y-1/2 rtl:translate-x-1/2 lg:rtl:translate-x-0 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M6.667 1.542c.414 0 .75.336.75.75v.708h5.166v-.708a.75.75 0 011.5 0v.708h1.334c1.104 0 2 .896 2 2v10.833c0 1.105-.896 2-2 2H4.583c-1.104 0-2-.895-2-2V5c0-1.104.896-2 2-2h1.334v-.708c0-.414.335-.75.75-.75zm0 2.958H4.583c-.276 0-.5.224-.5.5v1.75h11.834V5c0-.276-.224-.5-.5-.5h-2.084H6.667zm9.25 3.75H4.083v7.583c0 .277.224.5.5.5h10.834c.276 0 .5-.223.5-.5V8.25z" fill="currentColor"></path>
+      </svg>
+      <input class="datepicker h-11 w-11 cursor-pointer rounded-lg border border-gray-300 bg-white text-sm font-medium text-transparent transition-colors outline-none lg:h-auto lg:w-40 lg:py-2 lg:ps-10 lg:pe-3 lg:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:lg:text-gray-300" placeholder="Выберите период" :placeholder="$t('sales.salesStats.selectDateRange')" data-class="flatpickr-right" type="text">
+    </div>
+
+    <!-- Filter Button -->
+    <button type="button" class="inline-flex h-10 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50">
+      <svg class="size-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span x-text="$t('common.filter')">Фильтр</span>
+    </button>
+
+    <!-- Export Button -->
+    <button type="button" class="inline-flex h-10 items-center justify-center gap-2 rounded-[10px] bg-brand-500 px-4 text-sm font-medium text-white shadow-theme-xs transition-all outline-none select-none hover:bg-brand-600 active:translate-y-px">
+      <svg class="size-4.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M15 11.25a.75.75 0 01.75.75v1.5a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25V12a.75.75 0 011.5 0v1.5c0 .414.335.75.75.75h9a.75.75 0 00.75-.75V12a.75.75 0 01.75-.75zm-5.998-9a.744.744 0 01.547.241L13 5.937A.75.75 0 0111.938 7L9.752 4.813V12a.75.75 0 01-1.5 0V4.809l-2.19 2.19A.75.75 0 015 5.938l3.468-3.466a.745.745 0 01.532-.222z" fill="currentColor"></path>
+      </svg>
+      <span x-text="$t('sales.salesStats.export')">Экспорт</span>
+    </button>
+  </div>
+</div>
+<div class="rounded-2xl bg-gray-100 p-1 dark:bg-white/3">
+  <div class="grid grid-cols-1 gap-1 sm:grid-cols-2 xl:grid-cols-4">
+    <!-- Stat Card 1: Total Revenue -->
+    <div class="rounded-xl border-0 border-transparent bg-white p-5 sm:p-5 dark:border-transparent dark:bg-gray-900">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-semibold text-gray-700 dark:text-gray-400" x-text="$t('sales.salesStats.totalRevenue')">Общая выручка</h3>
+          <div class="mt-1.5 flex gap-1.5">
+            <p class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+              <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+              </svg>
+              <span>32%</span>
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesStats.vsLastMonth')">к прошлому месяцу</p>
+          </div>
+        </div>
+        <span>
+          <svg class="size-6 text-[#12B76A]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15.484 7.723a2.613 2.613 0 00-2.613-2.613h-1.057a3.298 3.298 0 00-1.158 6.386l2.688 1.009a3.298 3.298 0 01-1.158 6.386H11.13a2.613 2.613 0 01-2.613-2.613M12 19.283v1.925m0-18.416v1.925" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+
+      <div class="flex items-end justify-between">
+        <h2 class="w-1/2 text-3xl font-semibold text-gray-800 dark:text-white/90">
+          $10,590
+        </h2>
+        <div class="h-11 w-1/2">
+          <div id="salesMetricChart1" style="min-height: 44px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Card 2: Total Sales -->
+    <div class="rounded-xl border-0 border-transparent bg-white p-5 sm:p-5 dark:border-transparent dark:bg-gray-900">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-semibold text-gray-700 dark:text-gray-400" x-text="$t('sales.salesStats.totalSales')">Общий объём продаж</h3>
+          <div class="mt-1.5 flex gap-1.5">
+            <p class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+              <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+              </svg>
+              <span>32%</span>
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesStats.vsLastMonth')">к прошлому месяцу</p>
+          </div>
+        </div>
+        <span>
+          <svg class="size-6 text-[#7C3AED]" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.625 9.333H3M4.75 14H3m.875 4.667H3m6.902 3.645h13.105a1.75 1.75 0 001.74-1.567L26.13 7.62a1.75 1.75 0 00-1.74-1.934H11.284a1.75 1.75 0 00-1.74 1.567L8.161 20.378a1.75 1.75 0 001.74 1.934zm6.56-16.625h3.117l-.875 5.821h-3.117l.875-5.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+
+      <div class="flex items-end justify-between">
+        <h2 class="w-1/2 text-3xl font-semibold text-gray-800 dark:text-white/90">
+          1,320
+        </h2>
+        <div class="h-11 w-1/2">
+          <div id="salesMetricChart2" style="min-height: 44px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Card 3: Conversion Rate -->
+    <div class="rounded-xl border-0 border-transparent bg-white p-5 sm:p-5 dark:border-transparent dark:bg-gray-900">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-semibold text-gray-700 dark:text-gray-400" x-text="$t('sales.salesStats.conversionRate')">Коэффициент конверсии</h3>
+          <div class="mt-1.5 flex gap-1.5">
+            <p class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+              <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+              </svg>
+              <span>32%</span>
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesStats.vsLastMonth')">к прошлому месяцу</p>
+          </div>
+        </div>
+        <span>
+          <svg class="size-6 text-[#38BDF8]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.752 7.37695H5.25196M15.3773 4.00098L18.75 7.37587L15.3773 10.751M5.25 16.625H18.75M8.62471 20.001L5.25196 16.6261L8.62471 13.251" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+
+      <div class="flex items-end justify-between">
+        <h2 class="w-1/2 text-3xl font-semibold text-gray-800 dark:text-white/90">
+          4.38%
+        </h2>
+        <div class="h-11 w-1/2">
+          <div id="salesMetricChart3" style="min-height: 44px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Card 4: Refund Rate -->
+    <div class="rounded-xl border-0 border-transparent bg-white p-5 sm:p-5 dark:border-transparent dark:bg-gray-900">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-semibold text-gray-700 dark:text-gray-400" x-text="$t('sales.salesStats.refundRate')">Доля возвратов</h3>
+          <div class="mt-1.5 flex gap-1.5">
+            <p class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+              <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+              </svg>
+              <span>32%</span>
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesStats.vsLastMonth')">к прошлому месяцу</p>
+          </div>
+        </div>
+        <span>
+          <svg class="size-6 text-[#F04438]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.6389 10.8655V8.16168C20.6389 7.3664 19.9942 6.72168 19.1989 6.72168H4.31891C3.52361 6.72168 2.87891 7.3664 2.87891 8.16168V16.3217C2.87891 17.117 3.52361 17.7617 4.31891 17.7617H8.96575M12.7199 10.2372C12.429 10.0976 12.1032 10.0193 11.759 10.0193C10.5315 10.0193 9.53656 11.0144 9.53656 12.2417C9.53656 12.587 9.61532 12.914 9.75587 13.2056M11.7589 15.1717H18.1689C19.5331 15.1717 20.6389 16.2776 20.6389 17.6417C20.6389 19.0058 19.5331 20.1116 18.1689 20.1116H14.2357M11.7589 15.1717L13.6777 13.2517M11.7589 15.1717L13.6777 17.0917" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6.20312 12.2422H6.21312" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+
+      <div class="flex items-end justify-between">
+        <h2 class="w-1/2 text-3xl font-semibold text-gray-800 dark:text-white/90">
+          1.2%
+        </h2>
+        <div class="h-11 w-1/2">
+          <div id="salesMetricChart4" style="min-height: 44px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Sales Metrics End -->
+              </div>
+
+              <div class="col-span-12">
+                <!-- Revenue Chart Start -->
+                <div x-data="{
+    tab: 'monthly',
+    setTab(newTab) {
+      this.tab = newTab;
+      if (window.updateRevenueChart) {
+        window.updateRevenueChart(newTab);
+      }
+    }
+  }" class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('sales.revenueChart.title')">Структура выручки</h3>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.revenueChart.subtitle')">Revenue insights &amp; performance overview</p>
+  </div>
+
+  <div class="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
+    <button type="button" @click="setTab('daily')" :class="tab === 'daily' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors select-none text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('sales.revenueChart.daily')">По дням</button>
+    <button type="button" @click="setTab('weekly')" :class="tab === 'weekly' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors select-none text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white" x-text="$t('sales.revenueChart.weekly')">По неделям</button>
+    <button type="button" @click="setTab('monthly')" :class="tab === 'monthly' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'" class="h-8 rounded-md px-3 text-sm font-medium transition-colors select-none bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white" x-text="$t('sales.revenueChart.monthly')">По месяцам</button>
+  </div>
+</div>
+<div class="mt-6 mb-2 flex items-center gap-5">
+  <div class="flex items-center gap-1.5">
+    <span class="size-2.5 rounded-full bg-brand-500"></span>
+    <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.revenueChart.online')">Онлайн</span>
+  </div>
+  <div class="flex items-center gap-1.5">
+    <span class="size-2.5 rounded-full bg-[#00BCFF]"></span>
+    <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.revenueChart.offline')">Офлайн</span>
+  </div>
+</div>
+<div class="custom-scrollbar max-w-full overflow-x-auto">
+    <div class="-ms-4 min-w-162.5 ps-2 xl:min-w-full">
+      <div id="revenueChart" style="min-height: 290px;"></div>
+</div>
+  </div>
+</div>
+<!-- Revenue Chart End -->
+              </div>
+
+              <div class="col-span-12 grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
+                <!-- Retention Heatmap Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-start justify-between gap-4">
+  <div>
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('sales.userRetention.title')">Удержание пользователей</h3>
+    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400" x-text="$t('sales.userRetention.subtitle')">Динамика вовлечённости пользователей</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="12" cy="5" r="1"></circle>
+        <circle cx="12" cy="19" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="mt-4 mb-5 flex items-baseline gap-2">
+  <h4 class="text-3xl font-medium text-gray-800 dark:text-white/90">24%</h4>
+  <div class="flex items-center gap-1.5">
+    <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+      <svg class="size-3.5 rotate-45 rtl:-rotate-45" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+      </svg>
+      <span>3.2%</span>
+    </span>
+    <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.userRetention.increasedVsLastWeek')">Рост к прошлой неделе</span>
+  </div>
+</div>
+<div x-data="{
+    tooltip: null,
+    matrix: [
+      [86,63,54,47,42,39,36,33,31,29,27,25],
+      [81,58,49,42,37,34,31,28,26,24,22,0],
+      [89,66,57,50,45,42,39,36,34,32,0,0],
+      [83,60,51,44,39,36,33,30,28,0,0,0],
+      [91,68,59,52,47,44,41,38,0,0,0,0],
+      [79,56,47,40,35,32,29,0,0,0,0,0],
+      [87,64,55,48,43,40,0,0,0,0,0,0],
+      [82,59,50,43,38,0,0,0,0,0,0,0],
+      [90,67,58,51,0,0,0,0,0,0,0,0],
+      [81,58,49,0,0,0,0,0,0,0,0,0],
+      [88,65,0,0,0,0,0,0,0,0,0,0],
+      [84,0,0,0,0,0,0,0,0,0,0,0]
+    ],
+    getColorClass(val) {
+      if (val === 0) return 'bg-transparent';
+      if (val &lt;= 25) return 'bg-brand-100 dark:bg-brand-500/20';
+      if (val &lt;= 50) return 'bg-brand-300 dark:bg-brand-500/40';
+      if (val &lt;= 75) return 'bg-brand-400 dark:bg-brand-500/70';
+      return 'bg-brand-500';
+    },
+    handleHover(e, val, col) {
+      if (val === 0) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const wrapper = e.currentTarget.closest('.hm-wrapper');
+      const wRect = wrapper.getBoundingClientRect();
+
+      const cellLeft = rect.left - wRect.left;
+      const cellRight = rect.right - wRect.left;
+      const cellCenter = cellLeft + rect.width / 2;
+      const wrapperWidth = wRect.width;
+
+      let x = cellCenter;
+      let align = 'center';
+      if (cellCenter &lt; 40) {
+        x = Math.max(0, cellLeft);
+        align = 'left';
+      } else if (wrapperWidth - cellCenter &lt; 40) {
+        x = Math.min(wrapperWidth, cellRight);
+        align = 'right';
+      }
+
+      const yOffset = rect.top - wRect.top;
+      const placement = yOffset &lt; 36 ? 'bottom' : 'top';
+      const y = placement === 'bottom' ? yOffset + rect.height + 6 : yOffset - 6;
+
+      this.tooltip = {
+        col: col + 1,
+        value: val,
+        x: x,
+        y: y,
+        placement: placement,
+        align: align
+      };
+    }
+  }" class="custom-scrollbar overflow-x-auto">
+  <div class="hm-wrapper relative min-w-70 select-none" @mouseleave="tooltip = null">
+    <!-- Tooltip -->
+    <template x-if="tooltip"><span role="tooltip" class="pointer-events-none absolute z-20 rounded bg-gray-900 px-2 py-1 text-xs text-white" :style="`left: ${tooltip.x}px; top: ${tooltip.y}px`" x-text="tooltip.text ?? tooltip.value"></span></template>
+
+    <!-- Matrix Rows -->
+    <div class="flex flex-col gap-0.5">
+      <template x-for="(row, rowIdx) in matrix" :key="rowIdx"><div class="flex gap-0.5">
+          <template x-for="(val, colIdx) in row" :key="colIdx"><div class="flex-1">
+              <div x-show="val &gt; 0" @mouseenter="handleHover($event, val, colIdx)" class="h-4.25 w-full cursor-pointer rounded-xs transition-opacity hover:opacity-80 bg-brand-500" :class="getColorClass(val)"></div>
+              <div x-show="val === 0" @mouseenter="tooltip = null" class="h-4.25 w-full bg-transparent" style="display: none;"></div>
+            </div></template>
+        </div></template>
+    </div>
+
+    <!-- Column labels -->
+    <div class="mt-4 flex gap-0.5 text-center text-xs text-gray-400 dark:text-gray-500">
+      <template x-for="i in 12" :key="i"><span class="flex-1" x-text="i">1</span></template>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Retention Heatmap End -->
+
+                <!-- Sales by Channel Start -->
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-start justify-between gap-4">
+  <div>
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('sales.salesByChannel.title')">Продажи по каналам</h3>
+    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400" x-text="$t('sales.salesByChannel.subtitle')">Эффективность каналов продаж</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="12" cy="5" r="1"></circle>
+        <circle cx="12" cy="19" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="mt-4 mb-6 flex items-baseline gap-2">
+  <h4 class="text-3xl font-medium text-gray-800 dark:text-white/90">75</h4>
+  <div class="flex items-center gap-1.5">
+    <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+      <svg class="size-3.5 rotate-45 rtl:-rotate-45" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+      </svg>
+      <span>3.2%</span>
+    </span>
+    <span class="text-sm text-gray-500 dark:text-gray-400" x-text="$t('sales.salesByChannel.increasedVsLastWeek')">Рост к прошлой неделе</span>
+  </div>
+</div>
+<div class="flex h-8 w-full items-center justify-between px-0.5">
+  <!-- Brand bars (14) -->
+  <template x-for="i in 14" :key="'brand-' + i"><div class="h-full w-1 shrink-0 rounded-[1px] bg-brand-500"></div></template>
+  <!-- Blue bars (14) -->
+  <template x-for="i in 14" :key="'blue-' + i"><div class="h-full w-1 shrink-0 rounded-[1px] bg-[#00BCFF]"></div></template>
+  <!-- Gray bars (14) -->
+  <template x-for="i in 14" :key="'gray-' + i"><div class="h-full w-1 shrink-0 rounded-[1px] bg-gray-200 dark:bg-gray-700"></div></template>
+</div>
+<div class="mt-5 rounded-xl border border-gray-100 dark:border-gray-800">
+  <!-- Legend / Indicators -->
+  <div class="flex flex-wrap items-center gap-6 border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+    <div class="flex items-center gap-1.5">
+      <span class="inline-block size-2 rounded-full bg-brand-500"></span>
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.website')">Сайт</span>
+    </div>
+
+    <div class="flex items-center gap-1.5">
+      <span class="inline-block size-2 rounded-full bg-[#00BCFF]"></span>
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.email')">Электронная почта</span>
+    </div>
+
+    <div class="flex items-center gap-1.5">
+      <span class="inline-block size-2 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+      <span class="text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.socialMedia')">Социальные сети</span>
+    </div>
+  </div>
+
+  <!-- Metrics Table -->
+  <div class="p-4">
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th class="pb-2 text-start text-sm font-normal text-gray-400 dark:text-gray-500" x-text="$t('sales.salesByChannel.table.channels')">Каналы</th>
+          <th class="pb-2 text-start text-sm font-normal text-gray-400 dark:text-gray-500" x-text="$t('sales.salesByChannel.table.metric')">Показатель</th>
+          <th class="pb-2 text-end text-sm font-normal text-gray-400 dark:text-gray-500" x-text="$t('sales.salesByChannel.table.total')">Всего</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-transparent">
+        <!-- Website -->
+        <tr>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.website')">Сайт</td>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400">
+            35
+          </td>
+          <td class="py-2 text-end text-sm">
+            <div class="flex items-center justify-end gap-1">
+              <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+                <svg class="size-3.5 rotate-45 rtl:-rotate-45" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+                </svg>
+                <span>5.2%</span>
+              </span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Email -->
+        <tr>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.email')">Электронная почта</td>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400">
+            25
+          </td>
+          <td class="py-2 text-end text-sm">
+            <div class="flex items-center justify-end gap-1">
+              <span class="flex items-center gap-1 text-sm font-medium text-red-600 dark:text-red-500">
+                <svg class="size-3.5 rotate-45 rtl:-rotate-45" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.31462 10.3761C5.45194 10.5293 5.65136 10.6257 5.87329 10.6257C5.8736 10.6257 5.8739 10.6257 5.87421 10.6257C6.0663 10.6259 6.25845 10.5527 6.40505 10.4062L9.40514 7.4082C9.69814 7.11541 9.69831 6.64054 9.40552 6.34754C9.11273 6.05454 8.63785 6.05438 8.34486 6.34717L6.62329 8.06753L6.62329 1.875C6.62329 1.46079 6.28751 1.125 5.87329 1.125C5.45908 1.125 5.12329 1.46079 5.12329 1.875L5.12329 8.06422L3.40516 6.34719C3.11218 6.05439 2.6373 6.05454 2.3445 6.34752C2.0517 6.64051 2.05185 7.11538 2.34484 7.40818L5.31462 10.3761Z" fill="currentColor"></path>
+                </svg>
+                <span>2.8%</span>
+              </span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Social Media -->
+        <tr>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400" x-text="$t('sales.salesByChannel.channels.socialMedia')">Социальные сети</td>
+          <td class="py-2 text-start text-sm text-gray-700 dark:text-gray-400">
+            59
+          </td>
+          <td class="py-2 text-end text-sm">
+            <div class="flex items-center justify-end gap-1">
+              <span class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-500">
+                <svg class="size-3.5 rotate-45 rtl:-rotate-45" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.56462 1.62411C5.70194 1.47091 5.90136 1.37451 6.12329 1.37451C6.1236 1.37451 6.1239 1.37451 6.12421 1.37451C6.3163 1.37434 6.50845 1.4475 6.65505 1.594L9.65514 4.59199C9.94814 4.88478 9.94831 5.35966 9.65552 5.65265C9.36272 5.94565 8.88785 5.94581 8.59486 5.65302L6.87329 3.93267L6.87329 10.1252C6.87329 10.5394 6.53751 10.8752 6.12329 10.8752C5.70908 10.8752 5.37329 10.5394 5.37329 10.1252L5.37329 3.93597L3.65516 5.65301C3.36218 5.94581 2.8873 5.94566 2.5945 5.65267C2.3017 5.35968 2.30185 4.88481 2.59484 4.59201L5.56462 1.62411Z" fill="currentColor"></path>
+                </svg>
+                <span>4.5%</span>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- Sales by Channel End -->
+
+                <!-- Sales by Country Start -->
+                <div class="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/3">
+  <div class="flex items-start justify-between gap-4">
+  <div>
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="$t('sales.salesByCountry.title')">Продажи по странам</h3>
+    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400" x-text="$t('sales.salesByCountry.subtitle')">Распределение продаж по странам</p>
+  </div>
+
+  <div x-data="dropdown({ placement: 'bottom-end' })" @click.outside="open = false" @keydown.escape.window="open = false" class="relative h-fit">
+    <button x-ref="trigger" type="button" @click="toggle" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-400 transition-all outline-none select-none hover:text-gray-700 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:hover:text-gray-300" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="12" cy="5" r="1"></circle>
+        <circle cx="12" cy="19" r="1"></circle>
+      </svg>
+    </button>
+    <div x-ref="dropdown" x-show="open" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300" x-text="$t('common.viewMore')">Подробнее</button>
+      <button type="button" @click="open = false" class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-gray-100 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-white/5 dark:hover:text-red-300" x-text="$t('common.delete')">Удалить</button>
+    </div>
+  </div>
+</div>
+<div class="my-4">
+    <div id="mapTwo" class="mapTwo relative h-40.5 w-full overflow-hidden bg-transparent"></div>
+</div>
+  <ul class="space-y-4">
+  <!-- USA -->
+  <li class="flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img src="./assets/images/sales/country-01.svg" alt="США" class="size-4 rounded-full object-cover">
+      <span class="text-sm font-normal text-gray-800 dark:text-white/90" x-text="$t('sales.salesByCountry.countries.usa')">США</span>
+    </div>
+
+    <div class="flex items-center gap-10">
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-400">
+        $20.594
+      </span>
+      <span class="w-8 text-end text-sm font-normal text-gray-700 dark:text-gray-400">
+        79%
+      </span>
+    </div>
+  </li>
+
+  <!-- France -->
+  <li class="flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img src="./assets/images/sales/country-02.svg" alt="Франция" class="size-4 rounded-full object-cover">
+      <span class="text-sm font-normal text-gray-800 dark:text-white/90" x-text="$t('sales.salesByCountry.countries.france')">Франция</span>
+    </div>
+
+    <div class="flex items-center gap-10">
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-400">
+        $20.594
+      </span>
+      <span class="w-8 text-end text-sm font-normal text-gray-700 dark:text-gray-400">
+        79%
+      </span>
+    </div>
+  </li>
+
+  <!-- Egypt -->
+  <li class="flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img src="./assets/images/sales/country-05.svg" alt="Египет" class="size-4 rounded-full object-cover">
+      <span class="text-sm font-normal text-gray-800 dark:text-white/90" x-text="$t('sales.salesByCountry.countries.egypt')">Египет</span>
+    </div>
+
+    <div class="flex items-center gap-10">
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-400">
+        $15.230
+      </span>
+      <span class="w-8 text-end text-sm font-normal text-gray-700 dark:text-gray-400">
+        68%
+      </span>
+    </div>
+  </li>
+
+  <!-- Germany -->
+  <li class="flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img src="./assets/images/sales/country-07.svg" alt="Германия" class="size-4 rounded-full object-cover">
+      <span class="text-sm font-normal text-gray-800 dark:text-white/90" x-text="$t('sales.salesByCountry.countries.germany')">Германия</span>
+    </div>
+
+    <div class="flex items-center gap-10">
+      <span class="text-sm font-normal text-gray-700 dark:text-gray-400">
+        $16.450
+      </span>
+      <span class="w-8 text-end text-sm font-normal text-gray-700 dark:text-gray-400">
+        72%
+      </span>
+    </div>
+  </li>
+</ul>
+</div>
+<!-- Sales by Country End -->
+              </div>
+
+              <div class="col-span-12">
+                <!-- Top Products Table Start -->
+                <div x-data="topProductsTable()" class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+  <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+  <div>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90" x-text="$t('sales.topProducts.title')">Популярные товары</h3>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <div class="relative w-full sm:w-55">
+      <input type="text" x-model="search" placeholder="Поиск…" :placeholder="$t('sales.topProducts.searchPlaceholder')" class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 py-2 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
+    </div>
+
+    <button type="button" class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50" x-text="$t('common.seeAll')">Смотреть все</button>
+  </div>
+</div>
+<div class="px-5 pb-5">
+  <div class="custom-scrollbar max-w-full overflow-x-auto rounded-xl border border-gray-100 dark:border-gray-800">
+    <table class="w-full min-w-full">
+      <thead class="border-b border-gray-100 dark:border-gray-800">
+        <tr class="h-11">
+          <th class="px-5 py-3 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.productName')">Название товара</p>
+          </th>
+          <th class="px-6 py-3 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.category')">Категория</p>
+          </th>
+          <th class="px-6 py-3 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.sales')">Продажи</p>
+          </th>
+          <th class="px-6 py-3 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.earnings')">Выручка</p>
+          </th>
+          <th class="px-6 py-3 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.stocks')">Остатки</p>
+          </th>
+          <th class="py-3 ps-6 pe-5 text-start whitespace-nowrap">
+            <p class="text-xs font-medium text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.table.status')">Статус</p>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <template x-for="product in filteredRows" :key="product.id"><tr class="h-16.5 border-b border-gray-100 last:border-b-0 dark:border-gray-800">
+            <!-- Product Name & Variant -->
+            <td class="px-5 py-2 text-start whitespace-nowrap">
+              <div class="flex items-center gap-3">
+                <div class="relative size-12.5 shrink-0 overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800">
+                  <img :src="product.image" :alt="product.name" class="size-full object-cover" src="./assets/images/product-01.jpg" alt="Классическая джинсовая куртка">
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90" x-text="$t('sales.topProducts.products.' + product.nameKey)">Классическая джинсовая куртка</p>
+                  <span class="text-xs font-normal text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.variants.' + product.variantKey)">3 размера</span>
+                </div>
+              </div>
+            </td>
+
+            <!-- Category -->
+            <td class="px-6 py-3 text-start whitespace-nowrap">
+              <p class="text-sm font-normal text-gray-500 dark:text-gray-400" x-text="$t('sales.topProducts.categories.' + product.categoryKey)">Куртка</p>
+            </td>
+
+            <!-- Sales -->
+            <td class="px-6 py-3 text-start whitespace-nowrap">
+              <p class="text-sm font-normal text-gray-500 dark:text-gray-400" x-text="product.sales">500</p>
+            </td>
+
+            <!-- Earnings -->
+            <td class="px-6 py-3 text-start whitespace-nowrap">
+              <p class="text-sm font-normal text-gray-500 dark:text-gray-400" x-text="product.earnings">$89.99</p>
+            </td>
+
+            <!-- Stocks -->
+            <td class="px-6 py-3 text-start whitespace-nowrap">
+              <p class="text-sm font-normal text-gray-500 dark:text-gray-400" x-text="product.stocks">100</p>
+            </td>
+
+            <!-- Status -->
+            <td class="py-3 ps-6 pe-5 text-start whitespace-nowrap">
+              <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500" :class="{
+                  'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': product.status === 'inStock',
+                  'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': product.status === 'lowStock',
+                  'bg-yellow-50 text-yellow-600 dark:bg-yellow-500/15 dark:text-yellow-500': product.status === 'outOfStock'
+                }" x-text="$t('sales.topProducts.statuses.' + product.status)">В наличии</span>
+            </td>
+          </tr></template>
+
+        <!-- Empty State -->
+        <template x-if="filteredRows.length === 0"><tr><td colspan="8" class="p-6 text-center text-sm text-gray-500">Товары не найдены</td></tr></template>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- Top Products Table End -->
+              </div>
+            </div>
+          </div>
+                </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer src="./assets/js/localization.js"></script>
+  <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
+
+</body></html>
