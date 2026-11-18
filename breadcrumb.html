@@ -83,6 +83,36 @@
         </ul>
       </div>
     </li>
+    <li><a href="./user-profile.html" class="group menu-item menu-item-inactive" aria-label="Профиль">
+      <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
+      <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
+    </a></li>
+    <li data-form-menu x-data="{ open: !document.getElementById('menu-forms').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['form-elements','form-layot'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-forms" aria-expanded="false" :aria-expanded="open" aria-label="Формы">
+        <svg :class="['form-elements','form-layot'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-forms"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Формы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-forms" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
+          <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-task-menu x-data="{ open: !document.getElementById('menu-tasks').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['task-list','task-kanban'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tasks" aria-expanded="false" :aria-expanded="open" aria-label="Задачи">
+        <svg :class="['task-list','task-kanban'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tasks"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Задачи</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tasks" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./task-list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Список задач</a></li>
+          <li><a href="./task-kanban.html" class="menu-dropdown-item menu-dropdown-item-inactive">Канбан</a></li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </div>
 <div>
@@ -97,7 +127,7 @@
       <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
         <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
         <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
-        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
       </button>
       <div id="menu-support-tickets" :hidden="!open" hidden>
         <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
@@ -110,7 +140,7 @@
       <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
         <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
         <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
-        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
       </button>
       <div id="menu-email" :hidden="!open" hidden>
         <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
@@ -131,7 +161,7 @@
       <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
         <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
         <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
-        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
       </button>
       <div id="menu-charts" :hidden="!chartsOpen" hidden>
         <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
@@ -147,7 +177,7 @@
       <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="true" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
         <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
         <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
-        <svg class="sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
       </button>
       <div id="menu-ui-elements" :hidden="!componentsOpen">
         <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
@@ -329,13 +359,13 @@
     <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
 
     <!-- Edit Profile -->
-    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
       <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
     </a>
 
     <!-- Account Settings -->
-    <a href="https://demo.tailadmin.com/profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
       <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
     </a>
@@ -633,6 +663,7 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
   <script defer src="./assets/js/localization.js"></script>
+  <script defer src="./assets/js/page-components.js"></script>
   <script defer="" src="./assets/js/bundle.js"></script>
   <script defer src="./assets/js/spa.js"></script>
 

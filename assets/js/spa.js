@@ -65,7 +65,7 @@
           if (activeLink) setLinkActive(activeLink, false);
           nextLink.setAttribute("aria-current", "page");
           setLinkActive(nextLink, true);
-          const group = nextLink.closest("[data-support-menu]");
+          const group = nextLink.closest("[data-support-menu], [data-task-menu], [data-form-menu]");
           if (group) Alpine.$data(group).open = true;
           activeLink = nextLink;
         }
