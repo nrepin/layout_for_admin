@@ -83,6 +83,23 @@
         </ul>
       </div>
     </li>
+    <li data-ai-menu x-data="{ open: !document.getElementById('menu-ai-assistant').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-ai-assistant" aria-expanded="false" :aria-expanded="open" aria-label="ИИ-помощник">
+        <svg :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-ai-assistant"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">ИИ-помощник</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ai-assistant" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./ai-chat.html" class="menu-dropdown-item menu-dropdown-item-inactive">ИИ-чат</a></li>
+<li><a href="./ai-image.html" class="menu-dropdown-item menu-dropdown-item-inactive">Генератор изображений</a></li>
+</ul>
+      </div>
+    </li>
+<li><a href="./calendar.html" class="group menu-item menu-item-inactive" aria-label="Календарь">
+  <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-calendar"></use></svg>
+  <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Календарь</span>
+</a></li>
     <li><a href="./user-profile.html" class="group menu-item menu-item-active" aria-label="Профиль" aria-current="page">
       <svg class="menu-item-icon-active" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
       <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
@@ -97,6 +114,41 @@
         <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
           <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
           <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-table-menu x-data="{ open: !document.getElementById('menu-tables').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tables" aria-expanded="false" :aria-expanded="open" aria-label="Таблицы">
+        <svg :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tables"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Таблицы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tables" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./basic-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Простые таблицы</a></li>
+          <li><a href="./data-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Таблицы с поиском</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-pages-menu x-data="{ open: !document.getElementById('menu-pages').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-pages" aria-expanded="false" :aria-expanded="open" aria-label="Страницы">
+        <svg :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-pages"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Страницы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-pages" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./file-manager.html" class="menu-dropdown-item menu-dropdown-item-inactive">Файловый менеджер</a></li>
+<li><a href="./pricing.html" class="menu-dropdown-item menu-dropdown-item-inactive">Тарифы</a></li>
+<li><a href="./faq.html" class="menu-dropdown-item menu-dropdown-item-inactive">Частые вопросы</a></li>
+<li><a href="./api.html" class="menu-dropdown-item menu-dropdown-item-inactive">API-ключи</a></li>
+<li><a href="./integrations.html" class="menu-dropdown-item menu-dropdown-item-inactive">Интеграции</a></li>
+<li><a href="./blank-page.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пустая страница</a></li>
+<li><a href="./404.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 404</a></li>
+        <li><a href="./500.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 500</a></li>
+<li><a href="./503.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 503</a></li>
+<li><a href="./maintenance.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Технические работы</a></li>
+<li><a href="./success.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Сообщение отправлено</a></li>
         </ul>
       </div>
     </li>
@@ -339,7 +391,7 @@
   <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
     <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
 
-    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+    <span class="me-1 block text-sm font-medium">Смирнов Алексей Сергеевич</span>
 
     <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
   </button>
@@ -349,10 +401,10 @@
     <!-- User Info Header -->
     <div class="px-3 py-2">
       <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
-        Николай Репин
+        Смирнов Алексей Сергеевич
       </span>
       <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
-        nrepin@themay.com
+        smirnov@yandex.ru
       </span>
     </div>
 
@@ -418,12 +470,12 @@
 
   <div class="flex items-center gap-4 sm:gap-6">
     <div class="relative flex size-16 shrink-0 rounded-full select-none sm:size-20">
-      <template x-if="profileData.avatarUrl"><img :src="profileData.avatarUrl" :alt="profileData.fullName || 'Профиль пользователя'" class="aspect-square size-full rounded-full object-cover" src="./assets/images/owner.png" alt="Алексей Смирнов"></template>
+      <template x-if="profileData.avatarUrl"><img :src="profileData.avatarUrl" :alt="profileData.fullName || 'Профиль пользователя'" class="aspect-square size-full rounded-full object-cover" src="./assets/images/owner.png" alt="Смирнов Алексей Сергеевич"></template>
       <template x-if="!profileData.avatarUrl"><span class="flex size-full items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800" x-text="profileData.fullName.slice(0, 1)"></span></template>
     </div>
 
     <div class="flex flex-col gap-1">
-      <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-white/90" x-text="profileData.fullName?.trim() || 'Не указано'">Алексей Смирнов</h3>
+      <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-white/90" x-text="profileData.fullName?.trim() || 'Не указано'">Смирнов Алексей Сергеевич</h3>
 
       <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 sm:text-sm dark:text-gray-400">
         <span x-text="profileData.role?.trim() || 'Не указано'">Разработчик</span>
@@ -447,7 +499,7 @@
         <p class="text-xs font-normal text-gray-500 sm:text-sm dark:text-gray-400">
           Электронная почта
         </p>
-        <p class="text-sm font-medium text-gray-800 sm:text-base dark:text-white/90" x-text="profileData.email?.trim() || 'Не указано'">alexey.smirnov@example.com</p>
+        <p class="text-sm font-medium text-gray-800 sm:text-base dark:text-white/90" x-text="profileData.email?.trim() || 'Не указано'">smirnov@yandex.ru</p>
       </div>
     </div>
 
@@ -463,7 +515,7 @@
         <p class="text-xs font-normal text-gray-500 sm:text-sm dark:text-gray-400">
           Телефон
         </p>
-        <p class="text-sm font-medium text-gray-800 sm:text-base dark:text-white/90" x-text="profileData.phone?.trim() || 'Не указано'">+7 900 123-45-67</p>
+        <p class="text-sm font-medium text-gray-800 sm:text-base dark:text-white/90" x-text="profileData.phone?.trim() || 'Не указано'">+7 (900) 123-45-62</p>
       </div>
     </div>
 
@@ -532,7 +584,7 @@
         <div class="flex items-center gap-4 sm:gap-6">
           <div class="relative">
             <div class="size-20 shrink-0 overflow-hidden rounded-full sm:size-24">
-              <img :src="avatarPreview || profileData.avatarUrl" :alt="profileData.fullName" class="size-full object-cover" src="./assets/images/owner.png" alt="Алексей Смирнов">
+              <img :src="avatarPreview || profileData.avatarUrl" :alt="profileData.fullName" class="size-full object-cover" src="./assets/images/owner.png" alt="Смирнов Алексей Сергеевич">
             </div>
 
             <label for="profile-avatar-file-input" class="absolute inset-e-0 bottom-0 flex size-8 cursor-pointer items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-theme-xs transition-colors hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" aria-label="Загрузить фотографию профиля">
@@ -575,14 +627,14 @@
             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
               Электронная почта <span class="text-red-500">*</span>
             </label>
-            <input type="email" x-model="editForm.email" placeholder="info@example.com" required="" class="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <input type="email" x-model="editForm.email" placeholder="popov@yandex.ru" required="" class="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
           </div>
 
           <div>
             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
               Телефон <span class="text-red-500">*</span>
             </label>
-            <input type="text" x-model="editForm.phone" placeholder="+7 900 123-45-67" required="" class="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <input type="text" x-model="editForm.phone" placeholder="+7 (900) 123-45-62" required="" class="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
           </div>
         </div>
 

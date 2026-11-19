@@ -83,6 +83,23 @@
         </ul>
       </div>
     </li>
+    <li data-ai-menu x-data="{ open: !document.getElementById('menu-ai-assistant').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-ai-assistant" aria-expanded="false" :aria-expanded="open" aria-label="ИИ-помощник">
+        <svg :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-ai-assistant"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">ИИ-помощник</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ai-assistant" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./ai-chat.html" class="menu-dropdown-item menu-dropdown-item-inactive">ИИ-чат</a></li>
+<li><a href="./ai-image.html" class="menu-dropdown-item menu-dropdown-item-inactive">Генератор изображений</a></li>
+</ul>
+      </div>
+    </li>
+<li><a href="./calendar.html" class="group menu-item menu-item-inactive" aria-label="Календарь">
+  <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-calendar"></use></svg>
+  <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Календарь</span>
+</a></li>
     <li><a href="./user-profile.html" class="group menu-item menu-item-inactive" aria-label="Профиль">
       <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
       <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
@@ -97,6 +114,41 @@
         <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
           <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
           <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-table-menu x-data="{ open: !document.getElementById('menu-tables').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tables" aria-expanded="false" :aria-expanded="open" aria-label="Таблицы">
+        <svg :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tables"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Таблицы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tables" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./basic-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Простые таблицы</a></li>
+          <li><a href="./data-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Таблицы с поиском</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-pages-menu x-data="{ open: !document.getElementById('menu-pages').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-pages" aria-expanded="false" :aria-expanded="open" aria-label="Страницы">
+        <svg :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-pages"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Страницы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-pages" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./file-manager.html" class="menu-dropdown-item menu-dropdown-item-inactive">Файловый менеджер</a></li>
+<li><a href="./pricing.html" class="menu-dropdown-item menu-dropdown-item-inactive">Тарифы</a></li>
+<li><a href="./faq.html" class="menu-dropdown-item menu-dropdown-item-inactive">Частые вопросы</a></li>
+<li><a href="./api.html" class="menu-dropdown-item menu-dropdown-item-inactive">API-ключи</a></li>
+<li><a href="./integrations.html" class="menu-dropdown-item menu-dropdown-item-inactive">Интеграции</a></li>
+<li><a href="./blank-page.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пустая страница</a></li>
+<li><a href="./404.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 404</a></li>
+        <li><a href="./500.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 500</a></li>
+<li><a href="./503.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 503</a></li>
+<li><a href="./maintenance.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Технические работы</a></li>
+<li><a href="./success.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Сообщение отправлено</a></li>
         </ul>
       </div>
     </li>
@@ -339,7 +391,7 @@
   <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
     <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
 
-    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+    <span class="me-1 block text-sm font-medium">Смирнов Алексей Сергеевич</span>
 
     <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
   </button>
@@ -349,10 +401,10 @@
     <!-- User Info Header -->
     <div class="px-3 py-2">
       <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
-        Николай Репин
+        Смирнов Алексей Сергеевич
       </span>
       <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
-        nrepin@themay.com
+        smirnov@yandex.ru
       </span>
     </div>
 
@@ -383,7 +435,7 @@
   </div>
 </header>
 <!-- ===== Header End ===== -->
-          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6" data-admin-page="ai" data-admin-section="dashboard" tabindex="-1">
+          <div class="w-full p-4 pb-20 md:p-6 md:pb-6" data-admin-page="ai" data-admin-section="dashboard" tabindex="-1">
             <!-- Breadcrumb Start -->
             <div x-data="{ pageTitle: 'ИИ-аналитика' }">
               <div class="mb-6 flex flex-col items-start gap-2">
@@ -1066,8 +1118,8 @@
           <td class="min-w-44 py-3 ps-5 sm:ps-6">
             <div class="flex items-center gap-3">
               <div>
-                <p class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="row.original.name">John Doe</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400" x-text="row.original.email">johndeo@gmail.com</p>
+                <p class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="row.original.name">Смирнов Алексей Сергеевич</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400" x-text="row.original.email">smirnov@yandex.ru</p>
               </div>
             </div>
           </td>
@@ -1124,13 +1176,13 @@
     </span>
 
     <div class="flex items-center gap-2">
-      <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 pointer-events-none opacity-50 cursor-not-allowed" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" aria-disabled="true" tabindex="-1">
+      <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
           <path d="M15 18l-6-6 6-6"></path>
         </svg>
       </a>
 
-      <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
+      <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
           <path d="M9 18l6-6-6-6"></path>
         </svg>
@@ -1144,7 +1196,7 @@
       <ul class="flex items-center gap-1.5">
         <!-- Previous Button -->
         <li>
-          <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 pointer-events-none opacity-50 cursor-not-allowed" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" aria-disabled="true" tabindex="-1">
+          <a href="#" aria-label="Назад" :aria-disabled="!canPrev" :tabindex="!canPrev ? -1 : undefined" x-on:click.prevent="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="!canPrev ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
               <path d="M15 18l-6-6 6-6"></path>
             </svg>
@@ -1154,14 +1206,14 @@
         <!-- Page Numbers & Ellipsis -->
         <template x-for="(page, index) in getPages()" :key="index"><li>
             <template x-if="page === '...'"><span class="px-2 text-gray-500">…</span></template>
-            <template x-if="page !== '...'"><a href="#" :aria-label="'Страница ' + page" :aria-current="currentPage === page ? 'page' : undefined" x-on:click.prevent="setPage(page)" class="inline-flex size-10 shrink-0 animate-in items-center justify-center rounded-[10px] text-sm font-medium shadow-theme-xs transition-all duration-150 fade-in-0 outline-none select-none focus-visible:outline-hidden active:translate-y-px border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600" :class="currentPage === page 
+            <template x-if="page !== '...'"><a href="#" :aria-label="'Страница ' + page" :aria-current="currentPage === page ? 'page' : undefined" x-on:click.prevent="setPage(page)" class="inline-flex size-10 shrink-0 animate-in items-center justify-center rounded-[10px] text-sm font-medium shadow-theme-xs transition-all duration-150 fade-in-0 outline-none select-none focus-visible:outline-hidden active:translate-y-px" :class="currentPage === page
                   ? 'border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600' 
-                  : 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white'" x-text="page" aria-label="Страница 1" aria-current="page">1</a></template>
+                  : 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white'" x-text="page" >1</a></template>
           </li></template>
 
         <!-- Next Button -->
         <li>
-          <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
+          <a href="#" aria-label="Далее" :aria-disabled="!canNext" :tabindex="!canNext ? -1 : undefined" x-on:click.prevent="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="!canNext ? 'pointer-events-none opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
               <path d="M9 18l6-6-6-6"></path>
             </svg>

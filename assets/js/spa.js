@@ -12,7 +12,7 @@
     const scroller = main.parentElement;
     const directory = new URL("./", location.href).pathname;
     const routes = new Map(
-      Array.from(sidebar.querySelectorAll(".menu-dropdown-item[href], .menu-item[href]:not(.sidebar-group-toggle)"), link => [new URL(link.href).pathname, link]),
+      Array.from(sidebar.querySelectorAll(".menu-dropdown-item[href]:not([data-admin-full-load]), .menu-item[href]:not(.sidebar-group-toggle):not([data-admin-full-load])"), link => [new URL(link.href).pathname, link]),
     );
     routes.set(directory, routes.get(`${directory}index.html`));
     let activeLink = sidebar.querySelector("[aria-current='page']");
@@ -65,7 +65,7 @@
           if (activeLink) setLinkActive(activeLink, false);
           nextLink.setAttribute("aria-current", "page");
           setLinkActive(nextLink, true);
-          const group = nextLink.closest("[data-support-menu], [data-task-menu], [data-form-menu]");
+          const group = nextLink.closest("[data-support-menu], [data-task-menu], [data-form-menu], [data-table-menu], [data-pages-menu], [data-ai-menu]");
           if (group) Alpine.$data(group).open = true;
           activeLink = nextLink;
         }

@@ -1865,6 +1865,23 @@ rect.legend-mouseover-inactive,
         </ul>
       </div>
     </li>
+    <li data-ai-menu x-data="{ open: !document.getElementById('menu-ai-assistant').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-ai-assistant" aria-expanded="false" :aria-expanded="open" aria-label="ИИ-помощник">
+        <svg :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-ai-assistant"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">ИИ-помощник</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ai-assistant" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./ai-chat.html" class="menu-dropdown-item menu-dropdown-item-inactive">ИИ-чат</a></li>
+<li><a href="./ai-image.html" class="menu-dropdown-item menu-dropdown-item-inactive">Генератор изображений</a></li>
+</ul>
+      </div>
+    </li>
+<li><a href="./calendar.html" class="group menu-item menu-item-inactive" aria-label="Календарь">
+  <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-calendar"></use></svg>
+  <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Календарь</span>
+</a></li>
     <li><a href="./user-profile.html" class="group menu-item menu-item-inactive" aria-label="Профиль">
       <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
       <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
@@ -1879,6 +1896,41 @@ rect.legend-mouseover-inactive,
         <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
           <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
           <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-table-menu x-data="{ open: !document.getElementById('menu-tables').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tables" aria-expanded="false" :aria-expanded="open" aria-label="Таблицы">
+        <svg :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tables"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Таблицы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tables" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./basic-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Простые таблицы</a></li>
+          <li><a href="./data-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Таблицы с поиском</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-pages-menu x-data="{ open: !document.getElementById('menu-pages').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-pages" aria-expanded="false" :aria-expanded="open" aria-label="Страницы">
+        <svg :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-pages"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Страницы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-pages" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./file-manager.html" class="menu-dropdown-item menu-dropdown-item-inactive">Файловый менеджер</a></li>
+<li><a href="./pricing.html" class="menu-dropdown-item menu-dropdown-item-inactive">Тарифы</a></li>
+<li><a href="./faq.html" class="menu-dropdown-item menu-dropdown-item-inactive">Частые вопросы</a></li>
+<li><a href="./api.html" class="menu-dropdown-item menu-dropdown-item-inactive">API-ключи</a></li>
+<li><a href="./integrations.html" class="menu-dropdown-item menu-dropdown-item-inactive">Интеграции</a></li>
+<li><a href="./blank-page.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пустая страница</a></li>
+<li><a href="./404.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 404</a></li>
+        <li><a href="./500.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 500</a></li>
+<li><a href="./503.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 503</a></li>
+<li><a href="./maintenance.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Технические работы</a></li>
+<li><a href="./success.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Сообщение отправлено</a></li>
         </ul>
       </div>
     </li>
@@ -2121,7 +2173,7 @@ rect.legend-mouseover-inactive,
   <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
     <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
 
-    <span class="me-1 block text-sm font-medium">Николай Репин</span>
+    <span class="me-1 block text-sm font-medium">Смирнов Алексей Сергеевич</span>
 
     <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
   </button>
@@ -2131,10 +2183,10 @@ rect.legend-mouseover-inactive,
     <!-- User Info Header -->
     <div class="px-3 py-2">
       <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
-        Николай Репин
+        Смирнов Алексей Сергеевич
       </span>
       <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
-        nrepin@themay.com
+        smirnov@yandex.ru
       </span>
     </div>
 
@@ -2581,9 +2633,9 @@ rect.legend-mouseover-inactive,
       {
         id: '1',
         dealId: 'DE124321',
-        name: 'Олег Раков',
-        email: 'johndeo@gmail.com',
-        initials: 'JD',
+        name: 'Смирнов Алексей Сергеевич',
+        email: 'smirnov@yandex.ru',
+        initials: 'АС',
         avatarBg: 'bg-brand-50 text-brand-500 dark:bg-brand-500/15 dark:text-brand-400',
         productKey: 'softwareLicense',
         dealValue: '18,50.34 ₽',
@@ -2593,9 +2645,9 @@ rect.legend-mouseover-inactive,
       {
         id: '2',
         dealId: 'DE124322',
-        name: 'Надежда Антонова',
-        email: 'kierra@gmail.com',
-        initials: 'KF',
+        name: 'Иванова Мария Андреевна',
+        email: 'ivanova@yandex.ru',
+        initials: 'МИ',
         avatarBg: 'bg-pink-50 text-pink-600 dark:bg-pink-500/15 dark:text-pink-400',
         productKey: 'softwareLicense',
         dealValue: '18,50.34 ₽',
@@ -2605,9 +2657,9 @@ rect.legend-mouseover-inactive,
       {
         id: '3',
         dealId: 'DE124323',
-        name: 'Олег Раков',
-        email: 'emerson@gmail.com',
-        initials: 'EW',
+        name: 'Петров Иван Дмитриевич',
+        email: 'petrov@yandex.ru',
+        initials: 'ИП',
         avatarBg: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-400',
         productKey: 'softwareLicense',
         dealValue: '18,50.34 ₽',
@@ -2617,9 +2669,9 @@ rect.legend-mouseover-inactive,
       {
         id: '4',
         dealId: 'DE124324',
-        name: 'Олег Раков',
-        email: 'chance@gmail.com',
-        initials: 'CP',
+        name: 'Соколова Анна Викторовна',
+        email: 'sokolova@yandex.ru',
+        initials: 'АС',
         avatarBg: 'bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400',
         productKey: 'softwareLicense',
         dealValue: '18,50.34 ₽',
@@ -2629,9 +2681,9 @@ rect.legend-mouseover-inactive,
       {
         id: '5',
         dealId: 'DE124325',
-        name: 'Олег Раков',
-        email: 'terry@gmail.com',
-        initials: 'TG',
+        name: 'Волков Михаил Олегович',
+        email: 'volkov@yandex.ru',
+        initials: 'МВ',
         avatarBg: 'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-400',
         productKey: 'softwareLicense',
         dealValue: '18,50.34 ₽',
@@ -2763,11 +2815,11 @@ rect.legend-mouseover-inactive,
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center gap-3">
                 <div class="flex size-10 shrink-0 items-center justify-center rounded-full text-xs font-semibold select-none" :class="order.avatarBg">
-                  <span x-text="order.initials">ОР</span>
+                  <span x-text="order.initials">АС</span>
                 </div>
                 <div>
-                  <span class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="order.name">Олег Раков</span>
-                  <span class="block text-sm text-gray-500 dark:text-gray-400" x-text="order.email">johndeo@gmail.com</span>
+                  <span class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="order.name">Смирнов Алексей Сергеевич</span>
+                  <span class="block text-sm text-gray-500 dark:text-gray-400" x-text="order.email">smirnov@yandex.ru</span>
                 </div>
               </div>
             </td>

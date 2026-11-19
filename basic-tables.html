@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Простые таблицы | MayBrands</title>
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet">
+  </head>
+  <body x-data="{ page: 'basic-tables', section: 'tables', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+          <li><a href="./ai.html" class="group menu-dropdown-item menu-dropdown-item-inactive">ИИ-аналитика</a></li>
+          <li><a href="./sales.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Продажи</a></li>
+          <li><a href="./finance.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Финансы</a></li>
+          <li><a href="./hr.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Персонал</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-ai-menu x-data="{ open: !document.getElementById('menu-ai-assistant').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-ai-assistant" aria-expanded="false" :aria-expanded="open" aria-label="ИИ-помощник">
+        <svg :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-ai-assistant"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">ИИ-помощник</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ai-assistant" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./ai-chat.html" class="menu-dropdown-item menu-dropdown-item-inactive">ИИ-чат</a></li>
+<li><a href="./ai-image.html" class="menu-dropdown-item menu-dropdown-item-inactive">Генератор изображений</a></li>
+</ul>
+      </div>
+    </li>
+<li><a href="./calendar.html" class="group menu-item menu-item-inactive" aria-label="Календарь">
+  <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-calendar"></use></svg>
+  <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Календарь</span>
+</a></li>
+    <li><a href="./user-profile.html" class="group menu-item menu-item-inactive" aria-label="Профиль">
+      <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
+      <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
+    </a></li>
+    <li data-form-menu x-data="{ open: !document.getElementById('menu-forms').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['form-elements','form-layot'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-forms" aria-expanded="false" :aria-expanded="open" aria-label="Формы">
+        <svg :class="['form-elements','form-layot'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-forms"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Формы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-forms" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
+          <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-table-menu x-data="{ open: !document.getElementById('menu-tables').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tables" aria-expanded="true" :aria-expanded="open" aria-label="Таблицы">
+        <svg :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tables"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Таблицы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tables" :hidden="!open">
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./basic-tables.html" class="menu-dropdown-item menu-dropdown-item-active" aria-current="page">Простые таблицы</a></li>
+          <li><a href="./data-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Таблицы с поиском</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-pages-menu x-data="{ open: !document.getElementById('menu-pages').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-pages" aria-expanded="false" :aria-expanded="open" aria-label="Страницы">
+        <svg :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-pages"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Страницы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-pages" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./file-manager.html" class="menu-dropdown-item menu-dropdown-item-inactive">Файловый менеджер</a></li>
+<li><a href="./pricing.html" class="menu-dropdown-item menu-dropdown-item-inactive">Тарифы</a></li>
+<li><a href="./faq.html" class="menu-dropdown-item menu-dropdown-item-inactive">Частые вопросы</a></li>
+<li><a href="./api.html" class="menu-dropdown-item menu-dropdown-item-inactive">API-ключи</a></li>
+<li><a href="./integrations.html" class="menu-dropdown-item menu-dropdown-item-inactive">Интеграции</a></li>
+<li><a href="./blank-page.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пустая страница</a></li>
+<li><a href="./404.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 404</a></li>
+        <li><a href="./500.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 500</a></li>
+<li><a href="./503.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 503</a></li>
+<li><a href="./maintenance.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Технические работы</a></li>
+<li><a href="./success.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Сообщение отправлено</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-task-menu x-data="{ open: !document.getElementById('menu-tasks').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['task-list','task-kanban'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tasks" aria-expanded="false" :aria-expanded="open" aria-label="Задачи">
+        <svg :class="['task-list','task-kanban'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tasks"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Задачи</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tasks" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./task-list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Список задач</a></li>
+          <li><a href="./task-kanban.html" class="menu-dropdown-item menu-dropdown-item-inactive">Канбан</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Поддержка</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li><a href="./chat.html" class="group menu-item menu-item-inactive" aria-label="Чаты"><svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-chat"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Чаты</span></a></li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-support-tickets').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-support-tickets" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./support-tickets.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Обращения в поддержку</a></li>
+          <li><a href="./ticket-reply.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Ответ на обращение</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-email').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-email" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./inbox.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Входящие</a></li>
+          <li><a href="./inbox-deatil.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Просмотр письма</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="false" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Смирнов Алексей Сергеевич</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Смирнов Алексей Сергеевич
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        smirnov@yandex.ru
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="w-full p-4 pb-20 md:p-6 md:pb-6" data-admin-page="basic-tables" data-admin-section="tables" tabindex="-1">
+            <div x-data="{ pageTitle: 'Простые таблицы' }">
+              <div class="mb-6 flex flex-col items-start gap-2">
+  <nav aria-label="Хлебные крошки">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li>
+        <a class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" href="./index.html">
+          Главная
+          <svg class="stroke-current rtl:rotate-180" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-16"></use></svg>
+        </a>
+      </li>
+      <li aria-current="page" class="text-sm text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Простые таблицы</li>
+    </ol>
+  </nav>
+  <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Простые таблицы</h1>
+</div>
+</div>
+            
+
+            <div class="space-y-5 sm:space-y-6">
+              
+              <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+                <div x-data="{ cardTitle: 'Таблица проектов' }">
+                  <div class="px-6 py-5">
+  <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="cardTitle">Таблица проектов</h3>
+  <template x-if="typeof cardDesc !== 'undefined' &amp;&amp; cardDesc"><p class="mt-1 text-sm text-gray-500" x-text="cardDesc"></p></template>
+</div>
+</div>
+                <div class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800">
+                  <div x-data="basicTableOne()" class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/5 dark:bg-white/3">
+  <div class="max-w-full overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="border-b border-gray-100 dark:border-white/5">
+        <tr>
+          <th class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400">
+            Сотрудник
+          </th>
+          <th class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400">
+            Проект
+          </th>
+          <th class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400">
+            Команда
+          </th>
+          <th class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400">
+            Статус
+          </th>
+          <th class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400">
+            Бюджет
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-white/5">
+        <template x-for="order in orders" :key="order.id"><tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+            <td class="px-5 py-4 text-start sm:px-6">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 overflow-hidden rounded-full">
+                  <img :src="order.user.image" :alt="order.user.name" class="h-full w-full object-cover" alt="Смирнов Алексей Сергеевич">
+                </div>
+                <div>
+                  <span class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="order.user.name">Смирнов Алексей Сергеевич</span>
+                  <span class="block text-xs text-gray-500 dark:text-gray-400" x-text="order.user.role">Веб-дизайнер</span>
+                </div>
+              </div>
+            </td>
+            <td class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400" x-text="order.projectName">Сайт агентства</td>
+            <td class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400">
+              <div class="flex -space-x-2">
+                <template x-for="(img, idx) in order.team.images" :key="idx"><div class="h-6 w-6 overflow-hidden rounded-full border border-white dark:border-gray-800">
+                    <img :src="img" :alt="`Team member ${idx + 1}`" class="h-full w-full object-cover" alt="Team member 1">
+                  </div></template>
+              </div>
+            </td>
+            <td class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400">
+              <span class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium" :class="{
+                  'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': getStatusColor(order.status) === 'success',
+                  'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': getStatusColor(order.status) === 'warning',
+                  'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': getStatusColor(order.status) === 'error',
+                  'bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white/80': getStatusColor(order.status) === 'gray'
+                }" x-text="order.status">Активен</span>
+            </td>
+            <td class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400" x-text="order.budget">3.9K</td>
+          </tr></template>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+              </div>
+
+              
+              <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+                <div x-data="{ cardTitle: 'Последние заказы' }">
+                  <div class="px-6 py-5">
+  <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="cardTitle">Последние заказы</h3>
+  <template x-if="typeof cardDesc !== 'undefined' &amp;&amp; cardDesc"><p class="mt-1 text-sm text-gray-500" x-text="cardDesc"></p></template>
+</div>
+</div>
+                <div class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800">
+                  <div x-data="basicTableTwo()" class="w-full max-w-full min-w-0 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 sm:p-0 dark:border-gray-800 dark:bg-white/3">
+  
+  <div class="flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Последние заказы
+      </h3>
+    </div>
+
+    <div class="flex w-full items-center gap-3 sm:w-auto">
+      <div class="flex-1 sm:w-64 sm:flex-initial md:w-72">
+        <div class="relative flex items-center">
+          <span class="pointer-events-none absolute inset-y-0 inset-s-0 flex items-center ps-3.5">
+            <svg class="size-5 text-gray-700 dark:text-gray-300" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.167 3.333a5.833 5.833 0 100 11.667 5.833 5.833 0 000-11.667zM2 9.167a7.167 7.167 0 1112.584 4.707l3.275 3.275a.667.667 0 11-.943.943l-3.275-3.275A7.167 7.167 0 012 9.167z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <input type="text" placeholder="Поиск…" x-model="searchQuery" class="h-10 w-full rounded-[10px] border border-gray-300 bg-transparent py-2.5 ps-10 pe-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-transparent dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-800">
+        </div>
+      </div>
+
+      
+      <div class="relative" @click.outside="dropdownOpen = false">
+        <button type="button" @click="dropdownOpen = !dropdownOpen" class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+          <svg class="size-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Фильтр
+        </button>
+
+        <div x-show="dropdownOpen" x-transition="" class="absolute inset-e-0 z-40 mt-2 w-40 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+          <button type="button" @click="setStatusFilter('all')" class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5" :class="statusFilter === 'all' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'">
+            Все
+          </button>
+          <button type="button" @click="setStatusFilter('complete')" class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5" :class="statusFilter === 'complete' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'">
+            Завершён
+          </button>
+          <button type="button" @click="setStatusFilter('pending')" class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5" :class="statusFilter === 'pending' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'">
+            Ожидает
+          </button>
+          <button type="button" @click="setStatusFilter('cancel')" class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5" :class="statusFilter === 'cancel' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'">
+            Отменён
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="max-w-full overflow-x-auto">
+    <div class="min-w-175 2xl:min-w-202">
+      <table class="min-w-full">
+        <thead class="border-y border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+          <tr>
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-3">
+                <label class="flex cursor-pointer items-center">
+                  <input type="checkbox" :checked="isAllSelected" @change="handleSelectAll()" class="peer sr-only" aria-label="Select all orders">
+                  <span class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30" :class="isAllSelected ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'">
+                    <span x-show="isAllSelected" class="grid place-content-center text-current transition-none [&amp;&gt;svg]:size-3" style="display: none;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6L9 17l-5-5"></path>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+                <span>Номер сделки</span>
+              </div>
+            </th>
+
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Клиент
+            </th>
+
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Товар или услуга
+            </th>
+
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Сумма сделки
+            </th>
+
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Дата закрытия
+            </th>
+
+            <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Статус
+            </th>
+
+            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400">
+              Действия
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="min-h-96 divide-y divide-gray-100 dark:divide-gray-800">
+          <template x-for="row in rows" :key="row.original.id"><tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+                <td class="px-6 py-4 text-start">
+                  <div class="flex items-center gap-3">
+                    <label class="flex cursor-pointer items-center">
+                      <input type="checkbox" :checked="isRowSelected(row.original.id)" @change="handleRowSelect(row.original.id)" class="peer sr-only" :aria-label="`Select deal ${row.original.dealId}`" >
+                      <span class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30" :class="isRowSelected(row.original.id) ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'">
+                        <span x-show="isRowSelected(row.original.id)" class="grid place-content-center text-current transition-none [&amp;&gt;svg]:size-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5"></path>
+                          </svg>
+                        </span>
+                      </span>
+                    </label>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-400" x-text="row.original.dealId">DE124321</span>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <div class="flex items-center gap-3">
+                    <div class="flex size-10 shrink-0 items-center justify-center rounded-full text-xs font-semibold select-none bg-brand-50 text-brand-500 dark:bg-brand-500/15 dark:text-brand-400" :class="row.original.user.avatarClassName" x-text="row.original.user.initials">JD</div>
+                    <div>
+                      <span class="block text-sm font-medium text-gray-800 dark:text-white/90" x-text="row.original.user.name">Смирнов Алексей Сергеевич</span>
+                      <span class="block text-sm text-gray-500 dark:text-gray-400" x-text="row.original.user.email">smirnov@yandex.ru</span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span class="text-sm text-gray-700 dark:text-gray-400" x-text="row.original.productName">Software License</span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span class="text-sm text-gray-700 dark:text-gray-400" x-text="row.original.dealValue">$18,50.34</span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span class="text-sm text-gray-700 dark:text-gray-400" x-text="row.original.closeDate">2024-06-15</span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium" :class="{
+                      'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': statusBadge(row.original.status).color === 'success',
+                      'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': statusBadge(row.original.status).color === 'warning',
+                      'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': statusBadge(row.original.status).color === 'error'
+                    }" x-text="statusBadge(row.original.status).label">Завершён</span>
+                </td>
+
+                <td class="px-6 py-4 text-center">
+                  <button type="button" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-500 transition-all outline-none select-none hover:bg-red-50 hover:text-red-500 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-400 dark:hover:bg-red-700/10 dark:hover:text-red-400" @click="handleDelete(row.original.id)" aria-label="Delete order">
+                    <svg class="size-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.541 3.792a2.25 2.25 0 012.25-2.25h2.417a2.25 2.25 0 012.25 2.25v.25H16.666a.75.75 0 010 1.5h-.29v10.666a2.25 2.25 0 01-2.25 2.25h-8.25a2.25 2.25 0 01-2.25-2.25V5.541h-.292a.75.75 0 110-1.5H6.54v-.25zm8.334 9.454V5.541h-9.75v10.667c0 .414.336.75.75.75h8.25a.75.75 0 00.75-.75v-2.962zM8.041 4.041h3.917v-.25a.75.75 0 00-.75-.75H8.791a.75.75 0 00-.75.75v.25zM8.334 8a.75.75 0 01.75.75v5a.75.75 0 11-1.5 0v-5a.75.75 0 01.75-.75zm4.083.75a.75.75 0 00-1.5 0v5a.75.75 0 101.5 0v-5z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </td>
+              </tr></template>
+
+          <template x-if="rows.length === 0"><tr><td colspan="12" class="px-6 py-5 text-center text-gray-500">Ничего не найдено</td></tr></template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+              </div>
+
+              
+              <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+                <div x-data="{ cardTitle: 'Последние операции' }">
+                  <div class="px-6 py-5">
+  <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="cardTitle">Последние операции</h3>
+  <template x-if="typeof cardDesc !== 'undefined' &amp;&amp; cardDesc"><p class="mt-1 text-sm text-gray-500" x-text="cardDesc"></p></template>
+</div>
+</div>
+                <div class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800">
+                  <div x-data="basicTableThree()" class="w-full max-w-full min-w-0 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 sm:p-0 dark:border-gray-800 dark:bg-white/3">
+  
+  <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Последние операции
+      </h3>
+    </div>
+
+    <div class="flex w-full items-center gap-3 sm:w-auto">
+      <div class="relative flex-1 sm:w-75 sm:flex-initial">
+        <span class="pointer-events-none absolute inset-y-0 inset-s-0 flex items-center ps-3.5">
+          <svg class="size-5 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.167 3.333a5.833 5.833 0 100 11.667 5.833 5.833 0 000-11.667zM2 9.167a7.167 7.167 0 1112.584 4.707l3.275 3.275a.667.667 0 11-.943.943l-3.275-3.275A7.167 7.167 0 012 9.167z" fill="currentColor"></path>
+          </svg>
+        </span>
+        <input type="text" placeholder="Поиск…" x-model="searchQuery" class="h-10 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 ps-10 pe-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-transparent dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-800">
+      </div>
+
+      <button type="button" class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-3.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 sm:px-4 sm:py-2.5 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+        <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z" fill="currentColor"></path>
+        </svg>
+        <span class="hidden sm:inline">05 Feb - 06 March</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="w-full overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="border-y border-gray-100 dark:border-gray-800">
+        <tr>
+          <th class="h-11 min-w-44 py-3 ps-5 text-start text-sm font-normal text-gray-500 sm:ps-6 dark:text-gray-400">
+            Название
+          </th>
+          <th class="h-11 min-w-44 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400">
+            Дата
+          </th>
+          <th class="h-11 min-w-32 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400">
+            Цена
+          </th>
+          <th class="h-11 min-w-36 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400">
+            Категория
+          </th>
+          <th class="h-11 min-w-28 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400">
+            Статус
+          </th>
+          <th class="h-11 min-w-16 py-3 pe-5 sm:pe-6"></th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <template x-for="row in rows" :key="row.original.id"><tr class="h-16 border-b border-gray-100 transition hover:bg-gray-50/50 dark:border-gray-800 dark:hover:bg-white/2">
+              <td class="min-w-44 py-3 ps-5 text-start sm:ps-6">
+                <div class="flex items-center gap-3">
+                  
+                  <div class="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full" :class="{
+                      'bg-[#1b4bf1] text-white': row.original.brand === 'paypal',
+                      'bg-black dark:bg-white': row.original.brand === 'apple',
+                      'bg-black text-white': row.original.brand === 'netflix',
+                      'bg-[#E82127]': row.original.brand === 'tesla',
+                      'bg-black': row.original.brand === 'amazon',
+                      'bg-[#1DB954]': row.original.brand === 'spotify',
+                      'bg-[#82B541]': row.original.brand === 'envato'
+                    }">
+                    
+                    <template x-if="row.original.brand === 'paypal'"><svg class="size-4" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.5" d="M18.427 6.976c.27-1.758 0-2.93-.944-4.013-1.034-1.217-2.922-1.713-5.35-1.713H5.166c-.495 0-.9.36-.99.857L1.256 20.594a.593.593 0 00.584.676h4.316l-.315 1.894c-.045.316.18.586.54.586h3.64c.45 0 .81-.316.855-.721l.764-4.78c.045-.406.45-.721.854-.721h.54c3.506 0 6.293-1.443 7.102-5.592.314-1.713.18-3.201-.72-4.193-.27-.316-.584-.541-.988-.767z" fill="#fff"></path>
+                        <path d="M18.427 6.976c.27-1.758 0-2.93-.944-4.013-1.034-1.217-2.922-1.713-5.35-1.713H5.166c-.495 0-.9.36-.99.857L1.256 20.594a.593.593 0 00.584.676h4.316l1.034-6.673c.09-.496.494-.857.989-.857h2.067c4.046 0 7.193-1.623 8.092-6.403.045-.09.045-.225.09-.36z" fill="#fff"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'apple'"><svg class="size-4 text-white dark:text-black" width="18" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.953 6.822c-.096.055-2.37 1.231-2.37 3.838.108 2.973 2.87 4.015 2.917 4.015-.047.056-.417 1.42-1.512 2.85C15.12 18.759 14.155 20 12.691 20c-1.393 0-1.893-.821-3.5-.821-1.726 0-2.214.821-3.536.821-1.464 0-2.5-1.309-3.416-2.53C1.05 15.874.037 13.367.002 10.96-.023 9.683.24 8.43.906 7.364c.94-1.487 2.619-2.496 4.452-2.53 1.404-.043 2.654.9 3.512.9.821 0 2.357-.9 4.094-.9.75.001 2.75.212 3.989 1.987zM8.75 4.582c-.25-1.166.44-2.33 1.083-3.074C10.655.61 11.953 0 13.07 0c.072 1.165-.38 2.307-1.19 3.14-.726.898-1.976 1.574-3.13 1.441z" fill="currentColor"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'netflix'"><svg class="size-4" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.515 0H4.07v18c1.13-.268 2.31-.402 3.445-.452V0z" fill="#C20000"></path>
+                        <path d="M13.93 18V0h-3.445v17.584c2.011.128 3.445.416 3.445.416z" fill="#C20000"></path>
+                        <path d="M13.93 18L7.515 0H4.07l6.263 17.575c2.091.122 3.597.425 3.597.425z" fill="#FA0000"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'tesla'"><svg class="size-4 text-white" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.522 20.952l2.944-16.556c2.806 0 3.69.308 3.819 1.564 0 0 1.882-.702 2.831-2.127-3.704-1.717-7.427-1.794-7.427-1.794l-2.172 2.645h.005L8.35 2.038S4.628 2.116.923 3.832C1.872 5.258 3.755 5.96 3.755 5.96c.128-1.256 1.012-1.564 3.8-1.566l2.967 16.558z" fill="currentColor"></path>
+                        <path d="M10.521 1.275c2.995-.023 6.422.463 9.932 1.992.469-.844.59-1.217.59-1.217A28.803 28.803 0 0010.52 0 28.798 28.798 0 000 2.05s.171.46.59 1.217c3.508-1.53 6.936-2.015 9.93-1.992h.001z" fill="currentColor"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'amazon'"><svg class="size-4.5 text-white" width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.666 10.802c0-1.012.25-1.877.748-2.596.499-.719 1.18-1.261 2.046-1.628.792-.337 1.767-.579 2.926-.726a76.973 76.973 0 011.936-.176v-.374c0-.939-.102-1.57-.308-1.892-.308-.44-.792-.66-1.452-.66h-.176a2.408 2.408 0 00-1.254.462c-.352.264-.58.63-.682 1.1-.059.293-.205.462-.44.506L7.48 4.51c-.25-.059-.374-.19-.374-.396 0-.044.007-.095.022-.154.25-1.305.861-2.273 1.837-2.904C9.94.426 11.08.073 12.386 0h.55c1.672 0 2.977.433 3.916 1.298.147.147.284.305.407.473.125.168.224.319.297.45.073.133.14.324.198.573.059.25.103.422.132.517.03.095.052.3.066.616.015.315.022.502.022.56v5.325c0 .381.055.73.165 1.045.11.315.217.543.319.682.102.14.271.363.506.67.088.133.132.25.132.353 0 .117-.059.22-.176.308a1156.917 1156.917 0 01-1.98 1.716c-.176.132-.389.147-.638.044a7.579 7.579 0 01-.54-.506 18.803 18.803 0 01-.33-.352 4.87 4.87 0 01-.318-.429 9.073 9.073 0 00-.308-.429c-.821.895-1.628 1.452-2.42 1.672-.499.147-1.115.22-1.848.22-1.13 0-2.057-.348-2.783-1.045s-1.089-1.683-1.089-2.959zm3.784-.44c0 .572.143 1.03.429 1.375.286.345.67.517 1.155.517.044 0 .106-.007.187-.022.08-.015.136-.022.165-.022.616-.161 1.093-.557 1.43-1.188.161-.279.282-.583.363-.913.08-.33.125-.598.132-.803.007-.205.011-.543.011-1.012v-.55c-.85 0-1.496.059-1.936.176-1.29.367-1.936 1.18-1.936 2.442z" fill="#fff"></path>
+                        <path d="M19.69 17.446a.69.69 0 01.132-.176 3.45 3.45 0 011.056-.506 7.185 7.185 0 011.628-.242c.147-.015.286-.007.418.022.66.058 1.056.169 1.188.33.059.088.088.22.088.396v.154c0 .513-.14 1.118-.418 1.815-.279.697-.667 1.258-1.166 1.683-.073.059-.14.088-.198.088a.195.195 0 01-.088-.022c-.088-.044-.11-.125-.066-.242.543-1.276.814-2.163.814-2.662 0-.161-.03-.279-.088-.352-.147-.176-.557-.264-1.232-.264-.25 0-.543.014-.88.044a45.83 45.83 0 00-1.012.132c-.088 0-.147-.015-.176-.044-.03-.03-.037-.059-.022-.088 0-.015.007-.037.022-.066zM.044 17.072c.073-.117.19-.124.352-.022 3.667 2.127 7.656 3.19 11.968 3.19 2.875 0 5.713-.535 8.514-1.606a17.473 17.473 0 00.616-.264c.22-.088.392-.044.517.132s.085.338-.12.484c-.265.19-.602.41-1.013.66-1.261.748-2.67 1.328-4.224 1.738-1.555.411-3.073.616-4.554.616-2.288 0-4.451-.4-6.49-1.199a17.88 17.88 0 01-5.478-3.377c-.088-.073-.132-.147-.132-.22 0-.044.015-.088.044-.132z" fill="#F90"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'spotify'"><svg class="size-4 text-white" width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25.781 7.32c-.406 0-.656-.101-1.008-.304-5.562-3.32-15.507-4.118-21.945-2.32-.281.077-.633.202-1.008.202C.79 4.898 0 4.094 0 3.055 0 1.992.656 1.39 1.36 1.187 4.11.383 7.187 0 10.54 0c5.702 0 11.679 1.188 16.046 3.734.61.352 1.008.836 1.008 1.766a1.81 1.81 0 01-1.813 1.82zm-2.422 5.953c-.406 0-.68-.18-.96-.328-4.883-2.89-12.165-4.054-18.641-2.297-.375.102-.578.204-.93.204-.836 0-1.515-.68-1.515-1.516s.406-1.39 1.21-1.617c2.172-.61 4.391-1.063 7.641-1.063 5.07 0 9.969 1.258 13.828 3.555.633.375.883.86.883 1.539-.008.844-.664 1.523-1.516 1.523zm-2.101 5.125c-.328 0-.531-.101-.836-.28-4.875-2.938-10.547-3.063-16.149-1.915-.304.078-.703.203-.93.203-.757 0-1.234-.601-1.234-1.234 0-.805.477-1.188 1.063-1.313 6.398-1.414 12.937-1.289 18.515 2.047.477.305.758.578.758 1.29a1.18 1.18 0 01-1.187 1.202z" fill="currentColor"></path>
+                      </svg></template>
+                    
+                    <template x-if="row.original.brand === 'envato'"><svg class="size-3.5 text-white" width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.123 13.013l-5.04.54a.092.092 0 01-.065-.165l4.93-3.84c.319-.262.525-.668.438-1.106-.088-.669-.64-1.106-1.34-1.019l-5.36.785c-.093.012-.143-.107-.068-.166l5.312-4.056c1.046-.815 1.134-2.415.175-3.346-.872-.872-2.272-.844-3.144.028L.403 9.376a1.52 1.52 0 00-.378 1.31c.147.787.931 1.309 1.718 1.165l4.615-.94c.1-.022.154.112.07.168l-5.119 3.278c-.64.406-.931 1.134-.728 1.862.203.96 1.166 1.512 2.097 1.281l7.652-1.884a.091.091 0 01.094.147L9.23 17.238c-.319.406.203.96.64.64l3.931-3.23c.7-.582.235-1.719-.668-1.631l-.01-.004z" fill="currentColor"></path>
+                      </svg></template>
+                  </div>
+                  <span class="text-sm font-medium whitespace-nowrap text-gray-800 dark:text-white/90" x-text="row.original.name">Bought PYPL</span>
+                </div>
+              </td>
+              <td class="min-w-44 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="row.original.date">Nov 23, 01:00 PM</td>
+              <td class="min-w-32 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="row.original.price">$2,567.88</td>
+              <td class="min-w-36 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400" x-text="row.original.category">Финансы</td>
+              <td class="min-w-28 px-4 py-3 text-start text-sm whitespace-nowrap">
+                <span class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium" :class="{
+                    'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': statusBadgeColor(row.original.status) === 'success',
+                    'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': statusBadgeColor(row.original.status) === 'warning',
+                    'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': statusBadgeColor(row.original.status) === 'error'
+                  }" x-text="row.original.status">Успешно</span>
+              </td>
+              <td class="min-w-16 py-3 pe-5 text-end whitespace-nowrap sm:pe-6">
+                <button type="button" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="More options">
+                  <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </button>
+              </td>
+            </tr></template>
+
+        <template x-if="rows.length === 0"><tr><td colspan="12" class="px-6 py-5 text-center text-gray-500">Ничего не найдено</td></tr></template>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <div class="border-t-0 px-5 py-4 sm:px-6">
+    <template x-if="totalPages &gt; 0"><nav aria-label="Навигация по таблице" role="navigation" class="flex items-center gap-1.5 self-center sm:self-auto">
+        <ul class="flex items-center gap-1.5">
+          
+          <li>
+            <button type="button" aria-label="Предыдущая страница" :aria-disabled="currentPage === 1" :tabindex="currentPage === 1 ? -1 : undefined" :disabled="currentPage === 1" @click="prevPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+          </li>
+
+          
+          <template x-for="(item, idx) in getPages()" :key="idx"><li>
+              <template x-if="item === 'ellipsis-start' || item === 'ellipsis-end' || item === '...'"><span aria-hidden="true" class="flex size-10 animate-in items-center justify-center rounded-[10px] border border-gray-300 bg-white font-medium text-gray-700 shadow-theme-xs duration-150 fade-in-0 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                  ...
+                  <span class="sr-only">Другие страницы</span>
+                </span></template>
+              <template x-if="typeof item === 'number'"><button type="button" :aria-label="'Страница ' + item" :aria-current="currentPage === item ? 'page' : undefined" @click="setPage(item - 1)" class="inline-flex size-10 shrink-0 animate-in items-center justify-center rounded-[10px] text-sm font-medium shadow-theme-xs transition-all duration-150 fade-in-0 outline-none select-none focus-visible:outline-hidden active:translate-y-px" :class="currentPage === item 
+                    ? 'border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600' 
+                    : 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white'" x-text="item" >1</button></template>
+            </li></template>
+
+          
+          <li>
+            <button type="button" aria-label="Следующая страница" :aria-disabled="currentPage === totalPages" :tabindex="currentPage === totalPages ? -1 : undefined" :disabled="currentPage === totalPages" @click="nextPage()" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300" :class="currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0 rtl:rotate-180">
+                <path d="M9 18l6-6-6-6"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav></template>
+  </div>
+</div>
+</div>
+              </div>
+
+              
+              <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+                <div x-data="{ cardTitle: 'Рекламные кампании' }">
+                  <div class="px-6 py-5">
+  <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="cardTitle">Рекламные кампании</h3>
+  <template x-if="typeof cardDesc !== 'undefined' &amp;&amp; cardDesc"><p class="mt-1 text-sm text-gray-500" x-text="cardDesc"></p></template>
+</div>
+</div>
+                <div class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800">
+                  <div x-data="basicTableFour()" class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-4 flex justify-between gap-2 sm:items-center">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Рекламные кампании
+      </h3>
+    </div>
+
+    
+    <div class="relative" @click.outside="dropdownOpen = false">
+      <button type="button" @click="dropdownOpen = !dropdownOpen" class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" :class="dropdownOpen ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''">
+        <svg class="size-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="1"></circle>
+          <circle cx="12" cy="5" r="1"></circle>
+          <circle cx="12" cy="19" r="1"></circle>
+        </svg>
+      </button>
+
+      <div x-show="dropdownOpen" x-transition="" class="absolute inset-e-0 z-40 mt-1 w-40 rounded-xl border border-gray-200 bg-white p-2 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        <button type="button" @click="dropdownOpen = false" class="flex w-full rounded-lg px-3 py-2 text-start text-sm font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300">
+          Подробнее
+        </button>
+        <button type="button" @click="dropdownOpen = false" class="flex w-full rounded-lg px-3 py-2 text-start text-sm font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300">
+          Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-scrollbar max-w-full overflow-x-auto">
+    <div class="min-w-full">
+      <table class="min-w-full">
+        
+        <thead class="border-y border-gray-100 dark:border-gray-800">
+          <tr>
+            <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Товары
+            </th>
+            <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Кампания
+            </th>
+            <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+              Статус
+            </th>
+          </tr>
+        </thead>
+
+        
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <template x-for="campaign in campaigns" :key="campaign.id"><tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+              <td class="py-3">
+                <div class="flex items-center gap-4.5">
+                  <div class="h-10 w-10 overflow-hidden rounded-full">
+                    <img :src="campaign.creator.image" :alt="campaign.creator.name" class="h-full w-full object-cover" width="40" height="40" alt="Смирнов Алексей Сергеевич">
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-700 dark:text-gray-400" x-text="campaign.creator.name">Смирнов Алексей Сергеевич</p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3">
+                <div class="flex w-full items-center gap-5">
+                  <div class="w-full max-w-8">
+                    <img :src="campaign.campaign.image" alt="brand" class="h-8 w-8 object-contain" width="40" height="40" >
+                  </div>
+                  <div class="truncate">
+                    <p class="mb-0.5 truncate text-sm font-medium text-gray-700 dark:text-gray-400" x-text="campaign.campaign.name">Grow your brand by...</p>
+                    <span class="text-xs text-gray-500 dark:text-gray-400" x-text="campaign.campaign.type">Ads campaign</span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3">
+                <span class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium" :class="{
+                    'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': getStatusColor(campaign.status) === 'success',
+                    'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': getStatusColor(campaign.status) === 'warning',
+                    'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': getStatusColor(campaign.status) === 'error'
+                  }" x-text="campaign.status">Успешно</span>
+              </td>
+            </tr></template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+              </div>
+
+              
+              <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3">
+                <div x-data="{ cardTitle: 'Заказы' }">
+                  <div class="px-6 py-5">
+  <h3 class="text-base font-medium text-gray-800 dark:text-white/90" x-text="cardTitle">Заказы</h3>
+  <template x-if="typeof cardDesc !== 'undefined' &amp;&amp; cardDesc"><p class="mt-1 text-sm text-gray-500" x-text="cardDesc"></p></template>
+</div>
+</div>
+                <div class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800">
+                  <div x-data="basicTableFive()" class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3">
+  <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Последние заказы
+      </h3>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button type="button" class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+        <svg class="size-5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        Фильтр
+      </button>
+      <button type="button" class="inline-flex items-center justify-center rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600">
+        Посмотреть все
+      </button>
+    </div>
+  </div>
+
+  <div class="-mx-4 overflow-x-auto sm:-mx-6">
+    <table class="min-w-full">
+      
+      <thead class="border-y border-gray-100 dark:border-gray-800">
+        <tr>
+          <th class="py-3 ps-4 text-start text-xs font-medium text-gray-500 sm:ps-6 dark:text-gray-400">
+            Товары
+          </th>
+          <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+            Категория
+          </th>
+          <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+            Страна
+          </th>
+          <th class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
+            CR
+          </th>
+          <th class="py-3 pe-4 text-start text-xs font-medium text-gray-500 sm:pe-6 dark:text-gray-400">
+            Значение
+          </th>
+        </tr>
+      </thead>
+
+      
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <template x-for="order in orders" :key="order.id"><tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+            <td class="py-3 ps-4 text-start text-sm font-medium text-gray-800 sm:ps-6 dark:text-white/90" x-text="order.name">TailGrids</td>
+            <td class="py-3 text-start text-sm text-gray-500 dark:text-gray-400" x-text="order.category">UI Kits</td>
+            <td class="py-3 text-start text-sm text-gray-500 dark:text-gray-400">
+              <div class="h-5 w-5">
+                <img :src="order.country" :alt="order.name" class="h-5 w-5 rounded-sm object-fill" width="20" height="20" alt="TailGrids">
+              </div>
+            </td>
+            <td class="py-3 text-start text-sm text-gray-500 dark:text-gray-400" x-text="order.cr">Dashboard</td>
+            <td class="py-3 pe-4 text-start text-sm font-medium text-green-600 sm:pe-6 dark:text-green-500" x-text="`$${order.value}`">$12,499</td>
+          </tr></template>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+              </div>
+            </div>
+                    </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer src="./assets/js/localization.js"></script>
+  <script defer src="./assets/js/page-components.js"></script>
+  <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
+
+</body></html>

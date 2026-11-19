@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" data-color-scheme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Генератор изображений | MayBrands</title>
+  <script src="./assets/js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./assets/images/maybrands.svg"><link href="./assets/css/fonts.css" rel="stylesheet"><link href="./assets/css/style.css" rel="stylesheet"><link href="./assets/css/charts.css" rel="stylesheet">
+  </head>
+  <body x-data="{ page: 'ai-image', section: 'ai-assistant', 'darkMode': document.documentElement.classList.contains('dark'), 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }">
+    <script src="./assets/icons/sprite.js"></script>
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
+<a class="sr-only" href="#main-content">Перейти к основному содержимому</a>
+<!-- Sidebar Backdrop (Mobile) -->
+<div x-show="sidebarToggle" class="fixed inset-0 z-99 bg-gray-900/50 backdrop-blur-xs xl:hidden" aria-hidden="true" @click="sidebarToggle = false" x-transition.opacity="" style="display: none;"></div>
+
+<aside :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'" class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black -translate-x-full rtl:translate-x-full" @click.outside="if (window.innerWidth &lt; 1280) sidebarToggle = false" aria-label="Боковая навигация">
+  <!-- Sidebar Header -->
+  <!-- SIDEBAR HEADER -->
+<div :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'" class="sidebar-header flex items-center gap-2 py-5 justify-between">
+  <a href="./ecommerce.html">
+    <span class="sr-only">Главная страница</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img class="h-10 w-auto object-contain" src="./assets/images/maybrands.svg" width="110" height="40" alt="MayBrands">
+    </span>
+
+    <img class="logo-icon size-8 hidden" :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" src="./assets/images/maybrands.svg" alt="MayBrands">
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
+<div class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: document.getElementById('menu-dashboard').hidden ? '' : 'Dashboard'}" aria-label="Боковая навигация">
+      <!-- Main Nav Group -->
+      <!-- Menu Group -->
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span class="menu-group-title" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.groups.menu')">Меню</span>
+
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="menu-group-icon mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-01"></use></svg>
+  </h3>
+
+  <ul class="mb-6 flex flex-col gap-1">
+    <!-- Menu Item Dashboard -->
+    <li>
+      <a href="#menu-dashboard" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')" id="menu-dashboard-btn" aria-controls="menu-dashboard" :aria-expanded="selected === 'Dashboard' ? 'true' : 'false'" class="group menu-item menu-item-inactive sidebar-group-toggle" aria-expanded="true">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-02"></use></svg>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''" x-text="$t('sidebar.items.dashboard')">Примеры страниц</span>
+
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-03"></use></svg>
+      </a>
+
+      <!-- Dropdown Menu Start -->
+      <div id="menu-dashboard" aria-labelledby="menu-dashboard-btn" :hidden="selected !== 'Dashboard'">
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9 rtl:pr-9 rtl:pl-0">
+          <li>
+            <a href="./ecommerce.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.ecommerceHome')">Интернет-магазин</a>
+          </li>
+          <li>
+            <a href="./index.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.analytics')">Аналитика</a>
+          </li>
+          <li>
+            <a class="group menu-dropdown-item menu-dropdown-item-inactive" href="./marketing.html" x-text="$t('sidebar.items.marketing')">Маркетинг</a>
+          </li>
+          <li>
+            <a href="./crm.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.crm')">CRM</a>
+          </li>
+          <li>
+            <a href="./saas.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.saas')">SaaS</a>
+          </li>
+          <li>
+            <a href="./logistics.html" class="group menu-dropdown-item menu-dropdown-item-inactive" x-text="$t('sidebar.items.logistics')">Логистика</a>
+          </li>
+          <li><a href="./ai.html" class="group menu-dropdown-item menu-dropdown-item-inactive">ИИ-аналитика</a></li>
+          <li><a href="./sales.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Продажи</a></li>
+          <li><a href="./finance.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Финансы</a></li>
+          <li><a href="./hr.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Персонал</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-ai-menu x-data="{ open: !document.getElementById('menu-ai-assistant').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-ai-assistant" aria-expanded="true" :aria-expanded="open" aria-label="ИИ-помощник">
+        <svg :class="['ai-chat','ai-image'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-ai-assistant"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">ИИ-помощник</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ai-assistant" :hidden="!open">
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./ai-chat.html" class="menu-dropdown-item menu-dropdown-item-inactive">ИИ-чат</a></li>
+<li><a href="./ai-image.html" class="menu-dropdown-item menu-dropdown-item-active" aria-current="page">Генератор изображений</a></li>
+</ul>
+      </div>
+    </li>
+<li><a href="./calendar.html" class="group menu-item menu-item-inactive" aria-label="Календарь">
+  <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-calendar"></use></svg>
+  <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Календарь</span>
+</a></li>
+    <li><a href="./user-profile.html" class="group menu-item menu-item-inactive" aria-label="Профиль">
+      <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-13"></use></svg>
+      <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Профиль</span>
+    </a></li>
+    <li data-form-menu x-data="{ open: !document.getElementById('menu-forms').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['form-elements','form-layot'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-forms" aria-expanded="false" :aria-expanded="open" aria-label="Формы">
+        <svg :class="['form-elements','form-layot'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-forms"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Формы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-forms" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./form-elements.html" class="menu-dropdown-item menu-dropdown-item-inactive">Элементы форм</a></li>
+          <li><a href="./form-layot.html" class="menu-dropdown-item menu-dropdown-item-inactive">Макеты форм</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-table-menu x-data="{ open: !document.getElementById('menu-tables').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tables" aria-expanded="false" :aria-expanded="open" aria-label="Таблицы">
+        <svg :class="['basic-tables','data-tables'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tables"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Таблицы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tables" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./basic-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Простые таблицы</a></li>
+          <li><a href="./data-tables.html" class="menu-dropdown-item menu-dropdown-item-inactive">Таблицы с поиском</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-pages-menu x-data="{ open: !document.getElementById('menu-pages').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-pages" aria-expanded="false" :aria-expanded="open" aria-label="Страницы">
+        <svg :class="['file-manager','pricing','faq','api','integrations','blank-page','404'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-pages"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Страницы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-pages" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+<li><a href="./file-manager.html" class="menu-dropdown-item menu-dropdown-item-inactive">Файловый менеджер</a></li>
+<li><a href="./pricing.html" class="menu-dropdown-item menu-dropdown-item-inactive">Тарифы</a></li>
+<li><a href="./faq.html" class="menu-dropdown-item menu-dropdown-item-inactive">Частые вопросы</a></li>
+<li><a href="./api.html" class="menu-dropdown-item menu-dropdown-item-inactive">API-ключи</a></li>
+<li><a href="./integrations.html" class="menu-dropdown-item menu-dropdown-item-inactive">Интеграции</a></li>
+<li><a href="./blank-page.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пустая страница</a></li>
+<li><a href="./404.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 404</a></li>
+        <li><a href="./500.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 500</a></li>
+<li><a href="./503.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Ошибка 503</a></li>
+<li><a href="./maintenance.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Технические работы</a></li>
+<li><a href="./success.html" data-admin-full-load class="menu-dropdown-item menu-dropdown-item-inactive">Сообщение отправлено</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-task-menu x-data="{ open: !document.getElementById('menu-tasks').hidden }">
+      <button type="button" class="group menu-item sidebar-group-toggle w-full" :class="['task-list','task-kanban'].includes(page) ? 'menu-item-active' : 'menu-item-inactive'" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-tasks" aria-expanded="false" :aria-expanded="open" aria-label="Задачи">
+        <svg :class="['task-list','task-kanban'].includes(page) ? 'menu-item-icon-active' : 'menu-item-icon-inactive'" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-tasks"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Задачи</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-tasks" :hidden="!open" hidden>
+        <ul class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./task-list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Список задач</a></li>
+          <li><a href="./task-kanban.html" class="menu-dropdown-item menu-dropdown-item-inactive">Канбан</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Поддержка</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li><a href="./chat.html" class="group menu-item menu-item-inactive" aria-label="Чаты"><svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-chat"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Чаты</span></a></li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-support-tickets').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-support-tickets" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Обращения' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-headset"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Обращения</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-support-tickets" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./support-tickets.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Обращения в поддержку</a></li>
+          <li><a href="./ticket-reply.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Ответ на обращение</a></li>
+        </ul>
+      </div>
+    </li>
+    <li data-support-menu x-data="{ open: !document.getElementById('menu-email').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; open = true } else { open = !open }" aria-controls="menu-email" aria-expanded="false" :aria-expanded="open" :aria-label="sidebarToggle ? 'Почта' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-mail"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Почта</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-email" :hidden="!open" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./inbox.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Входящие</a></li>
+          <li><a href="./inbox-deatil.html" class="group menu-dropdown-item menu-dropdown-item-inactive">Просмотр письма</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3 class="mb-4 text-xs leading-5 text-gray-400 uppercase">
+    <span :class="sidebarToggle ? 'xl:hidden' : ''">Прочее</span>
+    <svg :class="sidebarToggle ? 'xl:block hidden' : 'hidden'" class="mx-auto fill-current hidden" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><use href="#ui-icon-01"></use></svg>
+  </h3>
+  <ul class="mb-6 flex flex-col gap-1">
+    <li x-data="{ chartsOpen: !document.getElementById('menu-charts').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="chartsOpen = !chartsOpen" aria-controls="menu-charts" aria-expanded="false" :aria-expanded="chartsOpen" :aria-label="sidebarToggle ? 'Диаграммы' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-04"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">Диаграммы</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-charts" :hidden="!chartsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./pie-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Круговые диаграммы</a></li>
+          <li><a href="./radar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Лепестковые диаграммы</a></li>
+          <li><a href="./line-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Линейные графики</a></li>
+          <li><a href="./radial-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Радиальные диаграммы</a></li>
+          <li><a href="./bar-chart.html" class="menu-dropdown-item menu-dropdown-item-inactive">Столбчатые диаграммы</a></li>
+        </ul>
+      </div>
+    </li>
+    <li x-data="{ componentsOpen: !document.getElementById('menu-ui-elements').hidden }">
+      <button type="button" class="group menu-item menu-item-inactive sidebar-group-toggle w-full" @click="if (sidebarToggle &amp;&amp; window.innerWidth &gt;= 1280) { sidebarToggle = false; componentsOpen = true } else { componentsOpen = !componentsOpen }" aria-controls="menu-ui-elements" aria-expanded="false" :aria-expanded="componentsOpen" :aria-label="sidebarToggle ? 'UX-интерфейс' : null">
+        <svg class="menu-item-icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#ui-icon-44"></use></svg>
+        <span class="menu-item-text" :class="sidebarToggle ? 'xl:hidden' : ''">UX-интерфейс</span>
+        <svg class="menu-item-arrow sidebar-group-arrow" :class="sidebarToggle ? 'xl:hidden' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-icon-05"></use></svg>
+      </button>
+      <div id="menu-ui-elements" :hidden="!componentsOpen" hidden>
+        <ul :class="sidebarToggle ? 'xl:hidden' : 'flex'" class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
+          <li><a href="./avatar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Аватары</a></li>
+          <li><a href="./badge.html" class="menu-dropdown-item menu-dropdown-item-inactive">Бейджи</a></li>
+          <li><a href="./tabs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Вкладки</a></li>
+          <li><a href="./popovers.html" class="menu-dropdown-item menu-dropdown-item-inactive">Всплывающие окна</a></li>
+          <li><a href="./dropdown.html" class="menu-dropdown-item menu-dropdown-item-inactive">Выпадающие меню</a></li>
+          <li><a href="./dialogs.html" class="menu-dropdown-item menu-dropdown-item-inactive">Диалоги</a></li>
+          <li><a href="./images.html" class="menu-dropdown-item menu-dropdown-item-inactive">Изображения</a></li>
+          <li><a href="./spinners.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы загрузки</a></li>
+          <li><a href="./progressbar.html" class="menu-dropdown-item menu-dropdown-item-inactive">Индикаторы прогресса</a></li>
+          <li><a href="./cards.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карточки</a></li>
+          <li><a href="./carousel.html" class="menu-dropdown-item menu-dropdown-item-inactive">Карусель</a></li>
+          <li><a href="./buttons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Кнопки</a></li>
+          <li><a href="./ribbons.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ленты</a></li>
+          <li><a href="./alerts.html" class="menu-dropdown-item menu-dropdown-item-inactive">Оповещения</a></li>
+          <li><a href="./pagination.html" class="menu-dropdown-item menu-dropdown-item-inactive">Пагинация</a></li>
+          <li><a href="./tooltip.html" class="menu-dropdown-item menu-dropdown-item-inactive">Подсказки</a></li>
+          <li><a href="./list.html" class="menu-dropdown-item menu-dropdown-item-inactive">Списки</a></li>
+          <li><a href="./links.html" class="menu-dropdown-item menu-dropdown-item-inactive">Ссылки</a></li>
+          <li><a href="./notification.html" class="menu-dropdown-item menu-dropdown-item-inactive">Уведомления</a></li>
+          <li><a href="./breadcrumb.html" class="menu-dropdown-item menu-dropdown-item-inactive">Хлебные крошки</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  </div>
+</aside>
+      <script src="./assets/js/sidebar-scroll.js"></script>
+
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <!-- App Header -->
+<header x-data="{ isApplicationMenuOpen: false }" @keydown.window="(e) =&gt; { if ((e.metaKey || e.ctrlKey) &amp;&amp; e.key.toLowerCase() === 'k') { e.preventDefault(); $refs.searchInput?.focus(); } }" class="sticky top-0 z-50 flex w-full shrink-0 border-gray-200 bg-white xl:border-b dark:border-gray-800 dark:bg-gray-900">
+  <div class="flex grow flex-col items-center justify-between xl:flex-row xl:px-6">
+    <!-- Left side content -->
+    <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 xl:py-4 dark:border-gray-800">
+      <!-- Sidebar Toggle Button -->
+      <button type="button" @click.stop="sidebarToggle = !sidebarToggle" :aria-label="$t('header.toggleSidebar')" aria-label="Переключить боковое меню" class="group/button relative inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-500 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px lg:size-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <!-- XIcon (shown when mobile sidebar is open) -->
+        <svg x-show="sidebarToggle &amp;&amp; window.innerWidth &lt; 1280" class="size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><use href="#ui-icon-06"></use></svg>
+
+        <!-- MenuTwoIcon (shown by default / desktop) -->
+        <svg x-show="!sidebarToggle || window.innerWidth &gt;= 1280" class="size-auto! rtl:-scale-x-100" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-07"></use></svg>
+      </button>
+
+      <!-- Mobile Logo -->
+      <a href="./ecommerce.html" class="xl:hidden">
+        <img class="h-8 w-auto object-contain" src="./assets/images/maybrands.svg" alt="MayBrands">
+      </a>
+
+      <!-- Mobile Application Menu Toggle Button -->
+      <button type="button" @click="isApplicationMenuOpen = !isApplicationMenuOpen" aria-label="Открыть меню приложений" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden xl:hidden dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-icon-08"></use></svg>
+      </button>
+
+      <!-- Search Input (Desktop) -->
+      <div class="hidden xl:block">
+        <form @submit.prevent="">
+          <div class="xl:w-107.5">
+            <div data-slot="input-group" role="group" class="group/input-group relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-200 bg-transparent shadow-theme-xs outline-hidden transition-colors has-[[data-slot=input-group-control]:focus]:border-brand-300 has-[[data-slot=input-group-control]:focus]:ring-3 has-[[data-slot=input-group-control]:focus]:ring-brand-500/20 has-[[data-slot=input-group-control]:focus-visible]:border-brand-300 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500/20 dark:border-gray-800 dark:bg-white/3 dark:has-[[data-slot=input-group-control]:focus]:border-brand-500/40 dark:has-[[data-slot=input-group-control]:focus-visible]:border-brand-500/40">
+              <div role="group" data-slot="input-group-addon" data-align="inline-start" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 ps-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="size-5 text-gray-500 dark:text-gray-400"><use href="#ui-icon-09"></use></svg>
+              </div>
+
+              <input x-ref="searchInput" data-slot="input-group-control" type="text" :placeholder="$t('header.searchPlaceholder')" placeholder="Поиск или ввод команды…" class="h-full flex-1 rounded-none border-0 bg-transparent px-2 text-sm text-gray-800 shadow-none ring-0 outline-hidden placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus-visible:border-transparent focus-visible:ring-0 dark:text-white/90 dark:placeholder:text-white/30">
+
+              <div role="group" data-slot="input-group-addon" data-align="inline-end" class="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 pe-3.5 text-sm font-medium text-gray-500 select-none dark:text-gray-400">
+                <span data-slot="badge" data-variant="light" data-color="gray" data-size="sm" @click="$refs.searchInput.focus()" class="group/badge inline-flex h-5.5 w-fit shrink-0 cursor-pointer items-center justify-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-1.75 py-[4.5px] text-xs font-medium tracking-[-0.2px] whitespace-nowrap text-gray-500 shadow-none transition-colors select-none [text-shadow:0_4px_4px_var(--color-gray-300)] dark:border-gray-800 dark:bg-white/3 dark:text-gray-400 dark:[text-shadow:0_4px_4px_rgba(255,255,255,0.10)] [&amp;:has(&gt;svg:first-child)]:ps-1.5 [&amp;:has(&gt;svg:last-child)]:pe-1.5 [&amp;&gt;svg]:pointer-events-none [&amp;&gt;svg]:size-3 [&amp;&gt;svg]:shrink-0">
+                  <span>⌘</span>
+                  <span>K</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md xl:flex xl:justify-end xl:px-0 xl:shadow-none hidden" :class="isApplicationMenuOpen ? 'flex' : 'hidden'">
+      <div class="flex items-center gap-2 2xsm:gap-3">
+        <!-- Theme Toggler -->
+        <!-- Theme Toggle Button -->
+<button type="button" @click.prevent="darkMode = !darkMode; setAdminTheme(darkMode)" class="relative inline-flex size-11 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-gray-700 shadow-theme-xs transition-all select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white" aria-label="Переключить тему">
+  <!-- Sun Icon (Dark Mode) -->
+  <svg class="size-auto! hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#ui-icon-10"></use></svg>
+
+  <!-- Moon Icon (Light Mode) -->
+  <svg class="size-auto! dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><use href="#ui-icon-11"></use></svg>
+</button>
+</div>
+
+      <!-- User Dropdown -->
+      <!-- User Dropdown -->
+<div class="relative" x-data="dropdown({
+    placement: 'bottom-end',
+    offset: 8,
+
+    getMainItems() {
+      return Array.from(this.$refs.menu?.querySelectorAll('[role=menuitem]') || []);
+    },
+
+    openMenu(focusFirst = true) {
+      this.open = true;
+      this.$nextTick(() =&gt; {
+        const items = this.getMainItems();
+        if (items.length) {
+          (focusFirst ? items[0] : items[items.length - 1]).focus();
+        }
+      });
+    },
+
+    closeMenu(returnFocus = true) {
+      if (!this.open) return;
+      this.open = false;
+      if (returnFocus) {
+        this.$nextTick(() =&gt; this.$refs.trigger?.focus());
+      }
+    },
+
+    toggleMenu() {
+      if (this.open) {
+        this.closeMenu(false);
+      } else {
+        this.openMenu(true);
+      }
+    },
+
+    navigate(e) {
+      const items = this.getMainItems();
+      const index = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = index &lt; items.length - 1 ? index + 1 : 0;
+        items[next]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = index &gt; 0 ? index - 1 : items.length - 1;
+        items[prev]?.focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    }
+  })" @click.outside="closeMenu(false)" @keydown.escape.window="closeMenu(true)">
+  <!-- Trigger Button -->
+  <button type="button" x-ref="trigger" id="user-menu-button" aria-haspopup="menu" :aria-expanded="open.toString()" aria-controls="user-menu" aria-label="Меню пользователя" @click="toggleMenu()" @keydown.down.prevent="openMenu(true)" @keydown.up.prevent="openMenu(false)" class="dropdown-toggle flex items-center text-gray-700 dark:text-gray-400" aria-expanded="false">
+    <span class="me-3 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" aria-hidden="true">НР</span>
+
+    <span class="me-1 block text-sm font-medium">Смирнов Алексей Сергеевич</span>
+
+    <svg class="size-5 text-gray-500 transition-transform duration-200 dark:text-gray-400 rotate-0" :class="open ? 'rotate-180' : 'rotate-0'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-12"></use></svg>
+  </button>
+
+  <!-- Dropdown Menu Content -->
+  <div x-show="open" x-ref="menu" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.tab="open = false" @keydown.escape.stop="closeMenu(true)" @keydown="navigate($event)" x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100" x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75" class="fixed z-50 flex w-65 flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]" style="display: none;">
+    <!-- User Info Header -->
+    <div class="px-3 py-2">
+      <span class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+        Смирнов Алексей Сергеевич
+      </span>
+      <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
+        smirnov@yandex.ru
+      </span>
+    </div>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Edit Profile -->
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-13"></use></svg>
+      <span x-text="$t('userDropdown.editProfile')">Редактировать профиль</span>
+    </a>
+
+    <!-- Account Settings -->
+    <a href="./user-profile.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300 dark:focus:bg-white/5 dark:focus:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-6 text-gray-500 group-hover/dropdown-menu-item:text-gray-700 dark:text-gray-400 dark:group-hover/dropdown-menu-item:text-gray-300"><use href="#ui-icon-14"></use></svg>
+      <span x-text="$t('userDropdown.accountSettings')">Настройки аккаунта</span>
+    </a>
+
+    <div class="-mx-3 my-1.5 h-px bg-gray-100 dark:bg-gray-700"></div>
+
+    <!-- Sign Out (Destructive) -->
+    <a href="https://demo.tailadmin.com/signin.html" role="menuitem" tabindex="-1" class="group/dropdown-menu-item relative flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 outline-hidden transition-colors duration-200 select-none hover:bg-red-50 hover:text-red-600 focus:bg-red-50 focus:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:focus:bg-red-500/10 dark:focus:text-red-400">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-5 text-red-500 dark:text-red-400"><use href="#ui-icon-15"></use></svg>
+      <span x-text="$t('userDropdown.signOut')">Выйти</span>
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+</header>
+<!-- ===== Header End ===== -->
+          <div class="w-full p-4 pb-20 md:p-6 md:pb-6" data-admin-page="ai-image" data-admin-section="ai-assistant" tabindex="-1" x-data="{ isHistoryOpen: false }">
+            <div x-data="{ pageTitle: 'Генератор изображений' }">
+              <div class="mb-6 flex flex-col items-start gap-2">
+  <nav aria-label="Хлебные крошки">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li>
+        <a class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" href="./index.html">
+          Главная
+          <svg class="stroke-current rtl:rotate-180" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ui-icon-16"></use></svg>
+        </a>
+      </li>
+      <li aria-current="page" class="text-sm text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Генератор изображений</li>
+    </ol>
+  </nav>
+  <h1 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle || pageName">Генератор изображений</h1>
+</div>
+</div>
+            
+
+
+          
+          <div class="flex min-h-0 flex-1 overflow-hidden bg-white dark:bg-gray-900">
+            
+            <div class="flex h-full min-w-0 flex-1 flex-col">
+              
+              
+<header class="w-full shrink-0 border-b border-gray-200 bg-white px-4 sm:px-6 xl:border-none dark:border-gray-800 dark:bg-gray-900" x-data="adminAiCalendar7">
+  <div class="mx-auto flex h-14 w-full max-w-180 items-center justify-between">
+    
+    <div class="relative flex items-center">
+      <button type="button" @click="chatDropdown = !chatDropdown" @click.outside="chatDropdown = false" class="group -ms-3 inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-base font-semibold text-gray-800 transition-all select-none hover:bg-gray-100 active:translate-y-px sm:-ms-4 dark:text-white/90 dark:hover:bg-gray-800">
+        <span class="max-w-36 truncate 2xsm:max-w-44 xsm:max-w-56 sm:max-w-[320px]" x-text="chatTitle">Адаптивная форма входа</span>
+        <svg class="size-4 text-gray-500 transition-transform duration-200 dark:text-gray-400" :class="chatDropdown ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-e0968ac4206c"></use></svg>
+      </button>
+
+      
+      <div x-show="chatDropdown" x-transition:enter="ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute top-full left-0 z-50 mt-1.5 w-48 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+        
+        <button type="button" @click="isStarred = !isStarred; chatDropdown = false" class="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 active:translate-y-px dark:text-gray-300 dark:hover:bg-white/5">
+          <svg class="size-5 transition-colors" :class="isStarred ? 'fill-amber-500 text-amber-500' : 'text-gray-500 dark:text-gray-400'" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-703c1065e79b"></use></svg>
+          <span x-text="isStarred ? 'Убрать из избранного' : 'В избранное'">В избранное</span>
+        </button>
+
+        
+        <button type="button" @click="chatDropdown = false; renameModal = true" class="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 active:translate-y-px dark:text-gray-300 dark:hover:bg-white/5">
+          <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="none"><use href="#ui-ai-calendar-2057552c1d29"></use></svg>
+          <span>Переименовать</span>
+        </button>
+
+        <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+
+        
+        <button type="button" @click="chatDropdown = false" class="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-medium text-red-500 transition-all select-none hover:bg-red-50 active:translate-y-px dark:hover:bg-red-500/10">
+          <svg class="size-4.5" viewBox="0 0 20 20" fill="none"><use href="#ui-ai-calendar-03ffd0845ce5"></use></svg>
+          <span>Удалить</span>
+        </button>
+      </div>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button type="button" @click="shareModal = true" class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-[10px] border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-900 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">
+        <svg class="size-4" viewBox="0 0 16 16" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-8f4626cec7e8"></use></svg>
+        <span>Поделиться</span>
+      </button>
+
+      
+      <button type="button" @click="isHistoryOpen = !isHistoryOpen" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-[10px] border border-gray-300 bg-white text-gray-700 transition-all select-none hover:bg-gray-50 hover:text-gray-900 active:translate-y-px xl:hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" aria-label="Переключить историю чатов">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-ai-calendar-207534ed351f"></use></svg>
+      </button>
+    </div>
+  </div>
+
+  
+  
+<div x-show="shareModal" class="fixed inset-0 z-99999 flex items-center justify-center p-4" style="display: none;">
+  
+  <div x-show="shareModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="shareModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-xs" style="display: none;"></div>
+
+  
+  <div x-show="shareModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" @keydown.escape.window="shareModal = false" class="relative w-full max-w-130 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900" x-data="adminAiCalendar8" style="display: none;">
+    
+    <button type="button" @click="shareModal = false" class="absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all select-none hover:bg-gray-100 hover:text-gray-700 active:translate-y-px dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white/90">
+      <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-ai-calendar-19ab9a1dba51"></use></svg>
+    </button>
+
+    <div class="mb-4">
+      <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+        Поделиться чатом
+      </h3>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        Любой пользователь со ссылкой сможет просмотреть эту переписку. Новые сообщения не будут доступны.
+      </p>
+    </div>
+
+    
+    <div class="mb-5">
+      <div dir="ltr" class="flex h-11 w-full items-center overflow-hidden rounded-[10px] border border-gray-300 bg-white px-4 text-sm text-gray-800 shadow-theme-xs select-all dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+        <span class="truncate" x-text="shareUrl">http://localhost:8000/ai-image.html</span>
+      </div>
+    </div>
+
+    
+    <div class="flex flex-wrap items-center gap-3">
+      <button type="button" @click="navigator.clipboard.writeText(shareUrl); copied = true; setTimeout(() =&gt; copied = false, 2000)" class="inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-[10px] bg-brand-500 px-4 text-sm font-medium text-white transition-all select-none hover:bg-brand-600 active:translate-y-px">
+        <template x-if="!copied"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-4"><use href="#ui-ai-calendar-d4bbc5d2e43b"></use></svg></template>
+        <template x-if="copied"><svg class="size-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-ai-calendar-8bea273213f4"></use></svg></template>
+        <span x-text="copied ? 'Скопировано!' : 'Копировать ссылку'">Копировать ссылку</span>
+      </button>
+
+      <div class="hidden h-8 w-px bg-gray-200 sm:block dark:bg-gray-800"></div>
+
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
+          Поделиться через:
+        </span>
+
+        
+        <a :href="'mailto:?subject=AI%20Chat%20Conversation&amp;body=' + encodeURIComponent(shareUrl)" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" title="Поделиться по почте" href="mailto:?subject=AI%20Chat%20Conversation&amp;body=https%3A%2F%2Ftailadmin.com%2Fai-chat%2Ff3d82a91-7c4ea84c31e672bf">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-ai-calendar-7716949d00d6"></use></svg>
+        </a>
+
+        
+        <a :href="'https://x.com/intent/tweet?url=' + encodeURIComponent(shareUrl)" target="_blank" rel="noopener noreferrer" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" title="Поделиться в X" href="https://x.com/intent/tweet?url=https%3A%2F%2Ftailadmin.com%2Fai-chat%2Ff3d82a91-7c4ea84c31e672bf">
+          <svg class="size-4" viewBox="0 0 16 16" fill="currentColor"><use href="#ui-ai-calendar-a4b5edea4c66"></use></svg>
+        </a>
+
+        
+        <a :href="'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl)" target="_blank" rel="noopener noreferrer" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" title="Поделиться в LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftailadmin.com%2Fai-chat%2Ff3d82a91-7c4ea84c31e672bf">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-ed4d60b2293e"></use></svg>
+        </a>
+
+        
+        <a :href="'https://api.whatsapp.com/send?text=' + encodeURIComponent(shareUrl)" target="_blank" rel="noopener noreferrer" class="inline-flex size-10 items-center justify-center rounded-[10px] border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" title="Поделиться в WhatsApp" href="https://api.whatsapp.com/send?text=https%3A%2F%2Ftailadmin.com%2Fai-chat%2Ff3d82a91-7c4ea84c31e672bf">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8952b87545c0"></use></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<div x-show="renameModal" x-effect="if (renameModal) $nextTick(() =&gt; $refs.renameInput &amp;&amp; $refs.renameInput.focus())" class="fixed inset-0 z-99999 flex items-center justify-center p-4" style="display: none;">
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="renameModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-xs" style="display: none;"></div>
+
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" @keydown.escape.window="renameModal = false" class="relative w-full max-w-120 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+    <div class="mb-4">
+      <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+        Переименовать чат
+      </h3>
+    </div>
+
+    <form @submit.prevent="if (typeof $data.submitRename === 'function') { $data.submitRename(); } else if (chatTitle.trim()) { chatTitle = chatTitle.trim(); renameModal = false; }" class="space-y-5">
+      <input type="text" x-ref="renameInput" x-model="chatTitle" placeholder="Название чата" class="h-11 w-full rounded-[10px] border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-500">
+
+      <div class="flex items-center justify-end gap-3">
+        <button type="button" @click="renameModal = false" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+          Отмена
+        </button>
+        <button type="submit" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] bg-brand-500 px-5 text-sm font-medium text-white transition-all select-none hover:bg-brand-600 active:translate-y-px">
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</header>
+
+
+              <div class="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                <div class="mx-auto flex min-h-full w-full max-w-180 flex-col">
+                  
+<div class="relative w-full space-y-7 pb-6">
+  
+  <div class="flex justify-end">
+    <div class="ms-auto w-full max-w-120">
+      <div class="rounded-te-xs rounded-xl bg-gray-100 px-4 py-3 shadow-theme-xs dark:bg-gray-800">
+        <p class="text-start text-base leading-6 font-normal text-pretty wrap-break-word text-gray-800 dark:text-white/90">
+          Минималистичный фасад здания с вертикальными панелями и зеленью на фоне ясного голубого неба.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="flex justify-start">
+    <div class="w-full max-w-120">
+      <p class="mb-2 flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <img src="./assets/icons/ai/nanobanana.svg" class="size-4.5" alt="Nano Banana">
+        <span>Nano Banana Pro</span>
+      </p>
+      <p class="mb-3 text-base leading-6 text-gray-800 dark:text-white/90">
+        Подготовлено изображение минималистичного фасада с вертикальными панелями и зеленью на фоне голубого неба.
+      </p>
+
+      
+      <div class="group relative w-full max-w-75 overflow-hidden rounded-xl border border-gray-100 shadow-theme-xs dark:border-gray-800" x-data="adminAiCalendar9">
+        <img src="./assets/images/ai-image/img-1.png" alt="Минималистичный фасад здания" class="w-full rounded-xl object-cover">
+
+        
+        <div class="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-between px-3 py-3 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+          <div class="flex items-center gap-2">
+            
+            <button type="button" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full bg-white/90 text-gray-700 shadow backdrop-blur-xs transition-all select-none hover:bg-white active:translate-y-px" title="Редактировать изображение">
+              <svg class="size-4" viewBox="0 0 21 21" fill="none"><use href="#ui-ai-calendar-2057552c1d29"></use></svg>
+            </button>
+
+            
+            <button type="button" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full bg-white/90 text-gray-700 shadow backdrop-blur-xs transition-all select-none hover:bg-white active:translate-y-px" title="Создать изображение повторно">
+              <svg class="size-4" viewBox="0 0 16 16" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-20789271f02d"></use></svg>
+            </button>
+
+            
+            <button type="button" @click="navigator.clipboard.writeText(window.location.origin + '/images/ai/img-1.png'); copied = true; setTimeout(() =&gt; copied = false, 2000)" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full bg-white/90 text-gray-700 shadow backdrop-blur-xs transition-all select-none hover:bg-white active:translate-y-px" title="Копировать ссылку на изображение">
+              <template x-if="!copied"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-4"><use href="#ui-ai-calendar-d4bbc5d2e43b"></use></svg></template>
+              <template x-if="copied"><svg class="size-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-ai-calendar-8bea273213f4"></use></svg></template>
+            </button>
+          </div>
+
+          
+          <a href="./assets/images/ai-image/img-1.png" download="generated-image.png" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full bg-white/90 text-gray-700 shadow backdrop-blur-xs transition-all select-none hover:bg-white active:translate-y-px" title="Скачать изображение">
+            <svg class="size-4" viewBox="0 0 18 18" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-e1f2681e65d9"></use></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+              </div>
+
+              
+              <footer class="shrink-0 bg-white/80 px-4 pb-2 backdrop-blur-sm sm:px-6 dark:bg-gray-900/80">
+                
+<div class="mx-auto w-full max-w-180 pt-2 pb-4" x-data="adminAiCalendar10">
+  <div class="flex flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-xs transition-colors focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 dark:border-gray-800 dark:bg-gray-900 dark:focus-within:border-brand-500/40">
+    
+    <textarea rows="2" x-model="promptText" @keydown.enter.prevent="if (!$event.shiftKey) { submit(); }" placeholder="Опишите изображение, которое хотите создать…" class="h-16 w-full resize-none border-0 bg-transparent p-2 text-sm text-gray-800 shadow-none outline-none placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden focus:outline-none dark:text-white"></textarea>
+
+    
+    <div class="flex w-full items-center justify-between border-none p-0 pt-2">
+      
+      <div class="flex flex-wrap items-center gap-2">
+        
+        <label class="flex size-9 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800" aria-label="Прикрепить пример изображения">
+          <input type="file" class="hidden">
+          <svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-02e6cd7c7a3e"></use></svg>
+        </label>
+
+        
+        <div class="relative">
+          <button type="button" @click="ratioDropdown = !ratioDropdown" @click.outside="ratioDropdown = false" class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 font-medium text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800">
+            <span class="text-xs sm:text-sm" x-text="aspectRatio">3:4</span>
+          </button>
+
+          
+          <div x-show="ratioDropdown" x-transition:enter="ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute bottom-full left-0 z-50 mb-1.5 w-32 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+            <template x-for="r in ['16:9', '4:3', '1:1', '3:4', '9:16']" :key="r"><button type="button" @click="aspectRatio = r; ratioDropdown = false" class="flex w-full cursor-pointer items-center justify-between rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800" :class="aspectRatio === r ? 'bg-gray-100 font-medium dark:bg-gray-800' : ''">
+                <span x-text="r">16:9</span>
+              </button></template>
+          </div>
+        </div>
+
+        
+        <div class="relative">
+          <button type="button" @click="countDropdown = !countDropdown" @click.outside="countDropdown = false" class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 font-medium text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800">
+            <svg class="size-4.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#ui-ai-calendar-e87bc9e7992a"></use></svg>
+            <span class="text-xs sm:text-sm" x-text="imageCount">2</span>
+          </button>
+
+          
+          <div x-show="countDropdown" x-transition:enter="ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute bottom-full left-0 z-50 mb-1.5 w-24 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+            <template x-for="cnt in [1, 2, 3, 4]" :key="cnt"><button type="button" @click="imageCount = cnt; countDropdown = false" class="flex w-full cursor-pointer items-center justify-center rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800" :class="imageCount === cnt ? 'bg-gray-100 font-medium dark:bg-gray-800' : ''">
+                <span x-text="cnt">1</span>
+              </button></template>
+          </div>
+        </div>
+
+        
+        <div class="relative">
+          <button type="button" @click="resDropdown = !resDropdown" @click.outside="resDropdown = false" class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 font-medium text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800">
+            <svg class="size-4.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#ui-ai-calendar-db4fb48ac0b6"></use></svg>
+            <span class="text-xs sm:text-sm" x-text="resolution">1K</span>
+          </button>
+
+          
+          <div x-show="resDropdown" x-transition:enter="ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute bottom-full left-0 z-50 mb-1.5 w-24 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+            <template x-for="r in ['1K', '2K', '4K']" :key="r"><button type="button" @click="resolution = r; resDropdown = false" class="flex w-full cursor-pointer items-center justify-center rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800" :class="resolution === r ? 'bg-gray-100 font-medium dark:bg-gray-800' : ''">
+                <span x-text="r">1K</span>
+              </button></template>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="flex items-center gap-2">
+        
+        <div class="relative">
+          <button type="button" @click="modelDropdown = !modelDropdown" @click.outside="modelDropdown = false" class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg bg-gray-100/60 px-2.5 py-1 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:bg-gray-800/60 dark:text-gray-300 dark:hover:bg-gray-800">
+            <span class="text-xs font-medium whitespace-nowrap sm:text-sm" x-text="selectedModel">Nano Banana Pro</span>
+            <svg class="size-4 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-f49553cef3cb"></use></svg>
+          </button>
+
+          
+          <div x-show="modelDropdown" x-transition:enter="ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 bottom-full z-50 mb-1.5 w-56 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+            <template x-for="m in ['Автоматический выбор модели', 'Nano Banana Pro', 'GPT-5 Image', 'Seedream 5.0']" :key="m"><button type="button" @click="selectedModel = m; modelDropdown = false" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800" :class="selectedModel === m ? 'bg-gray-100 font-medium dark:bg-gray-800' : ''">
+                <span x-text="m">Автоматический выбор модели</span>
+              </button></template>
+          </div>
+        </div>
+
+        
+        <button type="button" @click="submit()" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-lg bg-gray-900 text-white transition-all select-none hover:bg-gray-800 active:translate-y-px dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100" :aria-label="promptText.trim() ? 'Отправить запрос' : 'Записать голосовой запрос'" >
+          
+          <template x-if="promptText.trim().length &gt; 0"><svg class="size-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><use href="#ui-ai-calendar-30c9a4f6eacf"></use></svg></template>
+          
+          <template x-if="promptText.trim().length === 0"><svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#ui-ai-calendar-52d01b7b5515"></use></svg></template>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</footer>
+            </div>
+
+            
+            
+<aside class="hidden h-full w-96 shrink-0 flex-col border-s border-gray-200 bg-white text-gray-900 xl:flex dark:border-gray-800 dark:bg-gray-900" x-data="aiSidebar()">
+  
+  <div class="flex w-full flex-col gap-4 p-5 pb-3">
+    
+    <button type="button" @click="activeChatId = null" class="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-[10px] bg-brand-500 font-medium text-white shadow-theme-xs transition-all select-none hover:bg-brand-600 active:translate-y-px">
+      <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-ai-calendar-d57573db94a4"></use></svg>
+      <span>Новый чат</span>
+    </button>
+
+    
+    <div class="relative w-full">
+      <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+        <svg class="size-4.5" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-54253f5cefda"></use></svg>
+      </span>
+      <input type="text" x-model="searchQuery" placeholder="Поиск" class="h-10 w-full rounded-[10px] border border-gray-200 bg-transparent pr-4 pl-10 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-800 dark:text-white/90">
+    </div>
+  </div>
+
+  
+  <div class="flex-1 overflow-y-auto px-5 pt-1 pb-4">
+    
+    <div x-show="noResults" class="py-12 text-center text-sm text-gray-500 dark:text-gray-400" style="display: none;">
+      Ничего не найдено
+    </div>
+
+    <div x-show="!noResults" class="flex flex-col gap-5">
+      
+      <div x-show="filteredStarred.length &gt; 0">
+        <div class="mb-2 flex items-center gap-1.5 px-3 text-xs font-semibold tracking-wider text-gray-400 uppercase dark:text-gray-500">
+          <svg class="size-3.5 fill-current" viewBox="0 0 20 20"><use href="#ui-ai-calendar-eb05f0e72599"></use></svg>
+          <span>Избранное</span>
+        </div>
+
+        <div class="space-y-1">
+          <template x-for="chat in filteredStarred" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+              <button type="button" @click="activeChatId = chat.id" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Написать повторное письмо клиенту">
+                <span class="block w-full truncate" x-text="chat.title">Написать повторное письмо клиенту</span>
+              </button>
+
+              <div class="relative">
+                <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                  <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                </button>
+                <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                  <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 fill-amber-500 text-amber-500" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-eb05f0e72599"></use></svg>
+                    <span>Убрать из избранного</span>
+                  </button>
+                  <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                    <span>Переименовать</span>
+                  </button>
+                  <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                  <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                    <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                    <span>Удалить</span>
+                  </button>
+                </div>
+              </div>
+            </div></template>
+        </div>
+      </div>
+
+      
+      <div x-show="filteredRecentInitial.length &gt; 0 || filteredRecentExtra.length &gt; 0">
+        <div class="mb-2 flex items-center gap-1.5 px-3 text-xs font-semibold tracking-wider text-gray-400 uppercase dark:text-gray-500">
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ui-ai-calendar-f877a2f09177"></use></svg>
+          <span>Недавние</span>
+        </div>
+
+        <div class="space-y-1">
+          
+          <template x-for="chat in filteredRecentInitial" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+              <button type="button" @click="activeChatId = chat.id" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Улучшить доступность формы входа">
+                <span class="block w-full truncate" x-text="chat.title">Улучшить доступность формы входа</span>
+              </button>
+
+              <div class="relative">
+                <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                  <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                </button>
+                <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                  <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-703c1065e79b"></use></svg>
+                    <span>В избранное</span>
+                  </button>
+                  <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                    <span>Переименовать</span>
+                  </button>
+                  <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                  <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                    <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                    <span>Удалить</span>
+                  </button>
+                </div>
+              </div>
+            </div></template>
+
+          
+          <div x-show="isExpanded" class="space-y-1" style="display: none;">
+            <template x-for="chat in filteredRecentExtra" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+                <button type="button" @click="activeChatId = chat.id" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Создать форму с предупреждением">
+                  <span class="block w-full truncate" x-text="chat.title">Создать форму с предупреждением</span>
+                </button>
+
+                <div class="relative">
+                  <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                    <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                  </button>
+                  <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                    <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                      <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-703c1065e79b"></use></svg>
+                      <span>В избранное</span>
+                    </button>
+                    <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                      <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                      <span>Переименовать</span>
+                    </button>
+                    <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                    <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                      <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                      <span>Удалить</span>
+                    </button>
+                  </div>
+                </div>
+              </div></template>
+          </div>
+
+          
+          <div x-show="filteredRecentExtra.length &gt; 0" class="relative pt-2">
+            <button type="button" @click="isExpanded = !isExpanded" class="flex w-full cursor-pointer items-center justify-between px-3 py-1.5 text-xs text-gray-400 transition-all select-none hover:text-gray-600 active:translate-y-px dark:text-gray-500 dark:hover:text-gray-300">
+              <span x-text="isExpanded ? 'Show less' : 'Показать ещё…'">Показать ещё…</span>
+              <svg class="size-4 transition-transform duration-200" :class="isExpanded ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-e0968ac4206c"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+<div x-show="renameModal" x-effect="if (renameModal) $nextTick(() =&gt; $refs.renameInput &amp;&amp; $refs.renameInput.focus())" class="fixed inset-0 z-99999 flex items-center justify-center p-4" style="display: none;">
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="renameModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-xs" style="display: none;"></div>
+
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" @keydown.escape.window="renameModal = false" class="relative w-full max-w-120 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+    <div class="mb-4">
+      <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+        Переименовать чат
+      </h3>
+    </div>
+
+    <form @submit.prevent="if (typeof $data.submitRename === 'function') { $data.submitRename(); } else if (chatTitle.trim()) { chatTitle = chatTitle.trim(); renameModal = false; }" class="space-y-5">
+      <input type="text" x-ref="renameInput" x-model="chatTitle" placeholder="Название чата" class="h-11 w-full rounded-[10px] border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-500">
+
+      <div class="flex items-center justify-end gap-3">
+        <button type="button" @click="renameModal = false" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+          Отмена
+        </button>
+        <button type="submit" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] bg-brand-500 px-5 text-sm font-medium text-white transition-all select-none hover:bg-brand-600 active:translate-y-px">
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</aside>
+
+
+<div x-show="isHistoryOpen" @click="isHistoryOpen = false" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs xl:hidden" style="display: none;"></div>
+
+<div x-show="isHistoryOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="ease-in duration-200" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed inset-y-0 right-0 z-50 flex h-full w-3/4 flex-col border-s border-gray-200 bg-white text-gray-900 shadow-2xl sm:max-w-sm xl:hidden dark:border-gray-800 dark:bg-gray-900" x-data="aiSidebar()" style="display: none;">
+  
+  <div class="flex items-center justify-between p-5 pb-0">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+      История чатов
+    </h3>
+    <button type="button" @click="isHistoryOpen = false" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-gray-400 transition-all select-none hover:bg-gray-100 hover:text-gray-700 active:translate-y-px dark:hover:bg-gray-800 dark:hover:text-white">
+      <svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-bfb3b6cb5f7b"></use></svg>
+    </button>
+  </div>
+
+  
+  <div class="flex w-full flex-col gap-4 p-5 pb-3">
+    
+    <button type="button" @click="activeChatId = null; isHistoryOpen = false" class="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-[10px] bg-brand-500 font-medium text-white shadow-theme-xs transition-all select-none hover:bg-brand-600 active:translate-y-px">
+      <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#ui-ai-calendar-d57573db94a4"></use></svg>
+      <span>Новый чат</span>
+    </button>
+
+    
+    <div class="relative w-full">
+      <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+        <svg class="size-4.5" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-54253f5cefda"></use></svg>
+      </span>
+      <input type="text" x-model="searchQuery" placeholder="Поиск" class="h-10 w-full rounded-[10px] border border-gray-200 bg-transparent pr-4 pl-10 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-800 dark:text-white/90">
+    </div>
+  </div>
+
+  
+  <div class="flex-1 overflow-y-auto px-5 pt-1 pb-4">
+    
+    <div x-show="noResults" class="py-12 text-center text-sm text-gray-500 dark:text-gray-400" style="display: none;">
+      Ничего не найдено
+    </div>
+
+    <div x-show="!noResults" class="flex flex-col gap-5">
+      
+      <div x-show="filteredStarred.length &gt; 0">
+        <div class="mb-2 flex items-center gap-1.5 px-3 text-xs font-semibold tracking-wider text-gray-400 uppercase dark:text-gray-500">
+          <svg class="size-3.5 fill-current" viewBox="0 0 20 20"><use href="#ui-ai-calendar-eb05f0e72599"></use></svg>
+          <span>Избранное</span>
+        </div>
+
+        <div class="space-y-1">
+          <template x-for="chat in filteredStarred" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+              <button type="button" @click="activeChatId = chat.id; isHistoryOpen = false" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Написать повторное письмо клиенту">
+                <span class="block w-full truncate" x-text="chat.title">Написать повторное письмо клиенту</span>
+              </button>
+
+              <div class="relative">
+                <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                  <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                </button>
+                <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                  <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 fill-amber-500 text-amber-500" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-eb05f0e72599"></use></svg>
+                    <span>Убрать из избранного</span>
+                  </button>
+                  <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                    <span>Переименовать</span>
+                  </button>
+                  <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                  <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                    <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                    <span>Удалить</span>
+                  </button>
+                </div>
+              </div>
+            </div></template>
+        </div>
+      </div>
+
+      
+      <div x-show="filteredRecentInitial.length &gt; 0 || filteredRecentExtra.length &gt; 0">
+        <div class="mb-2 flex items-center gap-1.5 px-3 text-xs font-semibold tracking-wider text-gray-400 uppercase dark:text-gray-500">
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ui-ai-calendar-f877a2f09177"></use></svg>
+          <span>Недавние</span>
+        </div>
+
+        <div class="space-y-1">
+          
+          <template x-for="chat in filteredRecentInitial" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+              <button type="button" @click="activeChatId = chat.id; isHistoryOpen = false" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Улучшить доступность формы входа">
+                <span class="block w-full truncate" x-text="chat.title">Улучшить доступность формы входа</span>
+              </button>
+
+              <div class="relative">
+                <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                  <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                </button>
+                <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                  <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-703c1065e79b"></use></svg>
+                    <span>В избранное</span>
+                  </button>
+                  <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                    <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                    <span>Переименовать</span>
+                  </button>
+                  <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                  <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                    <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                    <span>Удалить</span>
+                  </button>
+                </div>
+              </div>
+            </div></template>
+
+          
+          <div x-show="isExpanded" class="space-y-1" style="display: none;">
+            <template x-for="chat in filteredRecentExtra" :key="chat.id"><div class="group relative flex h-9 w-full min-w-0 items-center justify-between gap-1 rounded-full px-3 text-start text-sm transition-colors" :class="activeChatId === chat.id ? 'bg-gray-100 font-medium text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:text-gray-200'">
+                <button type="button" @click="activeChatId = chat.id; isHistoryOpen = false" :title="chat.title" class="flex h-full max-w-full min-w-0 flex-1 cursor-pointer items-center overflow-hidden text-start focus:outline-none" title="Создать форму с предупреждением">
+                  <span class="block w-full truncate" x-text="chat.title">Создать форму с предупреждением</span>
+                </button>
+
+                <div class="relative">
+                  <button type="button" @click.stop="activeMenuId = activeMenuId === chat.id ? null : chat.id" class="flex size-6.5 shrink-0 cursor-pointer items-center justify-center rounded-full transition-all select-none focus:outline-none active:translate-y-px" :class="activeChatId === chat.id ? 'bg-gray-200/90 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600' : 'text-gray-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'" :style="activeMenuId === chat.id ? 'opacity: 1 !important;' : ''" aria-label="Действия с чатом" style="">
+                    <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><use href="#ui-ai-calendar-8310ccd99b66"></use></svg>
+                  </button>
+                  <div x-show="activeMenuId === chat.id" @click.outside="activeMenuId = null" class="absolute top-full right-0 z-50 mt-1 w-44 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+                    <button type="button" @click="toggleStar(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                      <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-703c1065e79b"></use></svg>
+                      <span>В избранное</span>
+                    </button>
+                    <button type="button" @click="openRenameModal(chat)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 transition-all select-none hover:bg-gray-100 active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-800">
+                      <svg class="size-4.5 text-gray-500 dark:text-gray-400" viewBox="0 0 21 21" fill="currentColor"><use href="#ui-ai-calendar-bf3c40665ad1"></use></svg>
+                      <span>Переименовать</span>
+                    </button>
+                    <div class="my-1 border-t border-gray-100 dark:border-gray-800"></div>
+                    <button type="button" @click="deleteChat(chat.id)" class="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs text-red-600 transition-all select-none hover:bg-red-50 active:translate-y-px dark:text-red-400 dark:hover:bg-red-500/10">
+                      <svg class="size-4.5" viewBox="0 0 20 20" fill="currentColor"><use href="#ui-ai-calendar-0d3fb1bb0700"></use></svg>
+                      <span>Удалить</span>
+                    </button>
+                  </div>
+                </div>
+              </div></template>
+          </div>
+
+          
+          <div x-show="filteredRecentExtra.length &gt; 0" class="relative pt-2">
+            <button type="button" @click="isExpanded = !isExpanded" class="flex w-full cursor-pointer items-center justify-between px-3 py-1.5 text-xs text-gray-400 transition-all select-none hover:text-gray-600 active:translate-y-px dark:text-gray-500 dark:hover:text-gray-300">
+              <span x-text="isExpanded ? 'Show less' : 'Показать ещё…'">Показать ещё…</span>
+              <svg class="size-4 transition-transform duration-200" :class="isExpanded ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="none" stroke="currentColor"><use href="#ui-ai-calendar-e0968ac4206c"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+<div x-show="renameModal" x-effect="if (renameModal) $nextTick(() =&gt; $refs.renameInput &amp;&amp; $refs.renameInput.focus())" class="fixed inset-0 z-99999 flex items-center justify-center p-4" style="display: none;">
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="renameModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-xs" style="display: none;"></div>
+
+  
+  <div x-show="renameModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" @keydown.escape.window="renameModal = false" class="relative w-full max-w-120 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900" style="display: none;">
+    <div class="mb-4">
+      <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+        Переименовать чат
+      </h3>
+    </div>
+
+    <form @submit.prevent="if (typeof $data.submitRename === 'function') { $data.submitRename(); } else if (chatTitle.trim()) { chatTitle = chatTitle.trim(); renameModal = false; }" class="space-y-5">
+      <input type="text" x-ref="renameInput" x-model="chatTitle" placeholder="Название чата" class="h-11 w-full rounded-[10px] border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90 dark:focus:border-brand-500">
+
+      <div class="flex items-center justify-end gap-3">
+        <button type="button" @click="renameModal = false" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition-all select-none hover:bg-gray-50 active:translate-y-px dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+          Отмена
+        </button>
+        <button type="submit" class="inline-flex h-10 cursor-pointer items-center justify-center rounded-[10px] bg-brand-500 px-5 text-sm font-medium text-white transition-all select-none hover:bg-brand-600 active:translate-y-px">
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</div>
+
+</div>
+          
+                  </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  <script defer src="./assets/js/localization.js"></script>
+  <script defer src="./assets/js/page-components.js"></script>
+  <script defer="" src="./assets/js/bundle.js"></script>
+  <script defer src="./assets/js/spa.js"></script>
+
+</body></html>
